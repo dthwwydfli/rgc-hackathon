@@ -1,0 +1,219 @@
+{
+  "store": {
+    "id": "1010023674",
+    "store_name": "Tesco Express Camden High Street",
+    "fascia": "Tesco Express",
+    "format": "Convenience Store",
+    "postcode": "NW1 7JN",
+    "borough": "Camden"
+  },
+  "moments": [
+    { "id": "early_rush", "name": "early / rush", "hour": 8, "time": "05:00–10:00" },
+    { "id": "mid_morning", "name": "mid-morning", "hour": 10, "time": "10:00–12:00" },
+    { "id": "quick_lunch", "name": "quick lunch", "hour": 12, "time": "12:00–14:00" },
+    { "id": "afternoon_focus", "name": "afternoon focus", "hour": 15, "time": "14:00–17:00" },
+    { "id": "evening", "name": "weekday evening", "weekendName": "social evening", "hour": 17, "time": "17:00–21:00" },
+    { "id": "late_night", "name": "late night", "hour": 21, "time": "21:00–24:00" }
+  ],
+  "days": [
+    {
+      "weekday": 0,
+      "cells": {
+        "early_rush": [
+          { "category": "coffee", "units": 18.4, "group": "drinks" },
+          { "category": "breakfast foods", "units": 12.1, "group": "grocery" }
+        ],
+        "mid_morning": [
+          { "category": "coffee", "units": 22.6, "group": "drinks" },
+          { "category": "breakfast foods", "units": 14.8, "group": "grocery" }
+        ],
+        "quick_lunch": [
+          { "category": "crisps & savoury snacks", "units": 16.2, "group": "snacks" },
+          { "category": "sports & energy drinks", "units": 9.4, "group": "drinks" }
+        ],
+        "afternoon_focus": [
+          { "category": "breakfast foods", "units": 11.3, "group": "grocery" },
+          { "category": "confectionery", "units": 8.7, "group": "snacks" }
+        ],
+        "evening": [
+          { "category": "confectionery", "units": 24.1, "group": "snacks" },
+          { "category": "crisps & savoury snacks", "units": 19.5, "group": "snacks" },
+          { "category": "sports & energy drinks", "units": 11.2, "group": "drinks" }
+        ],
+        "late_night": [
+          { "category": "confectionery", "units": 9.8, "group": "snacks" }
+        ]
+      }
+    },
+    {
+      "weekday": 1,
+      "cells": {
+        "early_rush": [
+          { "category": "coffee", "units": 17.9, "group": "drinks" },
+          { "category": "breakfast foods", "units": 11.6, "group": "grocery" }
+        ],
+        "mid_morning": [
+          { "category": "coffee", "units": 24.1, "group": "drinks" },
+          { "category": "tea", "units": 7.2, "group": "drinks" }
+        ],
+        "quick_lunch": [
+          { "category": "crisps & savoury snacks", "units": 17.4, "group": "snacks" },
+          { "category": "breakfast foods", "units": 10.1, "group": "grocery" }
+        ],
+        "afternoon_focus": [
+          { "category": "breakfast foods", "units": 12.8, "group": "grocery" },
+          { "category": "tea", "units": 6.4, "group": "drinks" }
+        ],
+        "evening": [
+          { "category": "confectionery", "units": 25.6, "group": "snacks" },
+          { "category": "crisps & savoury snacks", "units": 20.2, "group": "snacks" }
+        ],
+        "late_night": [
+          { "category": "confectionery", "units": 10.4, "group": "snacks" },
+          { "category": "sports & energy drinks", "units": 5.1, "group": "drinks" }
+        ]
+      }
+    },
+    {
+      "weekday": 2,
+      "cells": {
+        "early_rush": [
+          { "category": "coffee", "units": 16.8, "group": "drinks" }
+        ],
+        "mid_morning": [
+          { "category": "coffee", "units": 21.3, "group": "drinks" },
+          { "category": "breakfast foods", "units": 13.9, "group": "grocery" }
+        ],
+        "quick_lunch": [
+          { "category": "crisps & savoury snacks", "units": 15.5, "group": "snacks" },
+          { "category": "sports & energy drinks", "units": 8.8, "group": "drinks" }
+        ],
+        "afternoon_focus": [
+          { "category": "confectionery", "units": 9.9, "group": "snacks" },
+          { "category": "breakfast foods", "units": 10.7, "group": "grocery" }
+        ],
+        "evening": [
+          { "category": "confectionery", "units": 23.4, "group": "snacks" },
+          { "category": "crisps & savoury snacks", "units": 18.1, "group": "snacks" }
+        ],
+        "late_night": [
+          { "category": "confectionery", "units": 8.6, "group": "snacks" }
+        ]
+      }
+    },
+    {
+      "weekday": 3,
+      "cells": {
+        "early_rush": [
+          { "category": "coffee", "units": 19.2, "group": "drinks" },
+          { "category": "breakfast foods", "units": 13.4, "group": "grocery" }
+        ],
+        "mid_morning": [
+          { "category": "coffee", "units": 25.0, "group": "drinks" },
+          { "category": "breakfast foods", "units": 15.2, "group": "grocery" }
+        ],
+        "quick_lunch": [
+          { "category": "crisps & savoury snacks", "units": 18.8, "group": "snacks" },
+          { "category": "sports & energy drinks", "units": 10.6, "group": "drinks" }
+        ],
+        "afternoon_focus": [
+          { "category": "breakfast foods", "units": 13.1, "group": "grocery" },
+          { "category": "confectionery", "units": 9.2, "group": "snacks" }
+        ],
+        "evening": [
+          { "category": "confectionery", "units": 27.8, "group": "snacks" },
+          { "category": "crisps & savoury snacks", "units": 21.4, "group": "snacks" },
+          { "category": "sports & energy drinks", "units": 12.0, "group": "drinks" }
+        ],
+        "late_night": [
+          { "category": "confectionery", "units": 11.1, "group": "snacks" }
+        ]
+      }
+    },
+    {
+      "weekday": 4,
+      "cells": {
+        "early_rush": [
+          { "category": "coffee", "units": 15.6, "group": "drinks" },
+          { "category": "breakfast foods", "units": 10.8, "group": "grocery" }
+        ],
+        "mid_morning": [
+          { "category": "coffee", "units": 20.4, "group": "drinks" },
+          { "category": "tea", "units": 6.8, "group": "drinks" }
+        ],
+        "quick_lunch": [
+          { "category": "crisps & savoury snacks", "units": 14.9, "group": "snacks" },
+          { "category": "breakfast foods", "units": 9.6, "group": "grocery" }
+        ],
+        "afternoon_focus": [
+          { "category": "confectionery", "units": 11.5, "group": "snacks" },
+          { "category": "sports & energy drinks", "units": 7.9, "group": "drinks" }
+        ],
+        "evening": [
+          { "category": "confectionery", "units": 29.4, "group": "snacks" },
+          { "category": "crisps & savoury snacks", "units": 22.7, "group": "snacks" },
+          { "category": "sports & energy drinks", "units": 13.5, "group": "drinks" }
+        ],
+        "late_night": [
+          { "category": "confectionery", "units": 13.2, "group": "snacks" },
+          { "category": "sports & energy drinks", "units": 6.4, "group": "drinks" }
+        ]
+      }
+    },
+    {
+      "weekday": 5,
+      "cells": {
+        "early_rush": [
+          { "category": "coffee", "units": 8.2, "group": "drinks" }
+        ],
+        "mid_morning": [
+          { "category": "coffee", "units": 11.4, "group": "drinks" },
+          { "category": "breakfast foods", "units": 7.1, "group": "grocery" }
+        ],
+        "quick_lunch": [
+          { "category": "crisps & savoury snacks", "units": 12.6, "group": "snacks" },
+          { "category": "confectionery", "units": 10.3, "group": "snacks" }
+        ],
+        "afternoon_focus": [
+          { "category": "confectionery", "units": 14.8, "group": "snacks" },
+          { "category": "crisps & savoury snacks", "units": 11.2, "group": "snacks" }
+        ],
+        "evening": [
+          { "category": "confectionery", "units": 31.6, "group": "snacks" },
+          { "category": "crisps & savoury snacks", "units": 24.0, "group": "snacks" },
+          { "category": "sports & energy drinks", "units": 14.8, "group": "drinks" }
+        ],
+        "late_night": [
+          { "category": "confectionery", "units": 16.5, "group": "snacks" },
+          { "category": "sports & energy drinks", "units": 8.9, "group": "drinks" }
+        ]
+      }
+    },
+    {
+      "weekday": 6,
+      "cells": {
+        "early_rush": [],
+        "mid_morning": [
+          { "category": "coffee", "units": 9.6, "group": "drinks" },
+          { "category": "tea", "units": 5.4, "group": "drinks" }
+        ],
+        "quick_lunch": [
+          { "category": "crisps & savoury snacks", "units": 11.8, "group": "snacks" },
+          { "category": "confectionery", "units": 9.1, "group": "snacks" }
+        ],
+        "afternoon_focus": [
+          { "category": "confectionery", "units": 13.4, "group": "snacks" },
+          { "category": "breakfast foods", "units": 6.2, "group": "grocery" }
+        ],
+        "evening": [
+          { "category": "confectionery", "units": 28.9, "group": "snacks" },
+          { "category": "crisps & savoury snacks", "units": 21.6, "group": "snacks" }
+        ],
+        "late_night": [
+          { "category": "confectionery", "units": 14.7, "group": "snacks" },
+          { "category": "sports & energy drinks", "units": 7.3, "group": "drinks" }
+        ]
+      }
+    }
+  ]
+}

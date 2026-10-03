@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Moments - week swimlanes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f7f7f5;
+      --card: #fff;
+      --ink: #1d1d1d;
+      --muted: #5b5b5b;
+      --line: rgba(29, 29, 29, 0.1);
+      --lime: #b8f000;
+      --green: #22a651;
+      --teal: #53cdc5;
+      --indigo: #6a6ae2;
+      --purple: #9c6dba;
+      --font-display: Helvetica, "Helvetica Neue", Arial, sans-serif;
+      --font-ui: Inter, Arial, sans-serif;
+      --label-w: 9.5rem;
+      --header-h: 3.5rem;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      font-family: var(--font-ui);
+      color: var(--ink);
+      background: var(--bg);
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      height: var(--header-h);
+      padding: 0 1rem;
+      flex-shrink: 0;
+      background: var(--card);
+      border-bottom: 1px solid var(--line);
+    }
+    .brand-cluster {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+    .brand {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      letter-spacing: -0.05em;
+      font-weight: 500;
+    }
+    .week-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.15rem;
+    }
+    .week-arrow {
+      font: inherit;
+      width: 2rem;
+      height: 2rem;
+      padding: 0;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      cursor: pointer;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      line-height: 1;
+    }
+    .week-arrow:hover { background: #f3f3f1; }
+    .controls {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .pill, .run {
+      font: inherit;
+      height: 2.25rem;
+      padding: 0 1rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 500;
+    }
+    .run {
+      background: var(--lime);
+      border-color: color-mix(in srgb, var(--lime) 70%, #000);
+    }
+    .run:hover:not(:disabled) { filter: brightness(0.97); }
+    .run:disabled {
+      opacity: 0.55;
+      cursor: wait;
+    }
+    .run svg {
+      width: 0.85rem;
+      height: 0.85rem;
+      fill: currentColor;
+    }
+
+    main {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      padding: 0;
+    }
+
+    .board {
+      position: relative;
+      flex: 1;
+      min-height: 0;
+      min-width: 0;
+      background: var(--card);
+      overflow: hidden;
+    }
+    .run-eyes {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      background: color-mix(in srgb, var(--card) 55%, transparent);
+    }
+    .run-eyes[hidden] { display: none; }
+    .wandering-eyes {
+      --duration: 10s;
+      --eye-color: color-mix(in srgb, var(--green) 16%, transparent);
+      --pupil-color: var(--green);
+      --eye-size: 2.4rem;
+      --eye-gap: 0.35rem;
+      --pupil-scale: 0.32;
+      --blink-scale: 0.375;
+      --travel-scale: 0.3125;
+      container-type: size;
+      display: inline-flex;
+      aspect-ratio: 9 / 4;
+      width: 6.75rem;
+      height: 3rem;
+      align-items: center;
+      justify-content: center;
+      color: var(--green);
+    }
+    .wandering-eyes-pair {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--eye-gap);
+    }
+    .wandering-eye {
+      display: inline-block;
+      width: var(--eye-size);
+      height: var(--eye-size);
+      border-radius: 999px;
+      background-color: var(--eye-color);
+      background-image: radial-gradient(
+        circle calc(var(--eye-size) * var(--pupil-scale)),
+        var(--pupil-color) 100%,
+        transparent 0
+      );
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      animation:
+        wandering-eyes-move var(--duration) infinite,
+        wandering-eyes-blink var(--duration) infinite;
+    }
+    @keyframes wandering-eyes-move {
+      0%, 10% { background-position: 0 0; }
+      13%, 40% {
+        background-position: calc(var(--eye-size) * var(--travel-scale) * -1) 0;
+      }
+      43%, 70% {
+        background-position: calc(var(--eye-size) * var(--travel-scale)) 0;
+      }
+      73%, 90% {
+        background-position: 0 calc(var(--eye-size) * var(--travel-scale));
+      }
+      93%, 100% { background-position: 0 0; }
+    }
+    @keyframes wandering-eyes-blink {
+      0%, 10%, 12%, 20%, 22%, 40%, 42%, 60%, 62%, 70%, 72%, 90%, 92%, 98%, 100% {
+        height: var(--eye-size);
+      }
+      11%, 21%, 41%, 61%, 71%, 91%, 99% {
+        height: calc(var(--eye-size) * var(--blink-scale));
+      }
+    }
+    .grid {
+      display: grid;
+      height: 100%;
+      width: 100%;
+      grid-template-columns: var(--label-w) repeat(7, minmax(0, 1fr));
+      grid-template-rows: 3rem repeat(6, minmax(0, 1fr));
+    }
+    .corner, .day-head, .lane-label, .cell {
+      border-bottom: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      min-width: 0;
+      min-height: 0;
+    }
+    .corner {
+      background: var(--card);
+      padding: 0.5rem 0.75rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+    }
+    .day-head {
+      padding: 0.35rem;
+      text-align: center;
+      background: #fafaf8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .day-head strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      letter-spacing: -0.03em;
+      font-weight: 500;
+    }
+    .day-head span {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+    .day-head.is-today strong { color: var(--green); }
+
+    .lane-label {
+      background: var(--card);
+      padding: 0.5rem 0.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.15rem;
+      border-left: 3px solid var(--tone);
+    }
+    .lane-label strong {
+      font-size: 0.8rem;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+    .lane-label em {
+      font-style: normal;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .cell {
+      padding: 0.3rem;
+      background: #fff;
+      display: flex;
+    }
+    .cell button {
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      border: 0;
+      border-radius: 3px;
+      cursor: pointer;
+      font: inherit;
+      text-align: left;
+      padding: 0.45rem 0.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.35rem;
+      background: color-mix(in srgb, var(--tone) var(--fill), transparent);
+      opacity: 0;
+      transform: scale(0.92);
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+    .cell button.is-visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .cell button:hover:not(.is-empty) {
+      outline: 1px solid color-mix(in srgb, var(--tone) 55%, #000);
+    }
+    .cell button.is-empty {
+      background: transparent;
+      cursor: default;
+      color: #ccc;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      transform: none;
+    }
+    .bar {
+      height: 4px;
+      border-radius: 2px;
+      background: color-mix(in srgb, var(--tone) 70%, #000);
+      width: var(--strength);
+      max-width: 100%;
+    }
+    .sku {
+      font-size: 0.8rem;
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--ink);
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-transform: capitalize;
+    }
+
+    .panel {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+    }
+    .panel[hidden] { display: none; }
+    .backdrop {
+      position: absolute; inset: 0; border: 0; width: 100%;
+      background: rgba(0,0,0,0.35); cursor: pointer;
+    }
+    .dialog {
+      position: relative;
+      z-index: 1;
+      width: min(42rem, 100%);
+      height: min(85vh, 44rem);
+      background: #fff;
+      border-radius: 0.75rem;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.18);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .dialog > [data-panel-body] {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-height: 0;
+      height: 100%;
+    }
+    .dialog-head {
+      padding: 1rem 1.15rem 0.75rem;
+      border-bottom: 1px solid var(--line);
+      flex-shrink: 0;
+    }
+    .dialog-head-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+    .dialog h2 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      letter-spacing: -0.04em;
+      font-weight: 500;
+      text-transform: capitalize;
+    }
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem 0.85rem;
+      margin-top: 0.65rem;
+    }
+    .meta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      max-width: 100%;
+    }
+    .meta-chip span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .meta-chip i, .stat i, .tabs button i, .caveat-bar i {
+      width: 0.95rem;
+      height: 0.95rem;
+      stroke-width: 2;
+      flex-shrink: 0;
+    }
+    .pred-line {
+      margin: 0.45rem 0 0;
+      max-width: 38rem;
+      font-size: 0.72rem;
+      line-height: 1.4;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.25rem;
+      padding: 0.65rem 0.85rem;
+      border-bottom: 1px solid var(--line);
+      flex-shrink: 0;
+      background: #fafaf8;
+    }
+    .tabs button {
+      font: inherit;
+      border: 0;
+      background: transparent;
+      border-radius: 0.4rem;
+      padding: 0.55rem 0.35rem;
+      cursor: pointer;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.68rem;
+      font-weight: 500;
+    }
+    .tabs button i {
+      width: 1.15rem;
+      height: 1.15rem;
+    }
+    .tabs button[aria-selected="true"] {
+      background: #fff;
+      color: var(--ink);
+      box-shadow: 0 0 0 1px var(--line);
+    }
+    .tab-panels {
+      position: relative;
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+    }
+    .tab-panel {
+      position: absolute;
+      inset: 0;
+      overflow: auto;
+      padding: 0.85rem 1.15rem 1.25rem;
+    }
+    .tab-panel[hidden] { display: none; }
+    .cat-card {
+      border: 1px solid var(--line);
+      border-radius: 0.45rem;
+      padding: 0.75rem 0.8rem;
+      margin-bottom: 0.65rem;
+      background: #fff;
+    }
+    .cat-card.is-focus {
+      border-color: color-mix(in srgb, var(--green) 55%, var(--line));
+      background: color-mix(in srgb, var(--lime) 12%, #fff);
+    }
+    .cat-card h3 {
+      margin: 0 0 0.55rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-transform: capitalize;
+      letter-spacing: -0.02em;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.4rem;
+    }
+    .stat {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      color: var(--ink);
+      background: #f7f7f5;
+      border-radius: 0.35rem;
+      padding: 0.45rem 0.5rem;
+      min-width: 0;
+    }
+    .stat > div {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      min-width: 0;
+    }
+    .stat em {
+      font-style: normal;
+      font-size: 0.62rem;
+      color: var(--muted);
+      line-height: 1.2;
+    }
+    .stat b {
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+    .stat i { color: var(--muted); margin-top: 0.1rem; }
+    .action-row, .example {
+      margin-top: 0.55rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      color: var(--ink);
+      line-height: 1.35;
+    }
+    .action-row i { color: var(--green); margin-top: 0.1rem; }
+    .example { color: var(--muted); }
+    .example i { color: var(--indigo); }
+    .persona {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.35rem 0.75rem;
+      align-items: center;
+      margin-bottom: 0.85rem;
+    }
+    .persona-name {
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .persona-pct {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      min-width: 2.5rem;
+      text-align: right;
+    }
+    .persona-track {
+      grid-column: 1 / -1;
+      min-height: 1rem;
+    }
+    .persona-bar {
+      height: 0.4rem;
+      background: #eee;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .persona-bar > span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: var(--teal);
+      border-radius: 999px;
+      transition: width 0.55s ease-out;
+    }
+    .persona-bar.is-ready > span { width: var(--w); }
+
+    /* Accordion loader (unicode blocks, shaah1d / loading-ui style) */
+    .acc-loader {
+      --track-ch: 28;
+      --duration: 1.05s;
+      --mask-color: #fff;
+      position: relative;
+      width: calc(var(--track-ch) * 1ch);
+      max-width: 100%;
+      height: 1em;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.72rem;
+      line-height: 1;
+      color: var(--teal);
+      overflow: hidden;
+      user-select: none;
+    }
+    .acc-loader .acc-track {
+      opacity: 0.35;
+      white-space: nowrap;
+    }
+    .acc-loader .acc-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: var(--mask-color);
+      white-space: nowrap;
+      animation: acc-slide var(--duration) linear infinite;
+      animation-delay: var(--delay, 0ms);
+    }
+    @keyframes acc-slide {
+      from { transform: translateX(-4ch); }
+      to { transform: translateX(calc(var(--track-ch) * 1ch)); }
+    }
+
+    .week-card {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .week-card:last-child { border-bottom: 0; }
+    .week-num {
+      width: 2.6rem;
+      height: 2.6rem;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--indigo) 12%, #fff);
+      color: var(--indigo);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .week-num svg {
+      width: 1.35rem;
+      height: 1.35rem;
+    }
+    .week-card strong {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .week-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 0.15rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+    .week-meta i { width: 0.85rem; height: 0.85rem; }
+    .week-mult {
+      margin-left: auto;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      color: var(--ink);
+      font-size: 0.85rem;
+    }
+    .horizon-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+      padding: 0.7rem 0.75rem;
+      border-radius: 0.45rem;
+      background: #f7f7f5;
+      margin-bottom: 0.85rem;
+      font-size: 0.8rem;
+      line-height: 1.35;
+    }
+    .horizon-banner i {
+      width: 1.1rem;
+      height: 1.1rem;
+      color: var(--green);
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .horizon-banner b { font-weight: 600; }
+    .channel-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    @media (max-width: 520px) {
+      .channel-grid { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; }
+    }
+    .channel-card {
+      border: 1px solid var(--line);
+      border-radius: 0.5rem;
+      padding: 0.85rem;
+      background: #fff;
+    }
+    .channel-card h3 {
+      margin: 0 0 0.65rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .channel-card h3 i { width: 1rem; height: 1rem; color: var(--muted); }
+    .channel-card ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .channel-card li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      line-height: 1.35;
+      padding: 0.35rem 0;
+      border-top: 1px solid var(--line);
+    }
+    .channel-card li:first-child { border-top: 0; }
+    .channel-card li i {
+      width: 1rem;
+      height: 1rem;
+      margin-top: 0.05rem;
+      flex-shrink: 0;
+    }
+    .channel-card li.do i { color: var(--green); }
+    .channel-card li.dont i { color: #b45309; }
+    .season-note {
+      margin-top: 0.85rem;
+      padding: 0.7rem 0.75rem;
+      border-radius: 0.45rem;
+      background: color-mix(in srgb, var(--lime) 18%, #fff);
+      font-size: 0.78rem;
+      line-height: 1.4;
+      display: flex;
+      gap: 0.45rem;
+      align-items: flex-start;
+    }
+    .season-note i {
+      width: 1rem;
+      height: 1rem;
+      color: var(--green);
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .empty-tab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 2rem 1rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+    .empty-tab i {
+      width: 1.5rem;
+      height: 1.5rem;
+      opacity: 0.7;
+    }
+    .caveat-bar {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.45rem;
+      padding: 0.65rem 1.15rem;
+      border-top: 1px solid var(--line);
+      background: #fafaf8;
+      font-size: 0.7rem;
+      color: var(--muted);
+      line-height: 1.35;
+      flex-shrink: 0;
+    }
+    .caveat-bar i { color: #b45309; margin-top: 0.05rem; }
+    .panel-loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      min-height: 12rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .panel-loading i {
+      width: 1.4rem;
+      height: 1.4rem;
+      animation: spin 0.9s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .close {
+      border: 0;
+      background: #f7f7f5;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+    .close i { width: 1rem; height: 1rem; }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+  <script src="https://unpkg.com/lucide@0.544.0/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="brand-cluster">
+      <div class="brand">Moments</div>
+      <div class="week-nav">
+        <button type="button" class="week-arrow" data-week-prev aria-label="Previous week">‹</button>
+        <button type="button" class="week-arrow" data-week-next aria-label="Next week">›</button>
+      </div>
+    </div>
+    <div class="controls">
+      <button type="button" class="pill" data-today>This week</button>
+      <button type="button" class="run" data-run aria-label="Run simulation">
+        <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 1.2v9.6L11 6z"/></svg>
+        Run
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="board">
+      <div class="grid" data-grid></div>
+      <div class="run-eyes" data-run-eyes hidden role="status" aria-live="polite">
+        <span class="wandering-eyes" aria-hidden="true">
+          <span class="wandering-eyes-pair">
+            <span class="wandering-eye"></span>
+            <span class="wandering-eye"></span>
+          </span>
+        </span>
+        <span class="visually-hidden">Loading</span>
+      </div>
+    </div>
+  </main>
+
+  <div class="panel" id="panel" hidden>
+    <button class="backdrop" type="button" data-close aria-label="Close"></button>
+    <div class="dialog" role="dialog" aria-modal="true" data-dialog>
+      <div data-panel-body></div>
+    </div>
+  </div>
+
+  <script>
+    const TONES = ["#b8f000", "#53cdc5", "#6a6ae2", "#9c6dba", "#22a651", "#b8f000"];
+    const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    const STORE_ID = "1010023674";
+    const FILL_MS = 100;
+    const UNITS_FLOOR = 5;
+    const ALLOWED = new Set([
+      "coffee",
+      "tea",
+      "confectionery",
+      "crisps & savoury snacks",
+      "breakfast foods",
+      "sports & energy drinks",
+    ]);
+
+    const FALLBACK_MOMENTS = [
+      { id: "early_rush", name: "early / rush", hour: 8, time: "05:00-10:00" },
+      { id: "mid_morning", name: "mid-morning", hour: 10, time: "10:00-12:00" },
+      { id: "quick_lunch", name: "quick lunch", hour: 12, time: "12:00-14:00" },
+      { id: "afternoon_focus", name: "afternoon focus", hour: 15, time: "14:00-17:00" },
+      { id: "evening", name: "weekday evening", weekendName: "social evening", hour: 17, time: "17:00-21:00" },
+      { id: "late_night", name: "late night", hour: 21, time: "21:00-24:00" },
+    ];
+
+    const PREDICTION_LINE =
+      "Prediction · Timing, personas and calendar effects are learned from US households in 2017. "
+      + "Category levels are moved to London Tesco levels (2015).";
+
+    const grid = document.querySelector("[data-grid]");
+    const panel = document.getElementById("panel");
+    const panelBody = document.querySelector("[data-panel-body]");
+    const runBtn = document.querySelector("[data-run]");
+    const runEyes = document.querySelector("[data-run-eyes]");
+    const todayIdx = (new Date().getDay() + 6) % 7;
+
+    let moments = FALLBACK_MOMENTS;
+    let storeMeta = { id: STORE_ID, store_name: "Tesco Express Camden High Street", postcode: "NW1 7JN" };
+    /** @type {Array<Array<{s: number, categories: object[]}>>} */
+    let laneDays = [];
+    /** @type {ReturnType<typeof setTimeout>[]} */
+    let fillTimers = [];
+    let isRunning = false;
+    let weekOffset = 0;
+    let boardFixture = null;
+    let recommendFixture = null;
+
+    function startOfWeek(d) {
+      const x = new Date(d);
+      const day = (x.getDay() + 6) % 7;
+      x.setHours(0, 0, 0, 0);
+      x.setDate(x.getDate() - day);
+      return x;
+    }
+
+    function viewedWeekStart() {
+      const start = startOfWeek(new Date());
+      start.setDate(start.getDate() + weekOffset * 7);
+      return start;
+    }
+
+    function nextDateForWeekday(weekday) {
+      const start = viewedWeekStart();
+      const d = new Date(start);
+      d.setDate(d.getDate() + weekday);
+      return d;
+    }
+
+    function showRunEyes() {
+      if (runEyes) {
+        runEyes.hidden = false;
+      }
+    }
+
+    function hideRunEyes() {
+      if (runEyes) {
+        runEyes.hidden = true;
+      }
+    }
+
+    function isoDate(d) {
+      return d.toISOString().slice(0, 10);
+    }
+
+    function momentIdFromName(name) {
+      const n = String(name || "").toLowerCase();
+      if (n.includes("early") || n.includes("rush")) return "early_rush";
+      if (n.includes("mid-morning") || n.includes("mid morning")) return "mid_morning";
+      if (n.includes("lunch")) return "quick_lunch";
+      if (n.includes("afternoon")) return "afternoon_focus";
+      if (n.includes("evening") || n.includes("social")) return "evening";
+      if (n.includes("late")) return "late_night";
+      return "";
+    }
+
+    function momentLabel(moment, weekday) {
+      if (moment.id === "evening" && weekday >= 5 && moment.weekendName) {
+        return moment.weekendName;
+      }
+      return moment.name;
+    }
+
+    function clearFillTimers() {
+      fillTimers.forEach((id) => clearTimeout(id));
+      fillTimers = [];
+    }
+
+    function emptyLaneDays() {
+      return moments.map(() => DAYS.map(() => ({ s: 0, categories: [] })));
+    }
+
+    async function loadFixtures() {
+      const [boardRes, recRes] = await Promise.all([
+        fetch("/mock/swimlanes-board.json"),
+        fetch("/mock/recommend-panel.json"),
+      ]);
+      if (!boardRes.ok || !recRes.ok) {
+        throw new Error("fixture fetch failed");
+      }
+      boardFixture = await boardRes.json();
+      recommendFixture = await recRes.json();
+      moments = (boardFixture.moments || FALLBACK_MOMENTS).map((moment) => ({
+        ...moment,
+        time: String(moment.time || "").replace(/[–—]/g, "-"),
+      }));
+      storeMeta = boardFixture.store || storeMeta;
+    }
+
+    async function tryFetch(url) {
+      try {
+        const res = await fetch(url);
+        if (!res.ok) {
+          return null;
+        }
+        return await res.json();
+      } catch {
+        return null;
+      }
+    }
+
+    function filterCategories(rows) {
+      return rows
+        .filter((row) => ALLOWED.has(String(row.category || "").toLowerCase()))
+        .map((row) => ({
+          category: row.category,
+          group: row.group || "",
+          units: Number(row.units ?? row.units_per_week ?? 0),
+        }))
+        .filter((row) => row.units >= UNITS_FLOOR)
+        .sort((a, b) => b.units - a.units);
+    }
+
+    function boardFromFixture() {
+      const board = emptyLaneDays();
+      (boardFixture.days || []).forEach((day) => {
+        const dayIndex = day.weekday;
+        moments.forEach((moment, laneIndex) => {
+          const cats = filterCategories(day.cells?.[moment.id] || []);
+          board[laneIndex][dayIndex] = {
+            s: cats[0] ? cats[0].units : 0,
+            categories: cats,
+          };
+        });
+      });
+      return board;
+    }
+
+    function boardFromSimulates(sims) {
+      const board = emptyLaneDays();
+      sims.forEach((sim, dayIndex) => {
+        if (!sim) {
+          return;
+        }
+        const byMoment = {};
+        (sim.cells || []).forEach((cell) => {
+          const mid = momentIdFromName(cell.moment);
+          if (!mid || !ALLOWED.has(String(cell.category || "").toLowerCase())) {
+            return;
+          }
+          if (!byMoment[mid]) {
+            byMoment[mid] = [];
+          }
+          byMoment[mid].push({
+            category: cell.category,
+            group: cell.group || "",
+            units: Number(cell.units || 0),
+          });
+        });
+        moments.forEach((moment, laneIndex) => {
+          const cats = filterCategories(byMoment[moment.id] || []);
+          board[laneIndex][dayIndex] = {
+            s: cats[0] ? cats[0].units : 0,
+            categories: cats,
+          };
+        });
+        if (sim.location) {
+          storeMeta = {
+            id: sim.location.id || STORE_ID,
+            store_name: sim.location.store_name || storeMeta.store_name,
+            postcode: sim.location.postcode || storeMeta.postcode,
+            fascia: sim.location.fascia,
+            format: sim.location.format,
+            borough: sim.location.borough,
+          };
+        }
+      });
+      return board;
+    }
+
+    async function buildBoardFromApi() {
+      const sims = await Promise.all(
+        DAYS.map((_, weekday) => {
+          const date = isoDate(nextDateForWeekday(weekday));
+          return tryFetch("/api/simulate?station=" + encodeURIComponent(STORE_ID) + "&date=" + date);
+        })
+      );
+      if (sims.every((s) => !s)) {
+        return null;
+      }
+      return boardFromSimulates(sims);
+    }
+
+    function paintSkeleton() {
+      grid.replaceChildren();
+      grid.style.gridTemplateRows =
+        "3rem repeat(" + moments.length + ", minmax(0, 1fr))";
+      const weekStart = viewedWeekStart();
+
+      const corner = document.createElement("div");
+      corner.className = "corner";
+      corner.textContent = "Moment \\ Day";
+      grid.append(corner);
+
+      DAYS.forEach((name, i) => {
+        const d = new Date(weekStart);
+        d.setDate(d.getDate() + i);
+        const isToday = weekOffset === 0 && i === todayIdx;
+        const head = document.createElement("div");
+        head.className = "day-head" + (isToday ? " is-today" : "");
+        head.innerHTML = "<span>" + name + "</span><strong>" + d.getDate() + "</strong>";
+        grid.append(head);
+      });
+
+      moments.forEach((moment, laneIndex) => {
+        const tone = TONES[laneIndex % TONES.length];
+        const label = document.createElement("div");
+        label.className = "lane-label";
+        label.style.setProperty("--tone", tone);
+        label.innerHTML =
+          "<strong>" + moment.name + "</strong><em>" + moment.time + "</em>";
+        grid.append(label);
+
+        for (let dayIndex = 0; dayIndex < 7; dayIndex += 1) {
+          const wrap = document.createElement("div");
+          wrap.className = "cell";
+          wrap.style.setProperty("--tone", tone);
+          wrap.dataset.lane = String(laneIndex);
+          wrap.dataset.day = String(dayIndex);
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "is-empty";
+          btn.textContent = "·";
+          btn.disabled = true;
+          wrap.append(btn);
+          grid.append(wrap);
+        }
+      });
+    }
+
+    function maxUnits(board) {
+      let max = 1;
+      board.forEach((days) => {
+        days.forEach((cell) => {
+          if (cell.s > max) {
+            max = cell.s;
+          }
+        });
+      });
+      return max;
+    }
+
+    function fillCell(laneIndex, dayIndex, cell, peak) {
+      const wrap = grid.querySelector(
+        '.cell[data-lane="' + laneIndex + '"][data-day="' + dayIndex + '"]'
+      );
+      if (!wrap) {
+        return;
+      }
+      const tone = TONES[laneIndex % TONES.length];
+      wrap.style.setProperty("--tone", tone);
+      const btn = document.createElement("button");
+      btn.type = "button";
+
+      if (!cell.categories.length || cell.s < UNITS_FLOOR) {
+        btn.className = "is-empty";
+        btn.textContent = "·";
+        btn.disabled = true;
+        wrap.replaceChildren(btn);
+        return;
+      }
+
+      const strength = cell.s / peak;
+      const fill = Math.round(18 + strength * 55) + "%";
+      btn.style.setProperty("--fill", fill);
+      btn.style.setProperty("--strength", Math.round(strength * 100) + "%");
+      const top = cell.categories[0].category;
+      btn.innerHTML =
+        '<span class="bar" aria-hidden="true"></span>'
+        + '<span class="sku">' + top + "</span>";
+      btn.title = top;
+      btn.addEventListener("click", () => openPanel(laneIndex, dayIndex, cell));
+      wrap.replaceChildren(btn);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          btn.classList.add("is-visible");
+        });
+      });
+    }
+
+    function placementsByStrength(board) {
+      const list = [];
+      board.forEach((days, laneIndex) => {
+        days.forEach((cell, dayIndex) => {
+          if (!cell.categories.length || cell.s < UNITS_FLOOR) {
+            return;
+          }
+          list.push({ laneIndex, dayIndex, cell, s: cell.s });
+        });
+      });
+      list.sort((a, b) => b.s - a.s);
+      return list;
+    }
+
+    function finishRun() {
+      isRunning = false;
+      runBtn.disabled = false;
+      hideRunEyes();
+    }
+
+    function staggerFill(board) {
+      laneDays = board;
+      const peak = maxUnits(board);
+      const placements = placementsByStrength(board);
+      if (placements.length === 0) {
+        finishRun();
+        return;
+      }
+      placements.forEach((placement, index) => {
+        const timer = setTimeout(() => {
+          fillCell(placement.laneIndex, placement.dayIndex, placement.cell, peak);
+          if (index === placements.length - 1) {
+            finishRun();
+          }
+        }, 180 + index * FILL_MS);
+        fillTimers.push(timer);
+      });
+    }
+
+    async function playSimulation() {
+      if (isRunning) {
+        return;
+      }
+      isRunning = true;
+      runBtn.disabled = true;
+      clearFillTimers();
+      laneDays = emptyLaneDays();
+      paintSkeleton();
+      showRunEyes();
+
+      const liveBoard = await buildBoardFromApi();
+      const board = liveBoard || boardFromFixture();
+      staggerFill(board);
+    }
+
+    function clearBoardForWeek() {
+      clearFillTimers();
+      isRunning = false;
+      runBtn.disabled = false;
+      hideRunEyes();
+      laneDays = emptyLaneDays();
+      paintSkeleton();
+    }
+
+    function resetToThisWeek() {
+      weekOffset = 0;
+      clearBoardForWeek();
+    }
+
+    function shiftWeek(delta) {
+      weekOffset += delta;
+      clearBoardForWeek();
+    }
+
+    function pct(n) {
+      return Math.round(Number(n) * 100) + "%";
+    }
+
+    function icon(name) {
+      return '<i data-lucide="' + name + '" aria-hidden="true"></i>';
+    }
+
+    function refreshIcons(root) {
+      if (!window.lucide || typeof window.lucide.createIcons !== "function") {
+        return;
+      }
+      const scope = root || panelBody;
+      try {
+        window.lucide.createIcons({ root: scope, attrs: { "stroke-width": 2 } });
+      } catch {
+        window.lucide.createIcons();
+      }
+    }
+
+    function accordionLoaderHtml() {
+      const track = "░".repeat(28);
+      return '<div class="acc-loader" aria-hidden="true">'
+        + '<div class="acc-track">' + track + "</div>"
+        + '<div class="acc-layer" style="--delay:0ms">████</div>'
+        + '<div class="acc-layer" style="--delay:45ms">▓▓▓▓</div>'
+        + '<div class="acc-layer" style="--delay:90ms">▒▒▒▒</div>'
+        + '<div class="acc-layer" style="--delay:135ms">░░░░</div>'
+        + "</div>";
+    }
+
+    function weekNumberSvg(n) {
+      const label = String(n);
+      return '<svg viewBox="0 0 32 32" aria-hidden="true">'
+        + '<circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="2"/>'
+        + '<text x="16" y="21" text-anchor="middle" font-size="12" font-weight="700" '
+        + 'font-family="Helvetica, Arial, sans-serif" fill="currentColor">'
+        + label + "</text></svg>";
+    }
+
+    function zoneCue(category) {
+      const name = String(category || "").toLowerCase();
+      if (name.includes("coffee") || name.includes("tea") || name.includes("breakfast")) {
+        return "chiller / hot drinks bay";
+      }
+      if (name.includes("energy") || name.includes("sports")) {
+        return "chiller near till";
+      }
+      if (name.includes("crisp") || name.includes("snack") || name.includes("confection")) {
+        return "snack aisle at eye level";
+      }
+      return "main aisle facing";
+    }
+
+    function suggestAction(row, differ) {
+      const cat = row.category || "this category";
+      const share = Number(row.times_usual_share);
+      const orderQty = row.stock != null ? String(row.stock) : "n/a";
+      const persona = row.bought_most_by || "top shoppers";
+      const personaShare =
+        row.that_persona_share != null ? " (" + pct(row.that_persona_share) + ")" : "";
+      const hasHoliday = (differ || []).some((week) =>
+        /christmas|holiday|run-up/i.test(String(week.calendar || ""))
+      );
+
+      let shelfLine;
+      if (Number.isFinite(share) && share >= 1.35) {
+        shelfLine =
+          "Shelf now: order " + orderQty + " units and add facings for " + cat
+          + " before this hour.";
+      } else if (Number.isFinite(share) && share >= 1.05) {
+        shelfLine =
+          "Shelf now: keep " + orderQty + " units on face for " + cat
+          + "; check fill mid-slot.";
+      } else if (Number.isFinite(share) && share > 0) {
+        shelfLine =
+          "Shelf now: light face only for " + cat + " (order " + orderQty
+          + "); do not overstock this hour.";
+      } else {
+        shelfLine =
+          "Shelf now: review fill for " + cat + " against till demand"
+          + " (order " + orderQty + ").";
+      }
+
+      const whereLine = "Where: " + zoneCue(cat) + ".";
+      const whoLine = "Who: " + persona + personaShare + ".";
+      const onlineLine =
+        Number.isFinite(share) && share < 1.05
+          ? "Online: do not lead the daypart tile with " + cat + "."
+          : "Online: feature " + cat + " on this daypart tile.";
+      const seasonLine = hasHoliday
+        ? " Season: Christmas / holiday weeks lift confectionery - lean in."
+        : "";
+
+      return shelfLine + " " + whereLine + " " + whoLine + " " + onlineLine + seasonLine;
+    }
+
+    function statCell(iconName, label, valueHtml) {
+      return '<div class="stat">' + icon(iconName)
+        + "<div><em>" + label + "</em><b>" + valueHtml + "</b></div></div>";
+    }
+
+    function animatePeoplePanel(root) {
+      const rows = root.querySelectorAll("[data-persona]");
+      rows.forEach((row, index) => {
+        const target = Number(row.getAttribute("data-count-to") || 0);
+        const pctEl = row.querySelector("[data-count]");
+        const track = row.querySelector("[data-persona-track]");
+        const delay = 80 + index * 90;
+        let frame = 0;
+        const frames = 22;
+        setTimeout(() => {
+          const tick = () => {
+            frame += 1;
+            const t = Math.min(1, frame / frames);
+            const eased = 1 - Math.pow(1 - t, 3);
+            if (pctEl) {
+              pctEl.textContent = Math.round(target * eased) + "%";
+            }
+            if (frame < frames) {
+              requestAnimationFrame(tick);
+            } else {
+              if (pctEl) {
+                pctEl.textContent = Math.round(target) + "%";
+              }
+              if (track) {
+                track.innerHTML =
+                  '<div class="persona-bar" style="--w:'
+                  + Math.round(target) + '%"><span></span></div>';
+                requestAnimationFrame(() => {
+                  requestAnimationFrame(() => {
+                    const next = track.querySelector(".persona-bar");
+                    if (next) {
+                      next.classList.add("is-ready");
+                    }
+                  });
+                });
+              }
+            }
+          };
+          requestAnimationFrame(tick);
+        }, delay);
+      });
+    }
+
+    function wirePanelTabs() {
+      const tabs = panelBody.querySelectorAll("[data-tab]");
+      const panels = panelBody.querySelectorAll("[data-tab-panel]");
+      let peopleAnimated = false;
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          const id = tab.getAttribute("data-tab");
+          tabs.forEach((t) => t.setAttribute("aria-selected", t === tab ? "true" : "false"));
+          panels.forEach((p) => {
+            p.hidden = p.getAttribute("data-tab-panel") !== id;
+          });
+          if (id === "shoppers" && !peopleAnimated) {
+            peopleAnimated = true;
+            const peoplePanel = panelBody.querySelector('[data-tab-panel="shoppers"]');
+            if (peoplePanel) {
+              animatePeoplePanel(peoplePanel);
+            }
+          }
+        });
+      });
+      panelBody.querySelectorAll("[data-close]").forEach((el) => {
+        el.addEventListener("click", () => { panel.hidden = true; });
+      });
+    }
+
+    function channelHtml(differ) {
+      const hasXmas = differ.some((w) => /christmas|holiday|run-up/i.test(String(w.calendar || "")));
+      const seasonLine = hasXmas
+        ? "Seasonality: Christmas run-up weeks lift confectionery and gift snacks - lean into that online and in-store."
+        : "Seasonality: ordinary weeks stay flat; only bank holidays and pre-holiday days move the forecast.";
+      return '<div class="channel-grid">'
+        + '<section class="channel-card"><h3>' + icon("store") + "In-store</h3><ul>"
+        + '<li class="do">' + icon("circle-check") + "<span>Face winners at eye level for this hour</span></li>"
+        + '<li class="do">' + icon("circle-check") + "<span>Keep predicted stock qty on the shelf</span></li>"
+        + '<li class="dont">' + icon("circle-x") + "<span>Do not bury peak SKUs behind slow movers</span></li>"
+        + '<li class="dont">' + icon("circle-x") + "<span>Skip deep promotions on weak share slots</span></li>"
+        + "</ul></section>"
+        + '<section class="channel-card"><h3>' + icon("globe") + "Online</h3><ul>"
+        + '<li class="do">' + icon("circle-check") + "<span>Feature this slot’s top category on homepage / app tile</span></li>"
+        + '<li class="do">' + icon("circle-check")
+        + "<span>" + (hasXmas
+          ? "Push seasonal gift packs and multipacks in run-up weeks"
+          : "Match ad daypart to this moment’s clock")
+        + "</span></li>"
+        + '<li class="dont">' + icon("circle-x") + "<span>Do not lead with off-moment categories</span></li>"
+        + '<li class="dont">' + icon("circle-x")
+        + "<span>" + (hasXmas
+          ? "Hold back summer / ice campaigns during Christmas run-up"
+          : "Avoid all-day banners that ignore daypart")
+        + "</span></li>"
+        + "</ul></section></div>"
+        + '<div class="season-note">' + icon("sun") + "<span>" + seasonLine + "</span></div>";
+    }
+
+    function renderPanel(payload, focusCategory) {
+      const store = payload.store || storeMeta;
+      const slot = payload.slot || {};
+      const stock = filterCategories(
+        (payload.stock_most || []).map((row) => ({
+          ...row,
+          units: row.units_per_week,
+        }))
+      ).map((filtered) => {
+        const full = (payload.stock_most || []).find(
+          (row) => row.category === filtered.category
+        );
+        return full || filtered;
+      });
+
+      let ordered = stock;
+      if (focusCategory) {
+        ordered = [
+          ...stock.filter((row) => row.category === focusCategory),
+          ...stock.filter((row) => row.category !== focusCategory),
+        ];
+      }
+
+      const shoppers = Object.entries(payload.shoppers_in_this_slot || {}).slice(0, 5);
+      const differ = payload.weeks_that_differ || [];
+      const weeks = payload.weeks || 12;
+      const from = payload.from || "";
+      const basis = payload.basis || {};
+      const caveat = (payload.caveats && payload.caveats[0]) || basis.volume || "";
+      const storeLabel = [
+        store.store_name || store.fascia || "Store",
+        store.postcode,
+      ].filter(Boolean).join(" · ");
+
+      let stockHtml = "";
+      if (ordered.length === 0) {
+        stockHtml =
+          '<div class="empty-tab">' + icon("package-x")
+          + "<span>No coffee or snack categories in this slot</span></div>";
+      } else {
+        ordered.forEach((row) => {
+          const isFocus = row.category === focusCategory;
+          const examples = row.example_products || [];
+          stockHtml += '<article class="cat-card' + (isFocus ? " is-focus" : "") + '">';
+          stockHtml += "<h3>" + row.category + "</h3>";
+          stockHtml += '<div class="stats">';
+          stockHtml += statCell("package", "Units / week", String(row.units_per_week));
+          stockHtml += statCell("boxes", "Order qty", String(row.stock ?? "n/a"));
+          stockHtml += statCell(
+            "arrow-left-right",
+            "Forecast range",
+            row.range ? row.range[0] + "-" + row.range[1] : "n/a"
+          );
+          stockHtml += statCell(
+            "trending-up",
+            "Vs usual share",
+            row.times_usual_share != null ? row.times_usual_share + "×" : "n/a"
+          );
+          stockHtml += statCell(
+            "user",
+            "Top shopper",
+            (row.bought_most_by || "n/a")
+              + (row.that_persona_share != null ? " · " + pct(row.that_persona_share) : "")
+          );
+          if (row.lowest_week != null) {
+            stockHtml += statCell(
+              "activity",
+              "Week span",
+              row.lowest_week + "-" + row.highest_week
+            );
+          }
+          stockHtml += "</div>";
+          stockHtml += '<div class="action-row">' + icon("clipboard-list")
+            + "<span><strong>Action · </strong>" + suggestAction(row, differ) + "</span></div>";
+          if (examples.length) {
+            stockHtml += '<div class="example">' + icon("shopping-bag")
+              + "<span>Example · " + examples[0].brand + " " + examples[0].name + "</span></div>";
+          }
+          stockHtml += "</article>";
+        });
+      }
+
+      let shopHtml = "";
+      if (shoppers.length === 0) {
+        shopHtml =
+          '<div class="empty-tab">' + icon("users")
+          + "<span>No shopper mix for this slot</span></div>";
+      } else {
+        shoppers.forEach(([name, share]) => {
+          const target = Math.round(Number(share) * 100);
+          shopHtml += '<div class="persona" data-persona data-count-to="' + target + '">';
+          shopHtml += '<div class="persona-name">' + name + "</div>";
+          shopHtml += '<div class="persona-pct" data-count>0%</div>';
+          shopHtml += '<div class="persona-track" data-persona-track>'
+            + accordionLoaderHtml() + "</div>";
+          shopHtml += "</div>";
+        });
+      }
+
+      let weekHtml = "";
+      weekHtml += '<div class="horizon-banner">' + icon("calendar-range")
+        + "<div><b>Prediction · " + weeks + " weeks</b> from " + (from || "this week");
+      if (basis.horizon) {
+        const short = String(basis.horizon).split(":")[0];
+        weekHtml += "<br>" + short;
+      }
+      weekHtml += "</div></div>";
+
+      if (differ.length === 0) {
+        weekHtml +=
+          '<div class="empty-tab">' + icon("calendar-check")
+          + "<span>No calendar outliers in this window</span></div>";
+      } else {
+        differ.forEach((w) => {
+          weekHtml += '<div class="week-card">';
+          weekHtml += '<div class="week-num">' + weekNumberSvg(w.week) + "</div>";
+          weekHtml += "<div><strong>" + w.date + "</strong>";
+          weekHtml += '<div class="week-meta">' + icon("calendar")
+            + "<span>" + (w.calendar || "Calendar shift") + "</span></div></div>";
+          if (w.vs_typical_week != null) {
+            weekHtml += '<div class="week-mult">' + w.vs_typical_week + "×</div>";
+          }
+          weekHtml += "</div>";
+        });
+      }
+
+      panelBody.innerHTML =
+        '<div class="dialog-head">'
+        + '<div class="dialog-head-top">'
+        + "<div><h2>" + (slot.moment || "Moment") + "</h2>"
+        + '<p class="pred-line">' + PREDICTION_LINE + "</p></div>"
+        + '<button class="close" type="button" data-close aria-label="Close">'
+        + icon("x") + "</button></div>"
+        + '<div class="meta-row">'
+        + '<div class="meta-chip" title="When">' + icon("clock")
+        + "<span>" + (slot.weekday || "") + " " + (slot.hour || "") + "</span></div>"
+        + '<div class="meta-chip" title="Store">' + icon("store")
+        + "<span>" + storeLabel + "</span></div>"
+        + '<div class="meta-chip" title="Forecast">' + icon("calendar-range")
+        + "<span>" + weeks + " weeks</span></div>"
+        + "</div></div>"
+        + '<div class="tabs" role="tablist">'
+        + '<button type="button" role="tab" data-tab="stock" aria-selected="true">'
+        + icon("package") + "Stock</button>"
+        + '<button type="button" role="tab" data-tab="shoppers" aria-selected="false">'
+        + icon("users") + "People</button>"
+        + '<button type="button" role="tab" data-tab="weeks" aria-selected="false">'
+        + icon("calendar") + "Weeks</button>"
+        + '<button type="button" role="tab" data-tab="channels" aria-selected="false">'
+        + icon("map-pin") + "Place</button>"
+        + "</div>"
+        + '<div class="tab-panels">'
+        + '<div class="tab-panel" data-tab-panel="stock" role="tabpanel">' + stockHtml + "</div>"
+        + '<div class="tab-panel" data-tab-panel="shoppers" role="tabpanel" hidden>' + shopHtml + "</div>"
+        + '<div class="tab-panel" data-tab-panel="weeks" role="tabpanel" hidden>' + weekHtml + "</div>"
+        + '<div class="tab-panel" data-tab-panel="channels" role="tabpanel" hidden>'
+        + channelHtml(differ) + "</div>"
+        + "</div>"
+        + (caveat
+          ? '<div class="caveat-bar">' + icon("triangle-alert")
+            + "<span>" + caveat + "</span></div>"
+          : "");
+
+      wirePanelTabs();
+      refreshIcons(panelBody);
+    }
+
+    const WEEKDAY_NAMES = [
+      "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday",
+    ];
+
+    function fixtureTemplateKey(weekday, hour) {
+      const exact = weekday + "-" + hour;
+      const slots = recommendFixture.slots || {};
+      if (slots[exact]) {
+        return exact;
+      }
+      if (hour >= 17) {
+        return "4-17";
+      }
+      return "0-8";
+    }
+
+    function fixtureRecommend(weekday, hour, momentName) {
+      if (!recommendFixture) {
+        return null;
+      }
+      const slots = recommendFixture.slots || {};
+      const templateKey = fixtureTemplateKey(weekday, hour);
+      const base = slots[templateKey] || Object.values(slots)[0];
+      if (!base) {
+        return null;
+      }
+      return {
+        store: recommendFixture.store,
+        weeks: recommendFixture.weeks,
+        from: recommendFixture.from,
+        note_on_weeks: recommendFixture.note_on_weeks,
+        basis: recommendFixture.basis,
+        caveats: recommendFixture.caveats,
+        neighbourhood: recommendFixture.neighbourhood,
+        slot: {
+          weekday: WEEKDAY_NAMES[weekday] || base.slot.weekday,
+          hour: String(hour).padStart(2, "0") + ":00-"
+            + String(hour + 1).padStart(2, "0") + ":00",
+          moment: momentName || base.slot.moment,
+        },
+        stock_most: base.stock_most,
+        sells_unusually_well_in_this_slot: base.sells_unusually_well_in_this_slot,
+        shoppers_in_this_slot: base.shoppers_in_this_slot,
+        week_by_week: base.week_by_week,
+        weeks_that_differ: base.weeks_that_differ,
+      };
+    }
+
+    /**
+     * Stock tab must match the grid cell. Recommend may return other categories
+     * (or a wrong fixture hour-band); keep only cell categories and enrich.
+     */
+    function scopeRecommendToCell(payload, cell) {
+      const cellCats = cell && cell.categories ? cell.categories : [];
+      const byName = new Map();
+      (payload.stock_most || []).forEach((row) => {
+        byName.set(String(row.category).toLowerCase(), row);
+      });
+      (payload.sells_unusually_well_in_this_slot || []).forEach((row) => {
+        const key = String(row.category).toLowerCase();
+        if (!byName.has(key)) {
+          byName.set(key, row);
+        }
+      });
+
+      const stock_most = cellCats.map((cat) => {
+        const hit = byName.get(String(cat.category).toLowerCase());
+        const units = Number(cat.units || 0);
+        if (hit) {
+          return {
+            ...hit,
+            category: cat.category,
+            group: cat.group || hit.group || "",
+            units_per_week: hit.units_per_week != null ? hit.units_per_week : units,
+          };
+        }
+        const low = Math.max(0, Math.floor(units * 0.7));
+        const high = Math.ceil(units * 1.3);
+        return {
+          category: cat.category,
+          group: cat.group || "",
+          units_per_week: Math.round(units * 10) / 10,
+          range: [low, high],
+          stock: Math.max(1, Math.ceil(units * 1.15)),
+          times_usual_share: null,
+          bought_most_by: null,
+          that_persona_share: null,
+          lowest_week: low,
+          highest_week: high,
+          example_products: [],
+        };
+      });
+
+      return { ...payload, stock_most };
+    }
+
+    async function openPanel(laneIndex, dayIndex, cell) {
+      const moment = moments[laneIndex];
+      const hour = moment.hour;
+      const label = momentLabel(moment, dayIndex);
+      const focusCategory = cell.categories[0] && cell.categories[0].category;
+
+      panel.hidden = false;
+      panelBody.innerHTML =
+        '<div class="panel-loading">' + icon("loader-circle") + "<span>Loading</span></div>";
+      refreshIcons(panelBody);
+
+      const live = await tryFetch(
+        "/api/recommend?store=" + encodeURIComponent(storeMeta.id || STORE_ID)
+        + "&weekday=" + dayIndex
+        + "&hour=" + hour
+        + "&weeks=12"
+      );
+
+      const raw = live || fixtureRecommend(dayIndex, hour, label);
+      if (!raw) {
+        panelBody.innerHTML =
+          '<div class="panel-loading">' + icon("circle-alert")
+          + "<span>No data for this slot</span></div>";
+        refreshIcons(panelBody);
+        return;
+      }
+      if (live && live.store) {
+        storeMeta = { ...storeMeta, ...live.store };
+      }
+      const payload = scopeRecommendToCell(raw, cell);
+      renderPanel(payload, focusCategory);
+    }
+
+    panel.querySelectorAll("[data-close]").forEach((el) => {
+      el.addEventListener("click", () => { panel.hidden = true; });
+    });
+
+    document.querySelector("[data-today]").addEventListener("click", resetToThisWeek);
+    document.querySelector("[data-week-prev]").addEventListener("click", () => shiftWeek(-1));
+    document.querySelector("[data-week-next]").addEventListener("click", () => shiftWeek(1));
+    runBtn.addEventListener("click", playSimulation);
+
+    loadFixtures()
+      .then(() => {
+        resetToThisWeek();
+      })
+      .catch((error) => {
+        console.error("Failed to load fixtures", error);
+        moments = FALLBACK_MOMENTS;
+        resetToThisWeek();
+      });
+  </script>
+</body>
+</html>

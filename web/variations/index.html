@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Moments — layout variations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1d1d1d;
+      --muted: #5b5b5b;
+      --line: rgba(29, 29, 29, 0.1);
+      --lime: #b8f000;
+      --green: #22a651;
+      --font-display: Helvetica, "Helvetica Neue", Arial, sans-serif;
+      --font-ui: Inter, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font-ui);
+      color: var(--ink);
+      background: #f7f7f5;
+      padding: 2rem 1.5rem 3rem;
+    }
+    h1 {
+      margin: 0 0 0.35rem;
+      font-family: var(--font-display);
+      font-size: 2rem;
+      letter-spacing: -0.05em;
+      font-weight: 500;
+    }
+    .lede {
+      margin: 0 0 2rem;
+      color: var(--muted);
+      max-width: 36rem;
+    }
+    .group {
+      margin-bottom: 2rem;
+    }
+    .group h2 {
+      margin: 0 0 0.75rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.65rem;
+      max-width: 40rem;
+    }
+    a {
+      display: block;
+      padding: 1rem 1.1rem;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      text-decoration: none;
+      color: inherit;
+    }
+    a:hover { border-color: var(--green); }
+    a strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      letter-spacing: -0.03em;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+    a span { color: var(--muted); font-size: 0.875rem; line-height: 1.4; }
+    a.skip {
+      opacity: 0.55;
+      border-style: dashed;
+    }
+    a.skip:hover { opacity: 0.85; }
+    .tag {
+      display: inline-block;
+      margin-left: 0.4rem;
+      padding: 0.1rem 0.4rem;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      background: var(--lime);
+      border-radius: 2px;
+      vertical-align: 2px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Moments layouts</h1>
+  <p class="lede">HTML-only compares. Pick one before React. Skip the hour-rail focus-day — that one died.</p>
+
+  <section class="group">
+    <h2>Worth looking at</h2>
+    <ul>
+      <li>
+        <a href="./week-swimlanes.html">
+          <strong>Week swimlanes <span class="tag">sim</span></strong>
+          <span>Empty week → Run fills coffee/snack categories from Moment Ledger (or fixtures). Cell opens a 12-week recommend panel.</span>
+        </a>
+      </li>
+      <li>
+        <a href="./peak-week-grid.html">
+          <strong>Peak week grid <span class="tag">new</span></strong>
+          <span>Classic media daypart × weekday heatmap. One winner per cell. Sparse weekends. Closest to how planners already think.</span>
+        </a>
+      </li>
+      <li>
+        <a href="./daypart-matrix.html">
+          <strong>Product × moment matrix</strong>
+          <span>Where each SKU wins across moments. Week is a secondary strip — planning sheet, not calendar chrome.</span>
+        </a>
+      </li>
+      <li>
+        <a href="./day-agenda.html">
+          <strong>Day agenda</strong>
+          <span>Week strip + one day’s moments as a list. Clean read. Less “calendar,” more briefing.</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="group">
+    <h2>Parked</h2>
+    <ul>
+      <li>
+        <a class="skip" href="./focus-day-calendar.html">
+          <strong>Focus-day calendar</strong>
+          <span>GCal hour rail + one day. Looks like a calendar clone. Nah.</span>
+        </a>
+      </li>
+      <li>
+        <a class="skip" href="./shopper-day.html">
+          <strong>Shopper day</strong>
+          <span>Early experiment. Timeline of the shopper path — not the planning surface.</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+</body>
+</html>

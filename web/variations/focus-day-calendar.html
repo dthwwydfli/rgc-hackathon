@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Moments — focus-day week</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --ink: #1d1d1d;
+      --muted: #5b5b5b;
+      --line: rgba(29, 29, 29, 0.1);
+      --action-lime: #b8f000;
+      --action-green: #22a651;
+      --evidence-teal: #53cdc5;
+      --model-indigo: #6a6ae2;
+      --risk-purple: #9c6dba;
+      --now: #ea4335;
+      --font-display: Helvetica, "Helvetica Neue", Arial, sans-serif;
+      --font-ui: Inter, Arial, sans-serif;
+      --hour-h: 52px;
+      --grid-start: 420;
+      --grid-end: 1380;
+      --rail-w: 2.75rem;
+      --gutter-w: 3.5rem;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      font-family: var(--font-ui);
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .app { display: flex; flex-direction: column; height: 100%; }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      height: 4rem;
+      padding: 0 0.75rem;
+      border-bottom: 1px solid var(--line);
+      flex-shrink: 0;
+    }
+    .brand {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      letter-spacing: -0.04em;
+      font-weight: 500;
+      margin-right: 0.5rem;
+    }
+    .pill, .nav-btn {
+      font: inherit;
+      height: 2.25rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      cursor: pointer;
+      color: var(--ink);
+    }
+    .pill { padding: 0 1rem; font-weight: 500; }
+    .nav-btn {
+      width: 2.25rem;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+    }
+    .pill:hover, .nav-btn:hover { background: rgba(0,0,0,0.04); }
+    .range {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      letter-spacing: -0.03em;
+      margin-left: 0.35rem;
+    }
+    .view-tag {
+      margin-left: auto;
+      height: 2.25rem;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 0.85rem;
+      border: 1px solid var(--line);
+      border-radius: 0.4rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .day-headers {
+      display: grid;
+      grid-template-columns: var(--gutter-w) repeat(7, minmax(0, 1fr));
+      border-bottom: 1px solid var(--line);
+      flex-shrink: 0;
+    }
+    .day-headers .spacer { border-right: 1px solid var(--line); }
+    .day-head {
+      font: inherit;
+      border: 0;
+      border-right: 1px solid var(--line);
+      background: transparent;
+      padding: 0.65rem 0.25rem;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      color: var(--ink);
+    }
+    .day-head:last-child { border-right: 0; }
+    .day-head:hover { background: rgba(0,0,0,0.03); }
+    .day-head.is-focus { background: rgba(184, 240, 0, 0.12); }
+    .day-head .dow {
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+    .day-head .dom {
+      width: 2.5rem;
+      height: 2.5rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+    }
+    .day-head.is-today .dom {
+      background: var(--action-green);
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .scroll { flex: 1; min-height: 0; overflow: auto; }
+
+    .grid-body {
+      display: grid;
+      grid-template-columns: var(--gutter-w) repeat(7, minmax(0, 1fr));
+      min-height: calc(((var(--grid-end) - var(--grid-start)) / 60) * var(--hour-h));
+      transition: grid-template-columns 0.2s ease;
+    }
+    .grid-body[data-focus="0"] { grid-template-columns: var(--gutter-w) minmax(0, 7fr) repeat(6, var(--rail-w)); }
+    .grid-body[data-focus="1"] { grid-template-columns: var(--gutter-w) var(--rail-w) minmax(0, 7fr) repeat(5, var(--rail-w)); }
+    .grid-body[data-focus="2"] { grid-template-columns: var(--gutter-w) repeat(2, var(--rail-w)) minmax(0, 7fr) repeat(4, var(--rail-w)); }
+    .grid-body[data-focus="3"] { grid-template-columns: var(--gutter-w) repeat(3, var(--rail-w)) minmax(0, 7fr) repeat(3, var(--rail-w)); }
+    .grid-body[data-focus="4"] { grid-template-columns: var(--gutter-w) repeat(4, var(--rail-w)) minmax(0, 7fr) repeat(2, var(--rail-w)); }
+    .grid-body[data-focus="5"] { grid-template-columns: var(--gutter-w) repeat(5, var(--rail-w)) minmax(0, 7fr) var(--rail-w); }
+    .grid-body[data-focus="6"] { grid-template-columns: var(--gutter-w) repeat(6, var(--rail-w)) minmax(0, 7fr); }
+
+    .gutter {
+      position: relative;
+      border-right: 1px solid var(--line);
+    }
+    .hour {
+      height: var(--hour-h);
+      position: relative;
+    }
+    .hour span {
+      position: absolute;
+      top: -0.5rem;
+      right: 0.4rem;
+      font-size: 10px;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .col {
+      position: relative;
+      border-right: 1px solid var(--line);
+      min-width: 0;
+    }
+    .col:last-child { border-right: 0; }
+    .col.is-rail { overflow: hidden; }
+    .hline {
+      position: absolute;
+      left: 0; right: 0;
+      border-top: 1px solid var(--line);
+      pointer-events: none;
+    }
+
+    .now {
+      position: absolute;
+      left: 0; right: 0;
+      z-index: 8;
+      pointer-events: none;
+    }
+    .now::before {
+      content: "";
+      position: absolute;
+      left: -5px;
+      top: 50%;
+      width: 10px;
+      height: 10px;
+      margin-top: -5px;
+      border-radius: 50%;
+      background: var(--now);
+    }
+    .now-line { height: 2px; background: var(--now); }
+
+    .tick {
+      position: absolute;
+      left: 4px;
+      right: 4px;
+      border-radius: 2px;
+      min-height: 10px;
+    }
+    .tick.lime { background: rgba(184, 240, 0, 0.55); }
+    .tick.teal { background: rgba(83, 205, 197, 0.55); }
+    .tick.indigo { background: rgba(106, 106, 226, 0.45); }
+    .tick.purple { background: rgba(156, 109, 186, 0.45); }
+
+    .band {
+      position: absolute;
+      left: 0.5rem;
+      right: 0.5rem;
+      border: 0;
+      border-left: 4px solid;
+      border-radius: 2px;
+      padding: 0.55rem 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      overflow: hidden;
+      z-index: 4;
+    }
+    .band.lime { background: rgba(184, 240, 0, 0.28); border-color: var(--action-green); }
+    .band.teal { background: rgba(83, 205, 197, 0.22); border-color: var(--evidence-teal); }
+    .band.indigo { background: rgba(106, 106, 226, 0.16); border-color: var(--model-indigo); }
+    .band.purple { background: rgba(156, 109, 186, 0.18); border-color: var(--risk-purple); }
+    .band h2 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+    }
+    .band .meta {
+      margin: 0;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: auto;
+    }
+    .chip {
+      font: inherit;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(29, 29, 29, 0.12);
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .chip:hover {
+      border-color: var(--action-green);
+      background: #fff;
+    }
+
+    .panel[hidden] { display: none; }
+    .panel { position: fixed; inset: 0; z-index: 40; }
+    .backdrop {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      border: 0;
+      background: rgba(0,0,0,0.3);
+      cursor: pointer;
+    }
+    .dialog {
+      position: absolute;
+      top: 0; right: 0; bottom: 0;
+      width: min(24rem, 100%);
+      background: #fff;
+      padding: 1.25rem 1.5rem;
+      box-shadow: -8px 0 32px rgba(0,0,0,0.12);
+      overflow: auto;
+    }
+    .dialog h3 {
+      margin: 0 0 0.25rem;
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      letter-spacing: -0.04em;
+      font-weight: 500;
+    }
+    .dialog .label {
+      margin: 1.1rem 0 0.3rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+    .dialog p { margin: 0; line-height: 1.45; }
+    .facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.75rem;
+    }
+    .close {
+      float: right;
+      border: 0;
+      background: transparent;
+      font-size: 1.25rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    @media (max-width: 720px) {
+      .grid-body,
+      .grid-body[data-focus] {
+        grid-template-columns: var(--gutter-w) 1fr !important;
+      }
+      .col.is-rail { display: none; }
+      .day-headers { grid-template-columns: var(--gutter-w) repeat(7, minmax(0, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <span class="brand">Moments</span>
+      <button type="button" class="pill" data-today>Today</button>
+      <button type="button" class="nav-btn" data-prev aria-label="Previous week">‹</button>
+      <button type="button" class="nav-btn" data-next aria-label="Next week">›</button>
+      <span class="range" data-range></span>
+      <span class="view-tag">Week</span>
+    </header>
+
+    <div class="day-headers" data-day-headers>
+      <div class="spacer" aria-hidden="true"></div>
+    </div>
+
+    <div class="scroll" data-scroll>
+      <div class="grid-body" data-grid data-focus="0">
+        <div class="gutter" data-gutter aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="panel" hidden>
+    <button type="button" class="backdrop" data-close aria-label="Close"></button>
+    <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="panel-title">
+      <button type="button" class="close" data-close aria-label="Close">×</button>
+      <h3 id="panel-title" data-title></h3>
+      <p data-meta style="color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em"></p>
+      <p class="label">What should the brand do next</p>
+      <p data-next></p>
+      <div class="facts">
+        <div><p class="label">Cost</p><p data-cost></p></div>
+        <div><p class="label">Owner</p><p data-owner></p></div>
+        <div><p class="label">How hard</p><p data-effort></p></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const GRID_START = 420;
+    const GRID_END = 1380;
+    const HOUR_H = 52;
+    const TONES = ["lime", "teal", "indigo", "purple"];
+
+    const MOMENTS = [
+      {
+        id: "morning_rush", name: "Morning rush", time: "07:30–09:00",
+        start: 450, end: 540,
+        products: [
+          { id: "banana", name: "Bananas", next: "Keep entrance chiller face-out at open", cost: "£5.00", owner: "brand", effort: "Low" },
+          { id: "croissant", name: "Croissants", next: "Till adjacent bake-off callout before 9", cost: "£5.00", owner: "retailer", effort: "Low" },
+        ],
+      },
+      {
+        id: "mid_morning", name: "Mid-morning top-up", time: "09:30–11:00",
+        start: 570, end: 660,
+        products: [
+          { id: "oat_bar", name: "Nature Valley Oats & Honey", next: "Snack-aisle eye-level clip strip", cost: "£5.00", owner: "retailer", effort: "Low" },
+          { id: "cold_brew", name: "Starbucks Cold Brew Can", next: "Chiller door strip for 10am dip", cost: "£5.00", owner: "brand", effort: "Medium" },
+        ],
+      },
+      {
+        id: "quick_lunch", name: "Quick lunch", time: "12:00–14:00",
+        start: 720, end: 840,
+        products: [
+          { id: "greek_yogurt", name: "Fage Total 0%", next: "Protein claim larger on lid", cost: "£5.00", owner: "brand", effort: "Low" },
+          { id: "hummus_pot", name: "Sabra Classic Hummus", next: "Bundle with crackers at till", cost: "£5.00", owner: "retailer", effort: "Medium" },
+        ],
+      },
+      {
+        id: "afternoon_lull", name: "Afternoon lull", time: "14:30–16:00",
+        start: 870, end: 960,
+        products: [
+          { id: "apple", name: "Royal Gala Apples", next: "Loose fruit bowl near coffee", cost: "£5.00", owner: "retailer", effort: "Low" },
+          { id: "rice_cakes", name: "Kallo Lightly Salted Rice Cakes", next: "Soft health claim on endcap", cost: "£5.00", owner: "brand", effort: "Low" },
+        ],
+      },
+      {
+        id: "commute_home", name: "Commute home", time: "16:30–17:45",
+        start: 990, end: 1065,
+        products: [
+          { id: "energy_gel", name: "SiS GO Isotonic Gel", next: "Hang near gym aisle exit", cost: "£5.00", owner: "retailer", effort: "Low" },
+          { id: "trail_mix", name: "Mixed Nuts & Raisins", next: "Grab-bag near gates", cost: "£5.00", owner: "brand", effort: "Medium" },
+        ],
+      },
+      {
+        id: "post_workout", name: "Post-workout", time: "18:00–20:00",
+        start: 1080, end: 1200,
+        products: [
+          { id: "protein_bar", name: "Grenade High Protein Bar", next: "Protein bay endcap 6–8pm", cost: "£5.00", owner: "retailer", effort: "Low" },
+          { id: "challenger", name: "Cocoa Hazelnut Protein Bar", next: "Natural claim next to Grenade", cost: "£5.00", owner: "brand", effort: "Medium" },
+          { id: "protein_shake", name: "Puffy Protein Shake Vanilla", next: "Chiller door facing gym exit", cost: "£5.00", owner: "retailer", effort: "Low" },
+        ],
+      },
+      {
+        id: "evening_treat", name: "Evening treat", time: "20:00–21:00",
+        start: 1200, end: 1260,
+        products: [
+          { id: "dark_chocolate", name: "Lindt Excellence 85%", next: "Till tray after 8pm", cost: "£5.00", owner: "retailer", effort: "Low" },
+        ],
+      },
+    ];
+
+    function startOfWeekMonday(date) {
+      const d = new Date(date);
+      const day = (d.getDay() + 6) % 7;
+      d.setHours(0, 0, 0, 0);
+      d.setDate(d.getDate() - day);
+      return d;
+    }
+    function addDays(date, n) {
+      const d = new Date(date);
+      d.setDate(d.getDate() + n);
+      return d;
+    }
+    function sameDay(a, b) {
+      return a.getFullYear() === b.getFullYear()
+        && a.getMonth() === b.getMonth()
+        && a.getDate() === b.getDate();
+    }
+    function topPx(minute) {
+      return ((minute - GRID_START) / 60) * HOUR_H;
+    }
+    function heightPx(start, end) {
+      return Math.max(((end - start) / 60) * HOUR_H, 64);
+    }
+    function hourLabel(minute) {
+      const hour = minute / 60;
+      const display = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour;
+      return display + (hour >= 12 ? " PM" : " AM");
+    }
+    function formatRange(weekStart) {
+      const weekEnd = addDays(weekStart, 6);
+      const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+      if (weekStart.getMonth() === weekEnd.getMonth()) {
+        return months[weekStart.getMonth()] + " " + weekStart.getFullYear();
+      }
+      if (weekStart.getFullYear() === weekEnd.getFullYear()) {
+        return months[weekStart.getMonth()] + " – " + months[weekEnd.getMonth()] + " " + weekEnd.getFullYear();
+      }
+      return months[weekStart.getMonth()] + " " + weekStart.getFullYear()
+        + " – " + months[weekEnd.getMonth()] + " " + weekEnd.getFullYear();
+    }
+
+    let weekStart = startOfWeekMonday(new Date());
+    let focusIndex = (() => {
+      const today = new Date();
+      for (let i = 0; i < 7; i += 1) {
+        if (sameDay(addDays(weekStart, i), today)) return i;
+      }
+      return 0;
+    })();
+
+    const headersEl = document.querySelector("[data-day-headers]");
+    const gridEl = document.querySelector("[data-grid]");
+    const gutterEl = document.querySelector("[data-gutter]");
+    const rangeEl = document.querySelector("[data-range]");
+    const panel = document.getElementById("panel");
+    const scrollEl = document.querySelector("[data-scroll]");
+
+    for (let minute = GRID_START; minute < GRID_END; minute += 60) {
+      const hour = document.createElement("div");
+      hour.className = "hour";
+      const label = document.createElement("span");
+      label.textContent = hourLabel(minute);
+      hour.append(label);
+      gutterEl.append(hour);
+    }
+
+    function openPanel(product, momentName) {
+      panel.querySelector("[data-title]").textContent = product.name + " · " + momentName;
+      panel.querySelector("[data-meta]").textContent = "Solid win";
+      panel.querySelector("[data-next]").textContent = product.next;
+      panel.querySelector("[data-cost]").textContent = product.cost;
+      panel.querySelector("[data-owner]").textContent = product.owner;
+      panel.querySelector("[data-effort]").textContent = product.effort;
+      panel.hidden = false;
+    }
+    function closePanel() { panel.hidden = true; }
+    panel.querySelectorAll("[data-close]").forEach((el) => el.addEventListener("click", closePanel));
+
+    function paint() {
+      rangeEl.textContent = formatRange(weekStart);
+      gridEl.dataset.focus = String(focusIndex);
+
+      while (headersEl.children.length > 1) {
+        headersEl.removeChild(headersEl.lastChild);
+      }
+      while (gridEl.children.length > 1) {
+        gridEl.removeChild(gridEl.lastChild);
+      }
+
+      const today = new Date();
+      const gridHeight = ((GRID_END - GRID_START) / 60) * HOUR_H;
+
+      for (let dayIndex = 0; dayIndex < 7; dayIndex += 1) {
+        const day = addDays(weekStart, dayIndex);
+        const isToday = sameDay(day, today);
+        const isFocus = dayIndex === focusIndex;
+
+        const head = document.createElement("button");
+        head.type = "button";
+        head.className = "day-head"
+          + (isFocus ? " is-focus" : "")
+          + (isToday ? " is-today" : "");
+        head.innerHTML = '<span class="dow">'
+          + day.toLocaleDateString("en-GB", { weekday: "short" })
+          + '</span><span class="dom">' + day.getDate() + "</span>";
+        head.addEventListener("click", () => {
+          focusIndex = dayIndex;
+          paint();
+        });
+        headersEl.append(head);
+
+        const col = document.createElement("div");
+        col.className = "col" + (isFocus ? " is-focus" : " is-rail");
+        col.style.height = gridHeight + "px";
+
+        for (let minute = GRID_START; minute < GRID_END; minute += 60) {
+          const line = document.createElement("div");
+          line.className = "hline";
+          line.style.top = topPx(minute) + "px";
+          col.append(line);
+        }
+
+        if (isToday) {
+          const nowMinute = today.getHours() * 60 + today.getMinutes();
+          if (nowMinute >= GRID_START && nowMinute <= GRID_END) {
+            const now = document.createElement("div");
+            now.className = "now";
+            now.dataset.now = "true";
+            now.style.top = topPx(nowMinute) + "px";
+            const line = document.createElement("div");
+            line.className = "now-line";
+            now.append(line);
+            col.append(now);
+          }
+        }
+
+        MOMENTS.forEach((moment, momentIndex) => {
+          const tone = TONES[momentIndex % TONES.length];
+          if (isFocus) {
+            const band = document.createElement("article");
+            band.className = "band " + tone;
+            band.style.top = topPx(moment.start) + "px";
+            band.style.height = heightPx(moment.start, moment.end) + "px";
+            const title = document.createElement("h2");
+            title.textContent = moment.name;
+            const meta = document.createElement("p");
+            meta.className = "meta";
+            meta.textContent = moment.time;
+            const chips = document.createElement("div");
+            chips.className = "chips";
+            for (const product of moment.products) {
+              const chip = document.createElement("button");
+              chip.type = "button";
+              chip.className = "chip";
+              chip.textContent = product.name;
+              chip.addEventListener("click", () => openPanel(product, moment.name));
+              chips.append(chip);
+            }
+            band.append(title, meta, chips);
+            col.append(band);
+          } else {
+            const tick = document.createElement("div");
+            tick.className = "tick " + tone;
+            tick.style.top = topPx(moment.start) + "px";
+            tick.style.height = Math.max(heightPx(moment.start, moment.end) * 0.35, 10) + "px";
+            tick.title = moment.name;
+            col.append(tick);
+          }
+        });
+
+        gridEl.append(col);
+      }
+    }
+
+    document.querySelector("[data-today]").addEventListener("click", () => {
+      weekStart = startOfWeekMonday(new Date());
+      const today = new Date();
+      focusIndex = 0;
+      for (let i = 0; i < 7; i += 1) {
+        if (sameDay(addDays(weekStart, i), today)) {
+          focusIndex = i;
+          break;
+        }
+      }
+      paint();
+      requestAnimationFrame(() => {
+        const nowEl = gridEl.querySelector("[data-now]");
+        if (nowEl) nowEl.scrollIntoView({ block: "center", behavior: "smooth" });
+      });
+    });
+    document.querySelector("[data-prev]").addEventListener("click", () => {
+      weekStart = addDays(weekStart, -7);
+      paint();
+    });
+    document.querySelector("[data-next]").addEventListener("click", () => {
+      weekStart = addDays(weekStart, 7);
+      paint();
+    });
+
+    paint();
+  </script>
+</body>
+</html>

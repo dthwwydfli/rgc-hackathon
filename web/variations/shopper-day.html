@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Moments — shopper day</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --ink: #1d1d1d;
+      --muted: #5b5b5b;
+      --line: rgba(29, 29, 29, 0.1);
+      --action-lime: #b8f000;
+      --action-green: #22a651;
+      --evidence-teal: #53cdc5;
+      --model-indigo: #6a6ae2;
+      --risk-purple: #9c6dba;
+      --now: #ea4335;
+      --font-display: Helvetica, "Helvetica Neue", Arial, sans-serif;
+      --font-ui: Inter, Arial, sans-serif;
+      --hour-h: 56px;
+      --grid-start: 420;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      font-family: var(--font-ui);
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .app { display: flex; flex-direction: column; height: 100%; }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      height: 4rem;
+      padding: 0 1rem;
+      border-bottom: 1px solid var(--line);
+      flex-shrink: 0;
+    }
+    .brand {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      letter-spacing: -0.04em;
+      font-weight: 500;
+    }
+    .today {
+      font: inherit;
+      height: 2.25rem;
+      padding: 0 1rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      cursor: pointer;
+    }
+    .today:hover { background: rgba(0,0,0,0.04); }
+    .subtitle {
+      margin-left: auto;
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .scroll { flex: 1; min-height: 0; overflow: auto; }
+
+    .day {
+      display: grid;
+      grid-template-columns: 4rem 1fr;
+      max-width: 52rem;
+      margin: 0 auto;
+      min-height: calc(16 * var(--hour-h));
+    }
+
+    .gutter {
+      position: relative;
+      border-right: 1px solid var(--line);
+    }
+    .hour {
+      height: var(--hour-h);
+      position: relative;
+    }
+    .hour span {
+      position: absolute;
+      top: -0.55rem;
+      right: 0.5rem;
+      font-size: 10px;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .track {
+      position: relative;
+      border-left: 0;
+    }
+    .hline {
+      position: absolute;
+      left: 0; right: 0;
+      border-top: 1px solid var(--line);
+      pointer-events: none;
+    }
+
+    .now {
+      position: absolute;
+      left: 0; right: 0;
+      z-index: 5;
+      pointer-events: none;
+    }
+    .now::before {
+      content: "";
+      position: absolute;
+      left: -6px;
+      top: 50%;
+      width: 12px;
+      height: 12px;
+      margin-top: -6px;
+      border-radius: 50%;
+      background: var(--now);
+    }
+    .now-line {
+      height: 2px;
+      background: var(--now);
+    }
+
+    .band {
+      position: absolute;
+      left: 0.75rem;
+      right: 0.75rem;
+      border: 0;
+      border-left: 4px solid;
+      border-radius: 2px;
+      padding: 0.65rem 0.85rem;
+      text-align: left;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      animation: rise 0.45s ease both;
+    }
+    .band:nth-child(1) { animation-delay: 0.02s; }
+    .band:nth-child(2) { animation-delay: 0.06s; }
+    .band:nth-child(3) { animation-delay: 0.1s; }
+    .band:nth-child(4) { animation-delay: 0.14s; }
+    .band:nth-child(5) { animation-delay: 0.18s; }
+    .band:nth-child(6) { animation-delay: 0.22s; }
+    .band:nth-child(7) { animation-delay: 0.26s; }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .band.lime { background: rgba(184, 240, 0, 0.28); border-color: var(--action-green); }
+    .band.teal { background: rgba(83, 205, 197, 0.22); border-color: var(--evidence-teal); }
+    .band.indigo { background: rgba(106, 106, 226, 0.16); border-color: var(--model-indigo); }
+    .band.purple { background: rgba(156, 109, 186, 0.18); border-color: var(--risk-purple); }
+
+    .band h2 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+    }
+    .band .meta {
+      margin: 0;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: auto;
+    }
+    .chip {
+      font: inherit;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(29, 29, 29, 0.12);
+      background: rgba(255, 255, 255, 0.85);
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .chip:hover {
+      background: #fff;
+      border-color: var(--action-green);
+    }
+    .chip:focus-visible {
+      outline: 2px solid var(--action-green);
+      outline-offset: 2px;
+    }
+
+    .panel[hidden] { display: none; }
+    .panel {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+    }
+    .backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.3);
+      border: 0;
+      width: 100%;
+      cursor: pointer;
+    }
+    .dialog {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(24rem, 100%);
+      background: #fff;
+      padding: 1.25rem 1.5rem;
+      box-shadow: -8px 0 32px rgba(0,0,0,0.12);
+      overflow: auto;
+    }
+    .dialog h3 {
+      margin: 0 0 0.25rem;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      letter-spacing: -0.04em;
+      font-weight: 500;
+    }
+    .dialog .label {
+      margin: 1.25rem 0 0.35rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+    .dialog p { margin: 0; line-height: 1.45; }
+    .facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    .close {
+      float: right;
+      border: 0;
+      background: transparent;
+      font-size: 1.25rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <span class="brand">Moments</span>
+      <button type="button" class="today" data-today>Today</button>
+      <span class="subtitle">Typical shopper day</span>
+    </header>
+
+    <div class="scroll" data-scroll>
+      <div class="day" data-day>
+        <div class="gutter" data-gutter aria-hidden="true"></div>
+        <div class="track" data-track role="list" aria-label="Shopper day"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="panel" hidden>
+    <button type="button" class="backdrop" data-close aria-label="Close"></button>
+    <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="panel-title">
+      <button type="button" class="close" data-close aria-label="Close">×</button>
+      <h3 id="panel-title" data-title></h3>
+      <p class="meta" data-meta style="color:var(--muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em"></p>
+      <p class="label">What should the brand do next</p>
+      <p data-next></p>
+      <div class="facts">
+        <div>
+          <p class="label">Cost</p>
+          <p data-cost></p>
+        </div>
+        <div>
+          <p class="label">Owner</p>
+          <p data-owner></p>
+        </div>
+        <div>
+          <p class="label">How hard</p>
+          <p data-effort></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const GRID_START = 420;
+    const GRID_END = 1380;
+    const HOUR_H = 56;
+
+    const MOMENTS = [
+      {
+        id: "morning_rush",
+        name: "Morning rush",
+        time: "07:30–09:00",
+        start: 450,
+        end: 540,
+        tone: "lime",
+        products: [
+          { id: "banana", name: "Bananas", next: "Keep entrance chiller face-out at open", cost: "£5.00", owner: "brand", effort: "Low" },
+          { id: "croissant", name: "Croissants", next: "Till adjacent bake-off callout before 9", cost: "£5.00", owner: "retailer", effort: "Low" },
+        ],
+      },
+      {
+        id: "mid_morning",
+        name: "Mid-morning top-up",
+        time: "09:30–11:00",
+        start: 570,
+        end: 660,
+        tone: "teal",
+        products: [
+          { id: "oat_bar", name: "Nature Valley Oats & Honey", next: "Snack-aisle eye-level clip strip", cost: "£5.00", owner: "retailer", effort: "Low" },
+          { id: "cold_brew", name: "Starbucks Cold Brew Can", next: "Chiller door strip for 10am dip", cost: "£5.00", owner: "brand", effort: "Medium" },
+        ],
+      },
+      {
+        id: "quick_lunch",
+        name: "Quick lunch",
+        time: "12:00–14:00",
+        start: 720,
+        end: 840,
+        tone: "indigo",
+        products: [
+          { id: "greek_yogurt", name: "Fage Total 0%", next: "Protein claim larger on lid", cost: "£5.00", owner: "brand", effort: "Low" },
+          { id: "hummus_pot", name: "Sabra Classic Hummus", next: "Bundle with crackers at till", cost: "£5.00", owner: "retailer", effort: "Medium" },
+        ],
+      },
+      {
+        id: "afternoon_lull",
+        name: "Afternoon lull",
+        time: "14:30–16:00",
+        start: 870,
+        end: 960,
+        tone: "purple",
+        products: [
+          { id: "apple", name: "Royal Gala Apples", next: "Loose fruit bowl near coffee", cost: "£5.00", owner: "retailer", effort: "Low" },
+          { id: "rice_cakes", name: "Kallo Lightly Salted Rice Cakes", next: "Soft health claim on endcap", cost: "£5.00", owner: "brand", effort: "Low" },
+        ],
+      },
+      {
+        id: "commute_home",
+        name: "Commute home",
+        time: "16:30–17:45",
+        start: 990,
+        end: 1065,
+        tone: "lime",
+        products: [
+          { id: "energy_gel", name: "SiS GO Isotonic Gel", next: "Hang near gym aisle exit", cost: "£5.00", owner: "retailer", effort: "Low" },
+          { id: "trail_mix", name: "Mixed Nuts & Raisins", next: "Grab-bag near gates", cost: "£5.00", owner: "brand", effort: "Medium" },
+        ],
+      },
+      {
+        id: "post_workout",
+        name: "Post-workout",
+        time: "18:00–20:00",
+        start: 1080,
+        end: 1200,
+        tone: "teal",
+        products: [
+          { id: "protein_bar", name: "Grenade High Protein Bar", next: "Protein bay endcap 6–8pm", cost: "£5.00", owner: "retailer", effort: "Low" },
+          { id: "challenger", name: "Cocoa Hazelnut Protein Bar", next: "Natural claim next to Grenade", cost: "£5.00", owner: "brand", effort: "Medium" },
+          { id: "protein_shake", name: "Puffy Protein Shake Vanilla", next: "Chiller door facing gym exit", cost: "£5.00", owner: "retailer", effort: "Low" },
+        ],
+      },
+      {
+        id: "evening_treat",
+        name: "Evening treat",
+        time: "20:00–21:00",
+        start: 1200,
+        end: 1260,
+        tone: "indigo",
+        products: [
+          { id: "dark_chocolate", name: "Lindt Excellence 85%", next: "Till tray after 8pm", cost: "£5.00", owner: "retailer", effort: "Low" },
+        ],
+      },
+    ];
+
+    function topPx(minute) {
+      return ((minute - GRID_START) / 60) * HOUR_H;
+    }
+    function heightPx(start, end) {
+      return Math.max(((end - start) / 60) * HOUR_H, 72);
+    }
+    function hourLabel(minute) {
+      const hour = minute / 60;
+      const display = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour;
+      const suffix = hour >= 12 ? "PM" : "AM";
+      return display + " " + suffix;
+    }
+
+    const gutter = document.querySelector("[data-gutter]");
+    const track = document.querySelector("[data-track]");
+    const day = document.querySelector("[data-day]");
+    const scroll = document.querySelector("[data-scroll]");
+
+    day.style.minHeight = ((GRID_END - GRID_START) / 60) * HOUR_H + "px";
+
+    for (let minute = GRID_START; minute < GRID_END; minute += 60) {
+      const hour = document.createElement("div");
+      hour.className = "hour";
+      const label = document.createElement("span");
+      label.textContent = hourLabel(minute);
+      hour.append(label);
+      gutter.append(hour);
+
+      const line = document.createElement("div");
+      line.className = "hline";
+      line.style.top = topPx(minute) + "px";
+      track.append(line);
+    }
+
+    const nowMinute = new Date().getHours() * 60 + new Date().getMinutes();
+    if (nowMinute >= GRID_START && nowMinute <= GRID_END) {
+      const now = document.createElement("div");
+      now.className = "now";
+      now.dataset.now = "true";
+      now.style.top = topPx(nowMinute) + "px";
+      const line = document.createElement("div");
+      line.className = "now-line";
+      now.append(line);
+      track.append(now);
+    }
+
+    const panel = document.getElementById("panel");
+
+    function openPanel(product, momentName) {
+      panel.querySelector("[data-title]").textContent = product.name + " · " + momentName;
+      panel.querySelector("[data-meta]").textContent = "Solid win";
+      panel.querySelector("[data-next]").textContent = product.next;
+      panel.querySelector("[data-cost]").textContent = product.cost;
+      panel.querySelector("[data-owner]").textContent = product.owner;
+      panel.querySelector("[data-effort]").textContent = product.effort;
+      panel.hidden = false;
+    }
+
+    function closePanel() {
+      panel.hidden = true;
+    }
+
+    panel.querySelectorAll("[data-close]").forEach((el) => {
+      el.addEventListener("click", closePanel);
+    });
+
+    for (const moment of MOMENTS) {
+      const band = document.createElement("article");
+      band.className = "band " + moment.tone;
+      band.style.top = topPx(moment.start) + "px";
+      band.style.height = heightPx(moment.start, moment.end) + "px";
+      band.setAttribute("role", "listitem");
+
+      const title = document.createElement("h2");
+      title.textContent = moment.name;
+      const meta = document.createElement("p");
+      meta.className = "meta";
+      meta.textContent = moment.time;
+      const chips = document.createElement("div");
+      chips.className = "chips";
+
+      for (const product of moment.products) {
+        const chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = "chip";
+        chip.textContent = product.name;
+        chip.addEventListener("click", () => openPanel(product, moment.name));
+        chips.append(chip);
+      }
+
+      band.append(title, meta, chips);
+      track.append(band);
+    }
+
+    document.querySelector("[data-today]").addEventListener("click", () => {
+      const nowEl = track.querySelector("[data-now]");
+      if (nowEl) {
+        nowEl.scrollIntoView({ block: "center", behavior: "smooth" });
+      }
+    });
+  </script>
+</body>
+</html>

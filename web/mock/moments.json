@@ -1,0 +1,145 @@
+{
+  "visibility_by_zone": {
+    "label": "assumption",
+    "note": "Chance a shopper notices a product in that zone given dwell band.",
+    "zones": {
+      "till": {
+        "dwell_up_to_2_min": 0.95,
+        "dwell_over_2_min": 0.95
+      },
+      "entrance_chiller": {
+        "dwell_up_to_2_min": 0.9,
+        "dwell_over_2_min": 0.9
+      },
+      "snack_aisle": {
+        "dwell_up_to_2_min": 0.3,
+        "dwell_over_2_min": 0.8
+      }
+    }
+  },
+  "moments": [
+    {
+      "id": "morning_rush",
+      "name": "Morning rush",
+      "time_window": "07:30–09:00",
+      "start_minute": 450,
+      "end_minute": 540,
+      "dwell_seconds": 90,
+      "dwell_label": "assumption: about 90 seconds",
+      "zones_reached": [
+        "entrance_chiller",
+        "till"
+      ],
+      "mission": "Fuel up before the commute",
+      "tested_live": true
+    },
+    {
+      "id": "mid_morning",
+      "name": "Mid-morning top-up",
+      "time_window": "09:30–11:00",
+      "start_minute": 570,
+      "end_minute": 660,
+      "dwell_seconds": 120,
+      "dwell_label": "assumption: about 2 minutes",
+      "zones_reached": [
+        "entrance_chiller",
+        "snack_aisle"
+      ],
+      "mission": "Desk snack between meetings",
+      "tested_live": false
+    },
+    {
+      "id": "quick_lunch",
+      "name": "Quick lunch",
+      "time_window": "12:00–14:00",
+      "start_minute": 720,
+      "end_minute": 840,
+      "dwell_seconds": 300,
+      "dwell_label": "assumption: about 5 minutes",
+      "zones_reached": [
+        "entrance_chiller",
+        "till",
+        "snack_aisle"
+      ],
+      "mission": "Lunch that fits the break",
+      "tested_live": false
+    },
+    {
+      "id": "afternoon_lull",
+      "name": "Afternoon lull",
+      "time_window": "14:30–16:00",
+      "start_minute": 870,
+      "end_minute": 960,
+      "dwell_seconds": 180,
+      "dwell_label": "assumption: about 3 minutes",
+      "zones_reached": [
+        "snack_aisle",
+        "till"
+      ],
+      "mission": "Fight the 3pm slump",
+      "tested_live": false
+    },
+    {
+      "id": "commute_home",
+      "name": "Commute home",
+      "time_window": "16:30–17:45",
+      "start_minute": 990,
+      "end_minute": 1065,
+      "dwell_seconds": 90,
+      "dwell_label": "assumption: about 90 seconds",
+      "zones_reached": [
+        "entrance_chiller",
+        "till"
+      ],
+      "mission": "Grab something for the train",
+      "tested_live": true
+    },
+    {
+      "id": "post_workout",
+      "name": "Post-workout",
+      "time_window": "18:00–20:00",
+      "start_minute": 1080,
+      "end_minute": 1200,
+      "dwell_seconds": 180,
+      "dwell_label": "assumption: about 3 minutes",
+      "zones_reached": [
+        "entrance_chiller",
+        "till",
+        "snack_aisle"
+      ],
+      "mission": "Recover and refuel",
+      "tested_live": true
+    },
+    {
+      "id": "evening_treat",
+      "name": "Evening treat",
+      "time_window": "20:00–21:00",
+      "start_minute": 1200,
+      "end_minute": 1260,
+      "dwell_seconds": 240,
+      "dwell_label": "assumption: about 4 minutes",
+      "zones_reached": [
+        "snack_aisle",
+        "till"
+      ],
+      "mission": "Reward after the day",
+      "tested_live": false
+    },
+    {
+      "id": "late_night",
+      "name": "Late night",
+      "time_window": "21:00–23:00",
+      "start_minute": 1260,
+      "end_minute": 1380,
+      "dwell_seconds": 300,
+      "dwell_label": "assumption: about 5 minutes",
+      "zones_reached": [
+        "entrance_chiller",
+        "till",
+        "snack_aisle"
+      ],
+      "mission": "Treat or top-up",
+      "tested_live": false
+    }
+  ]
+}

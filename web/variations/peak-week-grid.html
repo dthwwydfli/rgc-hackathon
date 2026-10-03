@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Moments — peak week grid</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #fff;
+      --ink: #1d1d1d;
+      --muted: #5b5b5b;
+      --line: rgba(29, 29, 29, 0.1);
+      --lime: #b8f000;
+      --green: #22a651;
+      --teal: #53cdc5;
+      --indigo: #6a6ae2;
+      --purple: #9c6dba;
+      --font-display: Helvetica, "Helvetica Neue", Arial, sans-serif;
+      --font-ui: Inter, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font-ui);
+      color: var(--ink);
+      background: var(--bg);
+    }
+    header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      letter-spacing: -0.05em;
+      font-weight: 500;
+    }
+    .hint { color: var(--muted); font-size: 0.9rem; }
+
+    main { padding: 1.5rem; max-width: 64rem; margin: 0 auto; }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .dot {
+      display: inline-block;
+      width: 0.7rem;
+      height: 0.7rem;
+      border-radius: 2px;
+      margin-right: 0.35rem;
+      vertical-align: -1px;
+    }
+
+    .board {
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: auto;
+    }
+    table {
+      border-collapse: separate;
+      border-spacing: 0;
+      width: 100%;
+      min-width: 40rem;
+    }
+    th, td {
+      border-bottom: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+    }
+    th:last-child, td:last-child { border-right: 0; }
+    tr:last-child td { border-bottom: 0; }
+    .corner {
+      width: 8.5rem;
+      padding: 0.85rem 0.75rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      text-align: left;
+      background: #fafaf8;
+      position: sticky;
+      left: 0;
+      z-index: 2;
+    }
+    .day {
+      padding: 0.75rem 0.35rem;
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      letter-spacing: -0.03em;
+      font-weight: 500;
+      background: #fafaf8;
+    }
+    .day.is-today { color: var(--green); }
+    .moment {
+      position: sticky;
+      left: 0;
+      z-index: 1;
+      background: #fff;
+      padding: 0.65rem 0.75rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.8rem;
+      width: 8.5rem;
+    }
+    .moment span {
+      display: block;
+      font-weight: 400;
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+    td.peak {
+      height: 4.25rem;
+      padding: 0;
+      vertical-align: stretch;
+    }
+    td.peak button {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      cursor: pointer;
+      font: inherit;
+      padding: 0.45rem 0.4rem;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.25rem;
+      background: color-mix(in srgb, var(--tone) var(--alpha), #fff);
+    }
+    td.peak button:hover {
+      filter: brightness(0.97);
+    }
+    td.peak button.is-quiet {
+      background: #fff;
+      color: #ccc;
+      align-items: center;
+      justify-content: center;
+      cursor: default;
+    }
+    .sku {
+      font-size: 0.72rem;
+      font-weight: 600;
+      line-height: 1.2;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .rank {
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--muted);
+    }
+
+    .panel[hidden] { display: none; }
+    .panel { position: fixed; inset: 0; z-index: 20; }
+    .backdrop {
+      position: absolute; inset: 0; border: 0; width: 100%;
+      background: rgba(0,0,0,0.28); cursor: pointer;
+    }
+    .dialog {
+      position: absolute; top: 0; right: 0; bottom: 0;
+      width: min(22rem, 100%);
+      background: #fff;
+      padding: 1.25rem 1.5rem;
+      box-shadow: -8px 0 28px rgba(0,0,0,0.12);
+    }
+    .dialog h2 {
+      margin: 0 0 0.25rem;
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      letter-spacing: -0.04em;
+      font-weight: 500;
+    }
+    .label {
+      margin: 1rem 0 0.25rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+    .close {
+      float: right; border: 0; background: 0; font-size: 1.25rem; cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">Moments</div>
+    <p class="hint">One winner per daypart × weekday — media-planning calendar, not GCal spam</p>
+  </header>
+
+  <main>
+    <div class="legend">
+      <span><i class="dot" style="background:var(--lime)"></i>Solid</span>
+      <span><i class="dot" style="background:var(--teal)"></i>Directional</span>
+      <span><i class="dot" style="background:var(--indigo)"></i>Predicted</span>
+      <span>Empty = no clear peak that day</span>
+    </div>
+    <div class="board">
+      <table>
+        <thead>
+          <tr data-head>
+            <th class="corner">Moment \\ Day</th>
+          </tr>
+        </thead>
+        <tbody data-body></tbody>
+      </table>
+    </div>
+  </main>
+
+  <div class="panel" id="panel" hidden>
+    <button class="backdrop" type="button" data-close aria-label="Close"></button>
+    <div class="dialog" role="dialog" aria-modal="true">
+      <button class="close" type="button" data-close aria-label="Close">×</button>
+      <h2 data-title></h2>
+      <p data-rank style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em;color:var(--muted)"></p>
+      <p class="label">What should the brand do next</p>
+      <p data-next></p>
+      <p class="label">Cost · Owner · How hard</p>
+      <p data-facts></p>
+    </div>
+  </div>
+
+  <script>
+    const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    const RANK_TONE = {
+      Solid: "#b8f000",
+      Directional: "#53cdc5",
+      Predicted: "#6a6ae2",
+    };
+    const RANK_ALPHA = { Solid: "55%", Directional: "40%", Predicted: "28%" };
+
+    // Each cell: one peak SKU or null. Weekends thin out for weekday missions.
+    const ROWS = [
+      {
+        name: "Morning rush", time: "07:30–09:00",
+        cells: [
+          { name: "Bananas", rank: "Solid", next: "Keep entrance chiller face-out at open", cost: "£5", owner: "brand", effort: "Low" },
+          { name: "Bananas", rank: "Solid", next: "Keep entrance chiller face-out at open", cost: "£5", owner: "brand", effort: "Low" },
+          { name: "Croissants", rank: "Directional", next: "Till bake-off callout before 9", cost: "£5", owner: "retailer", effort: "Low" },
+          { name: "Bananas", rank: "Solid", next: "Keep entrance chiller face-out at open", cost: "£5", owner: "brand", effort: "Low" },
+          { name: "Croissants", rank: "Directional", next: "Till bake-off callout before 9", cost: "£5", owner: "retailer", effort: "Low" },
+          { name: "Croissants", rank: "Predicted", next: "Weekend bake later", cost: "£5", owner: "retailer", effort: "Low" },
+          null,
+        ],
+      },
+      {
+        name: "Mid-morning", time: "09:30–11:00",
+        cells: [
+          { name: "Nature Valley Oats & Honey", rank: "Directional", next: "Snack-aisle eye-level clip strip", cost: "£5", owner: "retailer", effort: "Low" },
+          { name: "Starbucks Cold Brew", rank: "Predicted", next: "Chiller door strip for 10am dip", cost: "£5", owner: "brand", effort: "Medium" },
+          { name: "Nature Valley Oats & Honey", rank: "Directional", next: "Snack-aisle eye-level clip strip", cost: "£5", owner: "retailer", effort: "Low" },
+          { name: "Starbucks Cold Brew", rank: "Predicted", next: "Chiller door strip for 10am dip", cost: "£5", owner: "brand", effort: "Medium" },
+          { name: "Nature Valley Oats & Honey", rank: "Directional", next: "Snack-aisle eye-level clip strip", cost: "£5", owner: "retailer", effort: "Low" },
+          null,
+          null,
+        ],
+      },
+      {
+        name: "Quick lunch", time: "12:00–14:00",
+        cells: [
+          { name: "Fage Total 0%", rank: "Solid", next: "Protein claim larger on lid", cost: "£5", owner: "brand", effort: "Low" },
+          { name: "Fage Total 0%", rank: "Solid", next: "Protein claim larger on lid", cost: "£5", owner: "brand", effort: "Low" },
+          { name: "Sabra Classic Hummus", rank: "Directional", next: "Bundle with crackers at till", cost: "£5", owner: "retailer", effort: "Medium" },
+          { name: "Fage Total 0%", rank: "Solid", next: "Protein claim larger on lid", cost: "£5", owner: "brand", effort: "Low" },
+          { name: "Sabra Classic Hummus", rank: "Directional", next: "Bundle with crackers at till", cost: "£5", owner: "retailer", effort: "Medium" },
+          { name: "Fage Total 0%", rank: "Directional", next: "Weekend lunch protein push", cost: "£5", owner: "brand", effort: "Low" },
+          { name: "Sabra Classic Hummus", rank: "Predicted", next: "Sunday till bundle", cost: "£5", owner: "retailer", effort: "Medium" },
+        ],
+      },
+      {
+        name: "Afternoon lull", time: "14:30–16:00",
+        cells: [
+          { name: "Royal Gala Apples", rank: "Solid", next: "Loose fruit bowl near coffee", cost: "£5", owner: "retailer", effort: "Low" },
+          { name: "Kallo Rice Cakes", rank: "Predicted", next: "Soft health claim on endcap", cost: "£5", owner: "brand", effort: "Low" },
+          { name: "Royal Gala Apples", rank: "Solid", next: "Loose fruit bowl near coffee", cost: "£5", owner: "retailer", effort: "Low" },
+          { name: "Royal Gala Apples", rank: "Solid", next: "Loose fruit bowl near coffee", cost: "£5", owner: "retailer", effort: "Low" },
+          { name: "Kallo Rice Cakes", rank: "Predicted", next: "Soft health claim on endcap", cost: "£5", owner: "brand", effort: "Low" },
+          null,
+          null,
+        ],
+      },
+      {
+        name: "Commute home", time: "16:30–17:45",
+        cells: [
+          { name: "SiS GO Isotonic Gel", rank: "Directional", next: "Hang near gym aisle exit", cost: "£5", owner: "retailer", effort: "Low" },
+          { name: "Mixed Nuts & Raisins", rank: "Predicted", next: "Grab-bag near gates", cost: "£5", owner: "brand", effort: "Medium" },
+          { name: "SiS GO Isotonic Gel", rank: "Directional", next: "Hang near gym aisle exit", cost: "£5", owner: "retailer", effort: "Low" },
+          { name: "Mixed Nuts & Raisins", rank: "Predicted", next: "Grab-bag near gates", cost: "£5", owner: "brand", effort: "Medium" },
+          { name: "SiS GO Isotonic Gel", rank: "Directional", next: "Hang near gym aisle exit", cost: "£5", owner: "retailer", effort: "Low" },
+          null,
+          null,
+        ],
+      },
+      {
+        name: "Post-workout", time: "18:00–20:00",
+        cells: [
+          { name: "Grenade Protein Bar", rank: "Solid", next: "Protein bay endcap 6–8pm", cost: "£5", owner: "retailer", effort: "Low" },
+          { name: "Nakd Cocoa Hazelnut", rank: "Solid", next: "Natural claim next to Grenade", cost: "£5", owner: "brand", effort: "Medium" },
+          { name: "Puffy Protein Shake", rank: "Directional", next: "Chiller door facing gym exit", cost: "£5", owner: "retailer", effort: "Low" },
+          { name: "Grenade Protein Bar", rank: "Solid", next: "Protein bay endcap 6–8pm", cost: "£5", owner: "retailer", effort: "Low" },
+          { name: "Grenade Protein Bar", rank: "Solid", next: "Protein bay endcap 6–8pm", cost: "£5", owner: "retailer", effort: "Low" },
+          { name: "Puffy Protein Shake", rank: "Directional", next: "Weekend gym rush pack", cost: "£5", owner: "retailer", effort: "Low" },
+          { name: "Nakd Cocoa Hazelnut", rank: "Predicted", next: "Sunday treat endcap", cost: "£5", owner: "brand", effort: "Medium" },
+        ],
+      },
+      {
+        name: "Evening treat", time: "20:00–21:00",
+        cells: [
+          { name: "Lindt Excellence 85%", rank: "Predicted", next: "Till tray after 8pm", cost: "£5", owner: "retailer", effort: "Low" },
+          { name: "Lindt Excellence 85%", rank: "Predicted", next: "Till tray after 8pm", cost: "£5", owner: "retailer", effort: "Low" },
+          { name: "Lindt Excellence 85%", rank: "Predicted", next: "Till tray after 8pm", cost: "£5", owner: "retailer", effort: "Low" },
+          { name: "Lindt Excellence 85%", rank: "Predicted", next: "Till tray after 8pm", cost: "£5", owner: "retailer", effort: "Low" },
+          { name: "Lindt Excellence 85%", rank: "Directional", next: "Friday till tray after 8pm", cost: "£5", owner: "retailer", effort: "Low" },
+          { name: "Lindt Excellence 85%", rank: "Solid", next: "Weekend till tray", cost: "£5", owner: "retailer", effort: "Low" },
+          { name: "Lindt Excellence 85%", rank: "Solid", next: "Weekend till tray", cost: "£5", owner: "retailer", effort: "Low" },
+        ],
+      },
+    ];
+
+    const head = document.querySelector("[data-head]");
+    const body = document.querySelector("[data-body]");
+    const panel = document.getElementById("panel");
+    const todayIdx = (new Date().getDay() + 6) % 7;
+
+    DAYS.forEach((day, i) => {
+      const th = document.createElement("th");
+      th.className = "day" + (i === todayIdx ? " is-today" : "");
+      th.textContent = day;
+      head.append(th);
+    });
+
+    function openPanel(product, momentName, dayName) {
+      panel.querySelector("[data-title]").textContent =
+        product.name + " · " + momentName + " · " + dayName;
+      panel.querySelector("[data-rank]").textContent = product.rank + " win";
+      panel.querySelector("[data-next]").textContent = product.next;
+      panel.querySelector("[data-facts]").textContent =
+        product.cost + " · " + product.owner + " · " + product.effort;
+      panel.hidden = false;
+    }
+    panel.querySelectorAll("[data-close]").forEach((el) => {
+      el.addEventListener("click", () => { panel.hidden = true; });
+    });
+
+    ROWS.forEach((row) => {
+      const tr = document.createElement("tr");
+      const label = document.createElement("th");
+      label.className = "moment";
+      label.scope = "row";
+      label.innerHTML = row.name + "<span>" + row.time + "</span>";
+      tr.append(label);
+
+      row.cells.forEach((cell, dayIndex) => {
+        const td = document.createElement("td");
+        td.className = "peak";
+        const btn = document.createElement("button");
+        btn.type = "button";
+        if (!cell) {
+          btn.className = "is-quiet";
+          btn.textContent = "·";
+          btn.disabled = true;
+        } else {
+          btn.style.setProperty("--tone", RANK_TONE[cell.rank]);
+          btn.style.setProperty("--alpha", RANK_ALPHA[cell.rank]);
+          btn.innerHTML =
+            '<span class="sku">' + cell.name + "</span>"
+            + '<span class="rank">' + cell.rank + "</span>";
+          btn.addEventListener("click", () => openPanel(cell, row.name, DAYS[dayIndex]));
+        }
+        td.append(btn);
+        tr.append(td);
+      });
+      body.append(tr);
+    });
+  </script>
+</body>
+</html>

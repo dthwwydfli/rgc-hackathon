@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Moments — day agenda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #fff;
+      --ink: #1d1d1d;
+      --muted: #5b5b5b;
+      --line: rgba(29, 29, 29, 0.1);
+      --lime: #b8f000;
+      --green: #22a651;
+      --teal: #53cdc5;
+      --indigo: #6a6ae2;
+      --purple: #9c6dba;
+      --font-display: Helvetica, "Helvetica Neue", Arial, sans-serif;
+      --font-ui: Inter, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font-ui);
+      color: var(--ink);
+      background: var(--bg);
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 5;
+    }
+    .brand {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      letter-spacing: -0.05em;
+      font-weight: 500;
+    }
+    .pill {
+      font: inherit;
+      height: 2.25rem;
+      padding: 0 1rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      cursor: pointer;
+    }
+    .nav {
+      display: inline-flex;
+      gap: 0.15rem;
+    }
+    .nav button {
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      cursor: pointer;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+    .date-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      letter-spacing: -0.03em;
+    }
+    .weekstrip {
+      margin-left: auto;
+      display: flex;
+      gap: 0.25rem;
+    }
+    .weekstrip button {
+      width: 2.4rem;
+      height: 2.8rem;
+      border: 0;
+      border-radius: 0.5rem;
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.15rem;
+      font: inherit;
+      color: var(--muted);
+    }
+    .weekstrip button span:first-child {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .weekstrip button span:last-child {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--ink);
+    }
+    .weekstrip button.is-active {
+      background: rgba(184, 240, 0, 0.35);
+    }
+    .weekstrip button.is-today span:last-child {
+      width: 1.6rem;
+      height: 1.6rem;
+      border-radius: 999px;
+      background: var(--green);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+    }
+
+    main {
+      max-width: 40rem;
+      margin: 0 auto;
+      padding: 1.25rem 1.25rem 3rem;
+    }
+    .intro {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 0 0 1.5rem;
+    }
+
+    .moment {
+      display: grid;
+      grid-template-columns: 4.5rem 1fr;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .time {
+      font-size: 0.75rem;
+      color: var(--muted);
+      padding-top: 0.85rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-left-width: 4px;
+      border-radius: 2px;
+      padding: 0.9rem 1rem;
+      background: #fff;
+    }
+    .card.lime { border-left-color: var(--green); background: rgba(184, 240, 0, 0.12); }
+    .card.teal { border-left-color: var(--teal); background: rgba(83, 205, 197, 0.1); }
+    .card.indigo { border-left-color: var(--indigo); background: rgba(106, 106, 226, 0.08); }
+    .card.purple { border-left-color: var(--purple); background: rgba(156, 109, 186, 0.08); }
+    .card h2 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 500;
+      letter-spacing: -0.035em;
+    }
+    .card .window {
+      margin: 0.2rem 0 0.75rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .products {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .product {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      width: 100%;
+      text-align: left;
+      font: inherit;
+      padding: 0.55rem 0.7rem;
+      border-radius: 2px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.85);
+      cursor: pointer;
+    }
+    .product:hover { border-color: var(--green); }
+    .product strong { font-size: 0.9rem; font-weight: 500; }
+    .product em {
+      font-style: normal;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--muted);
+    }
+
+    .panel[hidden] { display: none; }
+    .panel { position: fixed; inset: 0; z-index: 20; }
+    .backdrop {
+      position: absolute; inset: 0; border: 0; width: 100%;
+      background: rgba(0,0,0,0.28); cursor: pointer;
+    }
+    .dialog {
+      position: absolute; top: 0; right: 0; bottom: 0;
+      width: min(22rem, 100%);
+      background: #fff;
+      padding: 1.25rem 1.5rem;
+      box-shadow: -8px 0 28px rgba(0,0,0,0.12);
+    }
+    .dialog h3 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      letter-spacing: -0.04em;
+      font-weight: 500;
+    }
+    .label {
+      margin: 1rem 0 0.25rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+    .close {
+      float: right; border: 0; background: 0; font-size: 1.25rem; cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="brand">Moments</span>
+    <button type="button" class="pill" data-today>Today</button>
+    <div class="nav">
+      <button type="button" data-prev aria-label="Previous day">‹</button>
+      <button type="button" data-next aria-label="Next day">›</button>
+    </div>
+    <span class="date-title" data-date></span>
+    <div class="weekstrip" data-weekstrip></div>
+  </header>
+
+  <main>
+    <p class="intro">One day. Moments in order. Products listed under each — no seven-column clone.</p>
+    <div data-agenda></div>
+  </main>
+
+  <div class="panel" id="panel" hidden>
+    <button class="backdrop" type="button" data-close aria-label="Close"></button>
+    <div class="dialog" role="dialog" aria-modal="true">
+      <button class="close" type="button" data-close aria-label="Close">×</button>
+      <h3 data-title></h3>
+      <p data-rank style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em;color:var(--muted)"></p>
+      <p class="label">What should the brand do next</p>
+      <p data-next></p>
+      <p class="label">Cost · Owner · How hard</p>
+      <p data-facts></p>
+    </div>
+  </div>
+
+  <script>
+    const TONES = ["lime", "teal", "indigo", "purple"];
+    const MOMENTS = [
+      {
+        name: "Morning rush", time: "07:30–09:00",
+        products: [
+          { name: "Bananas", rank: "Solid win", next: "Keep entrance chiller face-out at open", cost: "£5", owner: "brand", effort: "Low" },
+          { name: "Croissants", rank: "Directional", next: "Till bake-off callout before 9", cost: "£5", owner: "retailer", effort: "Low" },
+        ],
+      },
+      {
+        name: "Mid-morning top-up", time: "09:30–11:00",
+        products: [
+          { name: "Nature Valley Oats & Honey", rank: "Directional", next: "Snack-aisle eye-level clip strip", cost: "£5", owner: "retailer", effort: "Low" },
+          { name: "Starbucks Cold Brew", rank: "Predicted", next: "Chiller door strip for 10am dip", cost: "£5", owner: "brand", effort: "Medium" },
+        ],
+      },
+      {
+        name: "Quick lunch", time: "12:00–14:00",
+        products: [
+          { name: "Fage Total 0%", rank: "Solid win", next: "Protein claim larger on lid", cost: "£5", owner: "brand", effort: "Low" },
+          { name: "Sabra Classic Hummus", rank: "Directional", next: "Bundle with crackers at till", cost: "£5", owner: "retailer", effort: "Medium" },
+        ],
+      },
+      {
+        name: "Afternoon lull", time: "14:30–16:00",
+        products: [
+          { name: "Royal Gala Apples", rank: "Solid win", next: "Loose fruit bowl near coffee", cost: "£5", owner: "retailer", effort: "Low" },
+          { name: "Kallo Rice Cakes", rank: "Predicted", next: "Soft health claim on endcap", cost: "£5", owner: "brand", effort: "Low" },
+        ],
+      },
+      {
+        name: "Commute home", time: "16:30–17:45",
+        products: [
+          { name: "SiS GO Isotonic Gel", rank: "Directional", next: "Hang near gym aisle exit", cost: "£5", owner: "retailer", effort: "Low" },
+          { name: "Mixed Nuts & Raisins", rank: "Predicted", next: "Grab-bag near gates", cost: "£5", owner: "brand", effort: "Medium" },
+        ],
+      },
+      {
+        name: "Post-workout", time: "18:00–20:00",
+        products: [
+          { name: "Grenade Protein Bar", rank: "Solid win", next: "Protein bay endcap 6–8pm", cost: "£5", owner: "retailer", effort: "Low" },
+          { name: "Nakd Cocoa Hazelnut", rank: "Solid win", next: "Natural claim next to Grenade", cost: "£5", owner: "brand", effort: "Medium" },
+          { name: "Puffy Protein Shake", rank: "Directional", next: "Chiller door facing gym exit", cost: "£5", owner: "retailer", effort: "Low" },
+        ],
+      },
+      {
+        name: "Evening treat", time: "20:00–21:00",
+        products: [
+          { name: "Lindt Excellence 85%", rank: "Predicted", next: "Till tray after 8pm", cost: "£5", owner: "retailer", effort: "Low" },
+        ],
+      },
+    ];
+
+    let dayOffset = 0;
+    const dateEl = document.querySelector("[data-date]");
+    const strip = document.querySelector("[data-weekstrip]");
+    const agenda = document.querySelector("[data-agenda]");
+    const panel = document.getElementById("panel");
+
+    function startOfWeek(d) {
+      const x = new Date(d);
+      const day = (x.getDay() + 6) % 7;
+      x.setHours(0, 0, 0, 0);
+      x.setDate(x.getDate() - day);
+      return x;
+    }
+    function addDays(d, n) {
+      const x = new Date(d);
+      x.setDate(x.getDate() + n);
+      return x;
+    }
+
+    function openPanel(product, momentName) {
+      panel.querySelector("[data-title]").textContent = product.name + " · " + momentName;
+      panel.querySelector("[data-rank]").textContent = product.rank;
+      panel.querySelector("[data-next]").textContent = product.next;
+      panel.querySelector("[data-facts]").textContent =
+        product.cost + " · " + product.owner + " · " + product.effort;
+      panel.hidden = false;
+    }
+    panel.querySelectorAll("[data-close]").forEach((el) => {
+      el.addEventListener("click", () => { panel.hidden = true; });
+    });
+
+    function paint() {
+      const focus = addDays(new Date(), dayOffset);
+      focus.setHours(0, 0, 0, 0);
+      dateEl.textContent = focus.toLocaleDateString("en-GB", {
+        weekday: "long", day: "numeric", month: "short", year: "numeric",
+      });
+
+      const weekStart = startOfWeek(focus);
+      strip.replaceChildren();
+      for (let i = 0; i < 7; i += 1) {
+        const d = addDays(weekStart, i);
+        const btn = document.createElement("button");
+        btn.type = "button";
+        const isActive = d.getTime() === focus.getTime();
+        const isToday = d.toDateString() === new Date().toDateString();
+        btn.className = (isActive ? "is-active " : "") + (isToday ? "is-today" : "");
+        btn.innerHTML = "<span>"
+          + d.toLocaleDateString("en-GB", { weekday: "short" })
+          + "</span><span>" + d.getDate() + "</span>";
+        btn.addEventListener("click", () => {
+          const today = new Date();
+          today.setHours(0, 0, 0, 0);
+          dayOffset = Math.round((d - today) / 86400000);
+          paint();
+        });
+        strip.append(btn);
+      }
+
+      agenda.replaceChildren();
+      MOMENTS.forEach((moment, index) => {
+        const row = document.createElement("section");
+        row.className = "moment";
+        const time = document.createElement("div");
+        time.className = "time";
+        time.textContent = moment.time.split("–")[0];
+        const card = document.createElement("article");
+        card.className = "card " + TONES[index % TONES.length];
+        card.innerHTML = "<h2>" + moment.name + "</h2><p class='window'>" + moment.time + "</p>";
+        const list = document.createElement("div");
+        list.className = "products";
+        moment.products.forEach((product) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "product";
+          btn.innerHTML = "<strong>" + product.name + "</strong><em>" + product.rank + "</em>";
+          btn.addEventListener("click", () => openPanel(product, moment.name));
+          list.append(btn);
+        });
+        card.append(list);
+        row.append(time, card);
+        agenda.append(row);
+      });
+    }
+
+    document.querySelector("[data-today]").addEventListener("click", () => {
+      dayOffset = 0;
+      paint();
+    });
+    document.querySelector("[data-prev]").addEventListener("click", () => {
+      dayOffset -= 1;
+      paint();
+    });
+    document.querySelector("[data-next]").addEventListener("click", () => {
+      dayOffset += 1;
+      paint();
+    });
+
+    paint();
+  </script>
+</body>
+</html>

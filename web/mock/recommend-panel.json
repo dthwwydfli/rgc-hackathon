@@ -1,0 +1,207 @@
+{
+  "store": {
+    "id": "1010023674",
+    "retailer": "Tesco",
+    "fascia": "Tesco Express",
+    "store_name": "Tesco Express Camden High Street",
+    "postcode": "NW1 7JN",
+    "borough": "Camden",
+    "format": "Convenience Store",
+    "assumed_baskets": 247
+  },
+  "weeks": 12,
+  "from": "2026-10-03",
+  "note_on_weeks": "The model has no seasonal trend: an ordinary week gets the same forecast, and only bank holidays, the three days before them and Christmas Day closure change it.",
+  "basis": {
+    "horizon": "tested twelve weeks ahead without updates on the household panel: daily error 26% of units, matching a 4-week mean refreshed weekly",
+    "what": "UK basket validated against Tesco purchases in held-out neighbourhoods (0.97)",
+    "when_and_who": "validated on US households only (0.99 by hour, 0.94 by persona, time and category)",
+    "volume": "247 baskets a day for this Convenience Store, assumed (no sales loaded for this store)"
+  },
+  "caveats": [
+    "Timing, personas and calendar effects are learned from US households in 2017. Category levels are moved to London Tesco levels (2015).",
+    "Baskets per day comes from a gravity model of resident demand; commuters and visitors are not in it.",
+    "Ranges are Poisson 10-90% around the expected units."
+  ],
+  "neighbourhood": [
+    { "type": "urban_young", "share": 0.34, "description": "Younger urban residents, higher convenience trips" },
+    { "type": "mixed_family", "share": 0.22, "description": "Family households with midweek top-ups" }
+  ],
+  "slots": {
+    "0-8": {
+      "slot": { "weekday": "Monday", "hour": "08:00-09:00", "moment": "early / rush" },
+      "stock_most": [
+        {
+          "category": "coffee",
+          "group": "drinks",
+          "units_per_week": 18.4,
+          "range": [12, 25],
+          "stock": 23,
+          "times_usual_share": 1.42,
+          "bought_most_by": "Mission Shopper",
+          "that_persona_share": 0.28,
+          "lowest_week": 16.1,
+          "highest_week": 21.0,
+          "example_products": [{ "name": "Ice Coffee Double Espresso", "brand": "Hell Energy" }]
+        },
+        {
+          "category": "breakfast foods",
+          "group": "grocery",
+          "units_per_week": 12.1,
+          "range": [7, 17],
+          "stock": 15,
+          "times_usual_share": 1.18,
+          "bought_most_by": "Decisive Alpha",
+          "that_persona_share": 0.22,
+          "lowest_week": 10.4,
+          "highest_week": 14.2,
+          "example_products": [{ "name": "Protein Nut Bar Fruit & Chocolate", "brand": "Nature Valley" }]
+        }
+      ],
+      "sells_unusually_well_in_this_slot": [
+        {
+          "category": "coffee",
+          "group": "drinks",
+          "units_per_week": 18.4,
+          "range": [12, 25],
+          "stock": 23,
+          "times_usual_share": 1.42,
+          "bought_most_by": "Mission Shopper",
+          "that_persona_share": 0.28,
+          "lowest_week": 16.1,
+          "highest_week": 21.0,
+          "example_products": [{ "name": "Ice Coffee Double Espresso", "brand": "Hell Energy" }]
+        }
+      ],
+      "shoppers_in_this_slot": {
+        "Mission Shopper": 0.28,
+        "Decisive Alpha": 0.22,
+        "Habitual Creature": 0.14,
+        "Impulse Buyer": 0.11,
+        "Value Optimizer": 0.09
+      },
+      "week_by_week": [
+        { "week": 1, "date": "2026-10-05", "trips": 42, "units": 48.2, "calendar": null, "vs_typical_week": 1.0 },
+        { "week": 2, "date": "2026-10-12", "trips": 41, "units": 47.1, "calendar": null, "vs_typical_week": 0.98 },
+        { "week": 3, "date": "2026-10-19", "trips": 43, "units": 49.0, "calendar": null, "vs_typical_week": 1.02 },
+        { "week": 4, "date": "2026-10-26", "trips": 40, "units": 46.4, "calendar": null, "vs_typical_week": 0.96 },
+        { "week": 5, "date": "2026-11-02", "trips": 42, "units": 48.0, "calendar": null, "vs_typical_week": 1.0 },
+        { "week": 6, "date": "2026-11-09", "trips": 44, "units": 50.1, "calendar": null, "vs_typical_week": 1.04 },
+        { "week": 7, "date": "2026-11-16", "trips": 41, "units": 47.3, "calendar": null, "vs_typical_week": 0.98 },
+        { "week": 8, "date": "2026-11-23", "trips": 39, "units": 45.2, "calendar": "run-up to Christmas", "vs_typical_week": 0.94 },
+        { "week": 9, "date": "2026-11-30", "trips": 46, "units": 52.8, "calendar": "run-up to Christmas", "vs_typical_week": 1.1 },
+        { "week": 10, "date": "2026-12-07", "trips": 48, "units": 55.0, "calendar": "run-up to Christmas", "vs_typical_week": 1.14 },
+        { "week": 11, "date": "2026-12-14", "trips": 50, "units": 57.2, "calendar": "run-up to Christmas", "vs_typical_week": 1.19 },
+        { "week": 12, "date": "2026-12-21", "trips": 52, "units": 59.4, "calendar": "run-up to Christmas", "vs_typical_week": 1.23 }
+      ],
+      "weeks_that_differ": [
+        { "week": 8, "date": "2026-11-23", "trips": 39, "units": 45.2, "calendar": "run-up to Christmas", "vs_typical_week": 0.94 },
+        { "week": 9, "date": "2026-11-30", "trips": 46, "units": 52.8, "calendar": "run-up to Christmas", "vs_typical_week": 1.1 },
+        { "week": 10, "date": "2026-12-07", "trips": 48, "units": 55.0, "calendar": "run-up to Christmas", "vs_typical_week": 1.14 },
+        { "week": 11, "date": "2026-12-14", "trips": 50, "units": 57.2, "calendar": "run-up to Christmas", "vs_typical_week": 1.19 },
+        { "week": 12, "date": "2026-12-21", "trips": 52, "units": 59.4, "calendar": "run-up to Christmas", "vs_typical_week": 1.23 }
+      ]
+    },
+    "4-17": {
+      "slot": { "weekday": "Friday", "hour": "17:00-18:00", "moment": "weekday evening" },
+      "stock_most": [
+        {
+          "category": "confectionery",
+          "group": "snacks",
+          "units_per_week": 29.4,
+          "range": [21, 38],
+          "stock": 35,
+          "times_usual_share": 1.51,
+          "bought_most_by": "Impulse Buyer",
+          "that_persona_share": 0.31,
+          "lowest_week": 26.0,
+          "highest_week": 34.2,
+          "example_products": [{ "name": "Lindt Excellence 85%", "brand": "Lindt" }]
+        },
+        {
+          "category": "crisps & savoury snacks",
+          "group": "snacks",
+          "units_per_week": 22.7,
+          "range": [16, 30],
+          "stock": 28,
+          "times_usual_share": 1.24,
+          "bought_most_by": "Mission Shopper",
+          "that_persona_share": 0.26,
+          "lowest_week": 19.8,
+          "highest_week": 26.5,
+          "example_products": []
+        },
+        {
+          "category": "sports & energy drinks",
+          "group": "drinks",
+          "units_per_week": 13.5,
+          "range": [8, 19],
+          "stock": 17,
+          "times_usual_share": 1.19,
+          "bought_most_by": "Decisive Alpha",
+          "that_persona_share": 0.2,
+          "lowest_week": 11.2,
+          "highest_week": 16.0,
+          "example_products": []
+        },
+        {
+          "category": "coffee",
+          "group": "drinks",
+          "units_per_week": 8.1,
+          "range": [4, 12],
+          "stock": 11,
+          "times_usual_share": 0.72,
+          "bought_most_by": "Habitual Creature",
+          "that_persona_share": 0.18,
+          "lowest_week": 6.9,
+          "highest_week": 9.8,
+          "example_products": [{ "name": "Ice Coffee Double Espresso", "brand": "Hell Energy" }]
+        }
+      ],
+      "sells_unusually_well_in_this_slot": [
+        {
+          "category": "confectionery",
+          "group": "snacks",
+          "units_per_week": 29.4,
+          "range": [21, 38],
+          "stock": 35,
+          "times_usual_share": 1.51,
+          "bought_most_by": "Impulse Buyer",
+          "that_persona_share": 0.31,
+          "lowest_week": 26.0,
+          "highest_week": 34.2,
+          "example_products": [{ "name": "Lindt Excellence 85%", "brand": "Lindt" }]
+        }
+      ],
+      "shoppers_in_this_slot": {
+        "Impulse Buyer": 0.31,
+        "Mission Shopper": 0.26,
+        "Decisive Alpha": 0.2,
+        "Habitual Creature": 0.12,
+        "Value Optimizer": 0.08
+      },
+      "week_by_week": [
+        { "week": 1, "date": "2026-10-03", "trips": 68, "units": 92.4, "calendar": null, "vs_typical_week": 1.0 },
+        { "week": 2, "date": "2026-10-10", "trips": 67, "units": 90.8, "calendar": null, "vs_typical_week": 0.98 },
+        { "week": 3, "date": "2026-10-17", "trips": 69, "units": 93.6, "calendar": null, "vs_typical_week": 1.01 },
+        { "week": 4, "date": "2026-10-24", "trips": 66, "units": 89.5, "calendar": null, "vs_typical_week": 0.97 },
+        { "week": 5, "date": "2026-10-31", "trips": 70, "units": 95.0, "calendar": null, "vs_typical_week": 1.03 },
+        { "week": 6, "date": "2026-11-07", "trips": 68, "units": 92.1, "calendar": null, "vs_typical_week": 1.0 },
+        { "week": 7, "date": "2026-11-14", "trips": 71, "units": 96.2, "calendar": null, "vs_typical_week": 1.04 },
+        { "week": 8, "date": "2026-11-21", "trips": 74, "units": 100.5, "calendar": "run-up to Christmas", "vs_typical_week": 1.09 },
+        { "week": 9, "date": "2026-11-28", "trips": 78, "units": 106.0, "calendar": "run-up to Christmas", "vs_typical_week": 1.15 },
+        { "week": 10, "date": "2026-12-05", "trips": 80, "units": 108.8, "calendar": "run-up to Christmas", "vs_typical_week": 1.18 },
+        { "week": 11, "date": "2026-12-12", "trips": 83, "units": 112.6, "calendar": "run-up to Christmas", "vs_typical_week": 1.22 },
+        { "week": 12, "date": "2026-12-19", "trips": 86, "units": 116.4, "calendar": "run-up to Christmas", "vs_typical_week": 1.26 }
+      ],
+      "weeks_that_differ": [
+        { "week": 8, "date": "2026-11-21", "trips": 74, "units": 100.5, "calendar": "run-up to Christmas", "vs_typical_week": 1.09 },
+        { "week": 9, "date": "2026-11-28", "trips": 78, "units": 106.0, "calendar": "run-up to Christmas", "vs_typical_week": 1.15 },
+        { "week": 10, "date": "2026-12-05", "trips": 80, "units": 108.8, "calendar": "run-up to Christmas", "vs_typical_week": 1.18 },
+        { "week": 11, "date": "2026-12-12", "trips": 83, "units": 112.6, "calendar": "run-up to Christmas", "vs_typical_week": 1.22 },
+        { "week": 12, "date": "2026-12-19", "trips": 86, "units": 116.4, "calendar": "run-up to Christmas", "vs_typical_week": 1.26 }
+      ]
+    }
+  },
+  "default_slot_key": "4-17"
+}
