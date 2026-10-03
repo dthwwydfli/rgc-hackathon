@@ -1,4 +1,4 @@
-# Moment Fit
+# Moments
 
 Timetable for a challenger snack brand: which shopper moments it wins and loses, why, and the cheapest next action. Predicts first, scores against real choices after.
 
