@@ -1,7 +1,7 @@
 import { X } from "lucide-react";
 import { cn } from "../lib/cn";
 
-export type ScreenId = "swimlanes" | "calendar" | "validation" | "whatif";
+export type ScreenId = "swimlanes" | "whatif";
 
 interface SideDrawerProps {
   open: boolean;
@@ -12,11 +12,8 @@ interface SideDrawerProps {
 
 const NAV_ITEMS: Array<{ id: ScreenId; label: string }> = [
   { id: "swimlanes", label: "Moments" },
-  { id: "calendar", label: "Fit" },
-  { id: "validation", label: "Validation" },
   { id: "whatif", label: "What-if" },
 ];
-
 export function SideDrawer({ open, activeScreen, onClose, onNavigate }: SideDrawerProps) {
   return (
     <>
