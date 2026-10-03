@@ -1,0 +1,74 @@
+{
+  "assignment_order": [
+    "gym_regular",
+    "budget_shopper",
+    "rushed_commuter",
+    "other"
+  ],
+  "dwell_modifier": {
+    "label": "assumption",
+    "max_dwell_seconds": 120,
+    "multipliers": {
+      "familiarity": 1.5,
+      "convenience": 1.3,
+      "health": 0.6
+    },
+    "note": "When dwell is 2 minutes or less, multiply then rescale weights to sum to 1. Locked at T4."
+  },
+  "personas": [
+    {
+      "id": "gym_regular",
+      "name": "Gym regular",
+      "assignment_rule": "Exercises 3 or more times a week",
+      "form_field": "exercise",
+      "form_match": "3_or_more",
+      "weights": {
+        "price": 0.10,
+        "taste": 0.15,
+        "health": 0.45,
+        "convenience": 0.15,
+        "familiarity": 0.15
+      },
+      "excluded_from_scoring": false
+    },
+    {
+      "id": "budget_shopper",
+      "name": "Budget shopper",
+      "assignment_rule": "Usually spends under £1.50 on a snack",
+      "form_field": "budget",
+      "form_match": "under_1_50",
+      "weights": {
+        "price": 0.45,
+        "taste": 0.20,
+        "health": 0.05,
+        "convenience": 0.15,
+        "familiarity": 0.15
+      },
+      "excluded_from_scoring": false
+    },
+    {
+      "id": "rushed_commuter",
+      "name": "Rushed commuter",
+      "assignment_rule": "Commutes by Tube, bus or train",
+      "form_field": "commute",
+      "form_match": "tube_bus_train",
+      "weights": {
+        "price": 0.15,
+        "taste": 0.20,
+        "health": 0.10,
+        "convenience": 0.35,
+        "familiarity": 0.20
+      },
+      "excluded_from_scoring": false
+    },
+    {
+      "id": "other",
+      "name": "Other",
+      "assignment_rule": "Anyone else",
+      "form_field": null,
+      "form_match": null,
+      "weights": null,
+      "excluded_from_scoring": true
+    }
+  ]
+}
