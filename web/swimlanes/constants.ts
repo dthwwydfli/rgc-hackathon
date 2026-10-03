@@ -55,9 +55,5 @@ export const DEFAULT_STORE: StoreMeta = {
   postcode: "NW1 7JN",
 };
 
-/** Caveats that only restate the dropped US/London source line. */
-export const SOURCE_CAVEAT_PATTERN =
-  /US households in 2017|London Tesco levels \(2015\)/i;
-
 export const BOARD_FIXTURE_URL = "./mock/swimlanes-board.json";
 export const RECOMMEND_FIXTURE_URL = "./mock/recommend-panel.json";

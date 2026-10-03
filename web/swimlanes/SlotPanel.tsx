@@ -24,7 +24,6 @@ import {
   Users,
   X,
 } from "lucide-react";
-import { SOURCE_CAVEAT_PATTERN } from "./constants";
 import { filterCategories } from "./load-board";
 import { suggestAction } from "./suggest-action";
 import type { RecommendPayload, StockRow, WeekThatDiffers } from "./types";
@@ -42,20 +41,6 @@ interface SlotPanelProps {
 
 function pct(n: number): string {
   return Math.round(Number(n) * 100) + "%";
-}
-
-function pickCaveat(payload: RecommendPayload): string | null {
-  const fromList = (payload.caveats || []).find(
-    (line) => line && !SOURCE_CAVEAT_PATTERN.test(line),
-  );
-  if (fromList) {
-    return fromList;
-  }
-  const volume = payload.basis?.volume;
-  if (volume && !SOURCE_CAVEAT_PATTERN.test(volume)) {
-    return volume;
-  }
-  return null;
 }
 
 function WeekNumber({ n }: { n: number }) {
@@ -424,7 +409,6 @@ export function SlotPanel({
   const differ = payload.weeks_that_differ || [];
   const weeks = payload.weeks || 12;
   const from = payload.from || "";
-  const caveat = pickCaveat(payload);
   const storeLabel = [
     store?.store_name || store?.fascia || "Store",
     store?.postcode,
@@ -600,12 +584,6 @@ export function SlotPanel({
             </div>
           </div>
 
-          {caveat ? (
-            <div className="swimlanes-caveat-bar">
-              <CircleAlert size={15} strokeWidth={2} aria-hidden="true" />
-              <span>{caveat}</span>
-            </div>
-          ) : null}
         </div>
       </div>
     </div>
