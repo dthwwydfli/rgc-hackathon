@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Menu } from "lucide-react";
 import {
   DEFAULT_STORE,
   FALLBACK_MOMENTS,
@@ -31,15 +30,11 @@ import type {
 import { WanderingEyes } from "./WanderingEyes";
 import "./swimlanes.css";
 
-interface SwimlanesScreenProps {
-  onToggleDrawer: () => void;
-}
-
 function cellKey(laneIndex: number, dayIndex: number): string {
   return `${laneIndex}-${dayIndex}`;
 }
 
-export function SwimlanesScreen({ onToggleDrawer }: SwimlanesScreenProps) {
+export function SwimlanesScreen() {
   const [moments, setMoments] = useState<SwimlaneMoment[]>(FALLBACK_MOMENTS);
   const [store, setStore] = useState<StoreMeta>(DEFAULT_STORE);
   const [boardFixture, setBoardFixture] = useState<BoardFixture | null>(null);
@@ -221,14 +216,6 @@ export function SwimlanesScreen({ onToggleDrawer }: SwimlanesScreenProps) {
     <div className="swimlanes">
       <header className="swimlanes-header">
         <div className="swimlanes-brand-cluster">
-          <button
-            type="button"
-            className="swimlanes-menu"
-            aria-label="Main menu"
-            onClick={onToggleDrawer}
-          >
-            <Menu size={22} strokeWidth={1.75} aria-hidden="true" />
-          </button>
           <div className="swimlanes-brand">Moments</div>
           <div className="swimlanes-week-nav">
             <button
