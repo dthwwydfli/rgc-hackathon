@@ -1,0 +1,90 @@
+{
+ "store": "The Bread Basket, Edinburgh",
+ "train_days": 130,
+ "holdout_days": 28,
+ "missing_days_in_period": 4,
+ "rows_scored": 3640,
+ "categories": [
+  "bread & bagel",
+  "cake, cookie & pastry",
+  "coffee",
+  "confectionery",
+  "eggs",
+  "hot meal",
+  "juice & fruit drink",
+  "milk & dairy drink",
+  "sandwich & wrap",
+  "soft drink",
+  "soup",
+  "tea",
+  "water"
+ ],
+ "units_in_holdout": 3227,
+ "model": {
+  "backend": "tabicl",
+  "version": "2.2.0"
+ },
+ "context_rows": 6000,
+ "overall": {
+  "last week": {
+   "mae": 0.777,
+   "wape": 0.876
+  },
+  "4-week mean": {
+   "mae": 0.657,
+   "wape": 0.741
+  },
+  "US moments x 1 number per category": {
+   "mae": 0.815,
+   "wape": 0.92
+  },
+  "in-context model (tabicl)": {
+   "mae": 0.633,
+   "wape": 0.714
+  }
+ },
+ "by_moment": {
+  "afternoon focus": {
+   "last week": 0.965,
+   "4-week mean": 0.801,
+   "US moments x 1 number per category": 0.811,
+   "in-context model (tabicl)": 0.772
+  },
+  "early / rush": {
+   "last week": 0.825,
+   "4-week mean": 0.732,
+   "US moments x 1 number per category": 1.642,
+   "in-context model (tabicl)": 0.701
+  },
+  "mid-morning": {
+   "last week": 0.762,
+   "4-week mean": 0.626,
+   "US moments x 1 number per category": 0.687,
+   "in-context model (tabicl)": 0.592
+  },
+  "quick lunch": {
+   "last week": 0.86,
+   "4-week mean": 0.74,
+   "US moments x 1 number per category": 0.765,
+   "in-context model (tabicl)": 0.725
+  },
+  "social evening": {
+   "last week": 2.105,
+   "4-week mean": 1.605,
+   "US moments x 1 number per category": 4.759,
+   "in-context model (tabicl)": 1.713
+  },
+  "weekday evening": {
+   "last week": 1.349,
+   "4-week mean": 1.378,
+   "US moments x 1 number per category": 2.488,
+   "in-context model (tabicl)": 1.263
+  }
+ },
+ "daily_total_wape": {
+  "last week": 0.178,
+  "4-week mean": 0.158,
+  "US moments x 1 number per category": 0.246,
+  "in-context model (tabicl)": 0.134
+ }
+}

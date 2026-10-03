@@ -1,0 +1,121 @@
+{
+ "profile_weeks": [
+  1,
+  2,
+  5,
+  6,
+  7,
+  10,
+  12,
+  15,
+  22,
+  24
+ ],
+ "test_weeks": [
+  27,
+  32,
+  36,
+  41,
+  42,
+  44,
+  45,
+  49
+ ],
+ "households": 1569,
+ "test_households": 457,
+ "trips_in_test_weeks": 16754,
+ "context_rows": 3000,
+ "persona_sizes_in_profile_weeks": {
+  "The Comparison Expert": 137,
+  "The Bargain Hunter": 122,
+  "The Impulse Buyer": 114,
+  "The Value Optimizer": 114,
+  "The Mission Shopper": 111,
+  "The Decisive Alpha": 106,
+  "The Gift-Giver Archetype": 106,
+  "The Seasonal Splurger": 105,
+  "The Ethical Consumer": 104,
+  "The Humanistic Connector": 102,
+  "The Methodical Perfectionist": 97,
+  "The Luxury Loyalist": 95,
+  "The Bulk Buyer": 89,
+  "The Spontaneous Adventurer": 86,
+  "The Habitual Creature": 81
+ },
+ "auc": {
+  "alcohol": {
+   "demographics": 0.602,
+   "when only": 0.563,
+   "named persona (1 of 15) + when": 0.571,
+   "data-driven clusters (1 of 28) + when": 0.573,
+   "scores on all 15 personas + when": 0.604,
+   "when + mission": 0.565,
+   "named persona + when + mission": 0.583,
+   "scores on all 15 personas + when + mission": 0.615
+  },
+  "fresh produce": {
+   "demographics": 0.519,
+   "when only": 0.558,
+   "named persona (1 of 15) + when": 0.6,
+   "data-driven clusters (1 of 28) + when": 0.636,
+   "scores on all 15 personas + when": 0.676,
+   "when + mission": 0.796,
+   "named persona + when + mission": 0.793,
+   "scores on all 15 personas + when + mission": 0.823
+  },
+  "snacks & confectionery": {
+   "demographics": 0.436,
+   "when only": 0.539,
+   "named persona (1 of 15) + when": 0.571,
+   "data-driven clusters (1 of 28) + when": 0.591,
+   "scores on all 15 personas + when": 0.619,
+   "when + mission": 0.695,
+   "named persona + when + mission": 0.704,
+   "scores on all 15 personas + when + mission": 0.71
+  },
+  "ready meals & deli": {
+   "demographics": 0.512,
+   "when only": 0.528,
+   "named persona (1 of 15) + when": 0.553,
+   "data-driven clusters (1 of 28) + when": 0.591,
+   "scores on all 15 personas + when": 0.606,
+   "when + mission": 0.73,
+   "named persona + when + mission": 0.726,
+   "scores on all 15 personas + when + mission": 0.754
+  },
+  "meat & fish": {
+   "demographics": 0.537,
+   "when only": 0.574,
+   "named persona (1 of 15) + when": 0.575,
+   "data-driven clusters (1 of 28) + when": 0.617,
+   "scores on all 15 personas + when": 0.627,
+   "when + mission": 0.786,
+   "named persona + when + mission": 0.791,
+   "scores on all 15 personas + when + mission": 0.78
+  },
+  "drinks": {
+   "demographics": 0.538,
+   "when only": 0.525,
+   "named persona (1 of 15) + when": 0.495,
+   "data-driven clusters (1 of 28) + when": 0.533,
+   "scores on all 15 personas + when": 0.557,
+   "when + mission": 0.674,
+   "named persona + when + mission": 0.675,
+   "scores on all 15 personas + when + mission": 0.679
+  }
+ },
+ "mean_auc": {
+  "demographics": 0.524,
+  "when only": 0.548,
+  "named persona (1 of 15) + when": 0.561,
+  "data-driven clusters (1 of 28) + when": 0.59,
+  "scores on all 15 personas + when": 0.615,
+  "when + mission": 0.708,
+  "named persona + when + mission": 0.712,
+  "scores on all 15 personas + when + mission": 0.727
+ },
+ "model": {
+  "backend": "tabicl",
+  "version": "2.2.0"
+ }
+}

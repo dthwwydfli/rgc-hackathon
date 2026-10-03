@@ -1,0 +1,75 @@
+{
+ "tesco_stores_simulated": 522,
+ "simulations": 1044,
+ "neighbourhoods": 983,
+ "held_out_neighbourhoods": 293,
+ "held_out_with_no_tesco_within_3km": 1,
+ "fitted_on_months": [
+  "Jan",
+  "Apr",
+  "Jul"
+ ],
+ "scored_on_months": [
+  "Oct",
+  "Dec"
+ ],
+ "categories_compared": 16,
+ "basket mix per held-out neighbourhood (16 category shares)": {
+  "engine": {
+   "mean_correlation": 0.973,
+   "mean_gap_share_points": 1.08
+  },
+  "engine before level calibration": {
+   "mean_correlation": 0.926,
+   "mean_gap_share_points": 1.5
+  },
+  "baseline: every neighbourhood gets the London average": {
+   "mean_correlation": 0.986,
+   "mean_gap_share_points": 0.79
+  },
+  "baseline: the US panel's basket, no UK data": {
+   "mean_correlation": 0.746,
+   "mean_gap_share_points": 3.32
+  }
+ },
+ "differences between held-out neighbourhoods (rank correlation per category)": {
+  "engine": {
+   "mean": 0.4,
+   "positive_categories": 15,
+   "per_category": {
+    "beer": 0.365,
+    "dairy": 0.412,
+    "eggs": 0.504,
+    "fats_oils": 0.276,
+    "fish": 0.475,
+    "fruit_veg": 0.139,
+    "grains": 0.729,
+    "meat_red": 0.522,
+    "poultry": 0.373,
+    "readymade": 0.692,
+    "soft_drinks": 0.398,
+    "spirits": -0.108,
+    "sweets": 0.385,
+    "tea_coffee": 0.295,
+    "water": 0.416,
+    "wine": 0.531
+   }
+  },
+  "neighbourhood model alone, before stores and catchments": 0.64,
+  "baseline: London average": 0.0
+ },
+ "volume: Tesco trips a year by residents of each neighbourhood": {
+  "rank_correlation_all": 0.325,
+  "rank_correlation_held_out": 0.267,
+  "note": "rank only: the Tesco file counts item-level Clubcard records, not baskets, so totals are not comparable; catchment settings were chosen on Tesco penetration in all areas"
+ },
+ "store volumes simulated (units a week, Tesco stores)": {
+  "median_units": 5255,
+  "by_format": {
+   "convenience": 4516.0,
+   "small supermarket": 19808.0,
+   "supermarket": 224540.0,
+   "superstore": 359474.0
+  }
+ }
+}

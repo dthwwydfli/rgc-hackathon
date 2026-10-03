@@ -1,0 +1,101 @@
+{
+ "auc": {
+  "alcohol": {
+   "base": 0.105,
+   "demographics (5 fields)": 0.471,
+   "when and where": 0.584,
+   "behavioural persona (1 of 28)": 0.678,
+   "behavioural persona + when and where": 0.706,
+   "own history + when and where": 0.818
+  },
+  "drinks": {
+   "base": 0.463,
+   "demographics (5 fields)": 0.555,
+   "when and where": 0.502,
+   "behavioural persona (1 of 28)": 0.627,
+   "behavioural persona + when and where": 0.625,
+   "own history + when and where": 0.691
+  },
+  "breakfast & hot drinks": {
+   "base": 0.287,
+   "demographics (5 fields)": 0.512,
+   "when and where": 0.495,
+   "behavioural persona (1 of 28)": 0.635,
+   "behavioural persona + when and where": 0.633,
+   "own history + when and where": 0.659
+  },
+  "snacks & confectionery": {
+   "base": 0.408,
+   "demographics (5 fields)": 0.524,
+   "when and where": 0.531,
+   "behavioural persona (1 of 28)": 0.593,
+   "behavioural persona + when and where": 0.587,
+   "own history + when and where": 0.648
+  },
+  "bakery": {
+   "base": 0.409,
+   "demographics (5 fields)": 0.533,
+   "when and where": 0.54,
+   "behavioural persona (1 of 28)": 0.658,
+   "behavioural persona + when and where": 0.659,
+   "own history + when and where": 0.683
+  },
+  "ready meals & deli": {
+   "base": 0.44,
+   "demographics (5 fields)": 0.494,
+   "when and where": 0.529,
+   "behavioural persona (1 of 28)": 0.604,
+   "behavioural persona + when and where": 0.606,
+   "own history + when and where": 0.646
+  },
+  "dairy & eggs": {
+   "base": 0.492,
+   "demographics (5 fields)": 0.518,
+   "when and where": 0.513,
+   "behavioural persona (1 of 28)": 0.658,
+   "behavioural persona + when and where": 0.66,
+   "own history + when and where": 0.674
+  },
+  "meat & fish": {
+   "base": 0.386,
+   "demographics (5 fields)": 0.5,
+   "when and where": 0.509,
+   "behavioural persona (1 of 28)": 0.638,
+   "behavioural persona + when and where": 0.632,
+   "own history + when and where": 0.665
+  },
+  "fresh produce": {
+   "base": 0.401,
+   "demographics (5 fields)": 0.547,
+   "when and where": 0.557,
+   "behavioural persona (1 of 28)": 0.68,
+   "behavioural persona + when and where": 0.686,
+   "own history + when and where": 0.715
+  },
+  "store cupboard": {
+   "base": 0.426,
+   "demographics (5 fields)": 0.468,
+   "when and where": 0.539,
+   "behavioural persona (1 of 28)": 0.647,
+   "behavioural persona + when and where": 0.636,
+   "own history + when and where": 0.673
+  },
+  "small_basket": {
+   "base": 0.523,
+   "demographics (5 fields)": 0.551,
+   "when and where": 0.53,
+   "behavioural persona (1 of 28)": 0.704,
+   "behavioural persona + when and where": 0.709,
+   "own history + when and where": 0.717
+  }
+ },
+ "mean": {
+  "demographics (5 fields)": 0.516,
+  "when and where": 0.53,
+  "behavioural persona (1 of 28)": 0.647,
+  "behavioural persona + when and where": 0.649,
+  "own history + when and where": 0.69
+ },
+ "households": 1655,
+ "test_households": 495
+}

@@ -1,0 +1,31 @@
+{
+ "stores": 2059,
+ "areas": 983,
+ "beta": 2.0,
+ "max_km": 3.0,
+ "check": "share of each area's trips the model sends to Tesco stores vs Tesco's real Clubcard penetration there",
+ "spearman_r": 0.397,
+ "baskets_per_day_by_format": {
+  "convenience": {
+   "25%": 173.0,
+   "50%": 247.0,
+   "75%": 360.0
+  },
+  "small supermarket": {
+   "25%": 762.0,
+   "50%": 1014.0,
+   "75%": 1381.0
+  },
+  "supermarket": {
+   "25%": 1716.0,
+   "50%": 1981.0,
+   "75%": 2441.0
+  },
+  "superstore": {
+   "25%": 2468.0,
+   "50%": 3207.0,
+   "75%": 3937.0
+  }
+ },
+ "median_share_of_shoppers_from_own_area": 0.273
+}

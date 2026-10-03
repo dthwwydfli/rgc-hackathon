@@ -1,0 +1,69 @@
+{
+ "data": "dunnhumby The Complete Journey, all panel stores",
+ "train_days": 302,
+ "holdout_days": 56,
+ "cells_scored": 3360,
+ "units_in_holdout": 179333,
+ "context_rows": 6000,
+ "model": {
+  "backend": "tabicl",
+  "version": "2.2.0"
+ },
+ "overall": {
+  "last week": 0.392,
+  "4-week mean": 0.31,
+  "in-context model (tabicl)": 0.291,
+  "in-context model + calendar flags (tabicl)": 0.285
+ },
+ "holiday_and_pre_holiday_days": {
+  "days": 11,
+  "last week": 0.532,
+  "4-week mean": 0.472,
+  "in-context model (tabicl)": 0.471,
+  "in-context model + calendar flags (tabicl)": 0.451
+ },
+ "by_moment": {
+  "afternoon focus": {
+   "last week": 0.374,
+   "4-week mean": 0.297,
+   "in-context model (tabicl)": 0.271,
+   "in-context model + calendar flags (tabicl)": 0.262
+  },
+  "early / rush": {
+   "last week": 0.601,
+   "4-week mean": 0.473,
+   "in-context model (tabicl)": 0.413,
+   "in-context model + calendar flags (tabicl)": 0.416
+  },
+  "late night": {
+   "last week": 0.582,
+   "4-week mean": 0.48,
+   "in-context model (tabicl)": 0.478,
+   "in-context model + calendar flags (tabicl)": 0.472
+  },
+  "mid-morning": {
+   "last week": 0.452,
+   "4-week mean": 0.353,
+   "in-context model (tabicl)": 0.328,
+   "in-context model + calendar flags (tabicl)": 0.32
+  },
+  "quick lunch": {
+   "last week": 0.379,
+   "4-week mean": 0.294,
+   "in-context model (tabicl)": 0.286,
+   "in-context model + calendar flags (tabicl)": 0.3
+  },
+  "social evening": {
+   "last week": 0.3,
+   "4-week mean": 0.241,
+   "in-context model (tabicl)": 0.236,
+   "in-context model + calendar flags (tabicl)": 0.228
+  },
+  "weekday evening": {
+   "last week": 0.348,
+   "4-week mean": 0.27,
+   "in-context model (tabicl)": 0.251,
+   "in-context model + calendar flags (tabicl)": 0.236
+  }
+ }
+}

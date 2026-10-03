@@ -1,0 +1,219 @@
+{
+ "source": "dunnhumby Let's Get Sort-of-Real, 50,000-customer sample (synthetic)",
+ "profile_weeks": [
+  "200610",
+  "200616",
+  "200622",
+  "200628",
+  "200634",
+  "200640",
+  "200646",
+  "200652",
+  "200706",
+  "200712"
+ ],
+ "test_weeks": [
+  "200724",
+  "200732",
+  "200740",
+  "200748",
+  "200804",
+  "200812"
+ ],
+ "customers_profiled": 21100,
+ "trips_profile_weeks": 295166,
+ "trips_test_weeks": 160033,
+ "test_customers": 6330,
+ "persona_sizes": {
+  "The Luxury Loyalist": 2723,
+  "The Bargain Hunter": 2647,
+  "The Comparison Expert": 2558,
+  "The Mission Shopper": 2270,
+  "The Value Optimizer": 2080,
+  "The Decisive Alpha": 2030,
+  "The Spontaneous Adventurer": 1922,
+  "The Methodical Perfectionist": 1690,
+  "The Bulk Buyer": 1611,
+  "The Habitual Creature": 1569
+ },
+ "format_share_of_trips": {
+  "supermarket": 0.595,
+  "small supermarket": 0.238,
+  "convenience": 0.089,
+  "superstore": 0.078
+ },
+ "format_lift_by_persona": {
+  "The Bargain Hunter": {
+   "convenience": 0.981,
+   "small supermarket": 1.026,
+   "supermarket": 0.997,
+   "superstore": 0.968
+  },
+  "The Bulk Buyer": {
+   "convenience": 0.5,
+   "small supermarket": 0.72,
+   "supermarket": 1.156,
+   "superstore": 1.234
+  },
+  "The Comparison Expert": {
+   "convenience": 1.11,
+   "small supermarket": 0.861,
+   "supermarket": 1.023,
+   "superstore": 1.118
+  },
+  "The Decisive Alpha": {
+   "convenience": 1.3,
+   "small supermarket": 1.132,
+   "supermarket": 0.924,
+   "superstore": 0.831
+  },
+  "The Habitual Creature": {
+   "convenience": 0.674,
+   "small supermarket": 0.951,
+   "supermarket": 1.076,
+   "superstore": 0.945
+  },
+  "The Luxury Loyalist": {
+   "convenience": 0.853,
+   "small supermarket": 0.901,
+   "supermarket": 1.066,
+   "superstore": 0.965
+  },
+  "The Methodical Perfectionist": {
+   "convenience": 0.941,
+   "small supermarket": 1.002,
+   "supermarket": 0.998,
+   "superstore": 1.074
+  },
+  "The Mission Shopper": {
+   "convenience": 1.301,
+   "small supermarket": 1.243,
+   "supermarket": 0.88,
+   "superstore": 0.828
+  },
+  "The Spontaneous Adventurer": {
+   "convenience": 0.863,
+   "small supermarket": 0.937,
+   "supermarket": 1.026,
+   "superstore": 1.15
+  },
+  "The Value Optimizer": {
+   "convenience": 0.714,
+   "small supermarket": 0.794,
+   "supermarket": 1.084,
+   "superstore": 1.315
+  }
+ },
+ "peak_hour_by_persona_and_format": {
+  "The Bargain Hunter": {
+   "convenience": 14,
+   "small supermarket": 14,
+   "supermarket": 21,
+   "superstore": 14
+  },
+  "The Bulk Buyer": {
+   "convenience": 15,
+   "small supermarket": 15,
+   "supermarket": 13,
+   "superstore": 14
+  },
+  "The Comparison Expert": {
+   "convenience": 15,
+   "small supermarket": 14,
+   "supermarket": 21,
+   "superstore": 21
+  },
+  "The Decisive Alpha": {
+   "convenience": 13,
+   "small supermarket": 13,
+   "supermarket": 13,
+   "superstore": 17
+  },
+  "The Habitual Creature": {
+   "convenience": 12,
+   "small supermarket": 13,
+   "supermarket": 13,
+   "superstore": 14
+  },
+  "The Luxury Loyalist": {
+   "convenience": 14,
+   "small supermarket": 14,
+   "supermarket": 14,
+   "superstore": 15
+  },
+  "The Methodical Perfectionist": {
+   "convenience": 14,
+   "small supermarket": 14,
+   "supermarket": 14,
+   "superstore": 21
+  },
+  "The Mission Shopper": {
+   "convenience": 13,
+   "small supermarket": 13,
+   "supermarket": 14,
+   "superstore": 12
+  },
+  "The Spontaneous Adventurer": {
+   "convenience": 16,
+   "small supermarket": 21,
+   "supermarket": 21,
+   "superstore": 21
+  },
+  "The Value Optimizer": {
+   "convenience": 14,
+   "small supermarket": 14,
+   "supermarket": 21,
+   "superstore": 21
+  }
+ },
+ "basket_type_by_format": {
+  "supermarket": {
+   "Full Shop": 0.134,
+   "Small Shop": 0.514,
+   "Top Up": 0.343,
+   "XX": 0.009
+  },
+  "small supermarket": {
+   "Full Shop": 0.09,
+   "Small Shop": 0.601,
+   "Top Up": 0.297,
+   "XX": 0.012
+  },
+  "convenience": {
+   "Full Shop": 0.053,
+   "Small Shop": 0.687,
+   "Top Up": 0.244,
+   "XX": 0.016
+  },
+  "superstore": {
+   "Full Shop": 0.15,
+   "Small Shop": 0.501,
+   "Top Up": 0.339,
+   "XX": 0.009
+  }
+ },
+ "auc_unseen_customers_later_weeks": {
+  "trip is at a convenience or small store": {
+   "base_rate": 0.342,
+   "when only": 0.518,
+   "named persona + when": 0.534,
+   "scores on all 10 personas + when": 0.568
+  },
+  "trip is a full shop": {
+   "base_rate": 0.111,
+   "when only": 0.499,
+   "named persona + when": 0.684,
+   "scores on all 10 personas + when": 0.763
+  },
+  "trip is in the evening": {
+   "base_rate": 0.31,
+   "when only": 0.483,
+   "named persona + when": 0.526,
+   "scores on all 10 personas + when": 0.559
+  }
+ },
+ "model": {
+  "backend": "tabicl",
+  "version": "2.2.0"
+ }
+}

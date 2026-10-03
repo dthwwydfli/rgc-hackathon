@@ -1,0 +1,112 @@
+{
+ "uk_share": {
+  "The Bargain Hunter": 0.533,
+  "The Value Optimizer": 0.459,
+  "The Ethical Consumer": 0.126,
+  "The Impulse Buyer": 0.16,
+  "The Methodical Perfectionist": 0.196,
+  "The Humanistic Connector": 0.047,
+  "The Decisive Alpha": 0.074,
+  "The Digital-First Shopper": 0.532,
+  "The Tech Innovator": 0.181,
+  "The Trend Follower": 0.065,
+  "The Skeptical Critic": 0.159,
+  "The Community Advocate": 0.232
+ },
+ "london_region_code": 9,
+ "eval": {
+  "The Bargain Hunter": {
+   "asked": 5823,
+   "uk_share": 0.533,
+   "auc": 0.515
+  },
+  "The Value Optimizer": {
+   "asked": 5823,
+   "uk_share": 0.459,
+   "auc": 0.588
+  },
+  "The Ethical Consumer": {
+   "asked": 5823,
+   "uk_share": 0.126,
+   "auc": 0.57
+  },
+  "The Impulse Buyer": {
+   "asked": 713,
+   "uk_share": 0.16,
+   "auc": 0.503
+  },
+  "The Methodical Perfectionist": {
+   "asked": 3601,
+   "uk_share": 0.196,
+   "auc": 0.518
+  },
+  "The Humanistic Connector": {
+   "asked": 5823,
+   "uk_share": 0.047,
+   "auc": 0.531
+  },
+  "The Decisive Alpha": {
+   "asked": 5823,
+   "uk_share": 0.074,
+   "auc": 0.564
+  },
+  "The Digital-First Shopper": {
+   "asked": 3836,
+   "uk_share": 0.532,
+   "auc": 0.84
+  },
+  "The Tech Innovator": {
+   "asked": 3836,
+   "uk_share": 0.181,
+   "auc": 0.724
+  },
+  "The Trend Follower": {
+   "asked": 3836,
+   "uk_share": 0.065,
+   "auc": 0.732
+  },
+  "The Skeptical Critic": {
+   "asked": 5329,
+   "uk_share": 0.159,
+   "auc": 0.537
+  },
+  "The Community Advocate": {
+   "asked": 3836,
+   "uk_share": 0.232,
+   "auc": 0.616
+  }
+ },
+ "meaning": {
+  "The Bargain Hunter": "price or value for money is most important when choosing food",
+  "The Value Optimizer": "quality is most important",
+  "The Ethical Consumer": "ethics, eco-friendliness or farming methods are most important",
+  "The Impulse Buyer": "bought on impulse because of a promotion in the last two weeks",
+  "The Methodical Perfectionist": "checks ingredients and nutrition information always or most of the time",
+  "The Humanistic Connector": "trust in the supplier is most important",
+  "The Decisive Alpha": "convenience is most important",
+  "The Digital-First Shopper": "has ordered food through a delivery app",
+  "The Tech Innovator": "has used a food-sharing app such as Too Good To Go",
+  "The Trend Follower": "has ordered food through social media",
+  "The Skeptical Critic": "not confident in the food supply chain",
+  "The Community Advocate": "started buying locally produced food in the last year"
+ },
+ "in_till_data": {
+  "The Bargain Hunter": true,
+  "The Value Optimizer": true,
+  "The Ethical Consumer": true,
+  "The Impulse Buyer": true,
+  "The Methodical Perfectionist": true,
+  "The Humanistic Connector": true,
+  "The Decisive Alpha": true,
+  "The Digital-First Shopper": false,
+  "The Tech Innovator": false,
+  "The Trend Follower": false,
+  "The Skeptical Critic": false,
+  "The Community Advocate": false
+ },
+ "model": {
+  "backend": "tabicl",
+  "version": "2.2.0"
+ },
+ "note": "deprivation quintile is the neighbourhood's rank within London on income deprivation, used against the survey's national quintile"
+}

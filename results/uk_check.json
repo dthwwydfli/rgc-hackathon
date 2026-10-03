@@ -1,0 +1,135 @@
+{
+ "A": {
+  "pearson": 0.629,
+  "spearman": 0.659,
+  "table": [
+   {
+    "index": "beer",
+    "us_panel": 0.008,
+    "tesco_london": 0.014,
+    "ratio_uk_to_us": 1.75
+   },
+   {
+    "index": "dairy",
+    "us_panel": 0.115,
+    "tesco_london": 0.104,
+    "ratio_uk_to_us": 0.9
+   },
+   {
+    "index": "eggs",
+    "us_panel": 0.013,
+    "tesco_london": 0.011,
+    "ratio_uk_to_us": 0.85
+   },
+   {
+    "index": "fats_oils",
+    "us_panel": 0.009,
+    "tesco_london": 0.029,
+    "ratio_uk_to_us": 3.22
+   },
+   {
+    "index": "fish",
+    "us_panel": 0.012,
+    "tesco_london": 0.021,
+    "ratio_uk_to_us": 1.75
+   },
+   {
+    "index": "fruit_veg",
+    "us_panel": 0.132,
+    "tesco_london": 0.276,
+    "ratio_uk_to_us": 2.09
+   },
+   {
+    "index": "grains",
+    "us_panel": 0.106,
+    "tesco_london": 0.151,
+    "ratio_uk_to_us": 1.42
+   },
+   {
+    "index": "meat_red",
+    "us_panel": 0.076,
+    "tesco_london": 0.047,
+    "ratio_uk_to_us": 0.62
+   },
+   {
+    "index": "poultry",
+    "us_panel": 0.01,
+    "tesco_london": 0.02,
+    "ratio_uk_to_us": 2.0
+   },
+   {
+    "index": "readymade",
+    "us_panel": 0.143,
+    "tesco_london": 0.062,
+    "ratio_uk_to_us": 0.43
+   },
+   {
+    "index": "sauces",
+    "us_panel": 0.144,
+    "tesco_london": 0.014,
+    "ratio_uk_to_us": 0.1
+   },
+   {
+    "index": "soft_drinks",
+    "us_panel": 0.096,
+    "tesco_london": 0.031,
+    "ratio_uk_to_us": 0.32
+   },
+   {
+    "index": "spirits",
+    "us_panel": 0.001,
+    "tesco_london": 0.003,
+    "ratio_uk_to_us": 3.0
+   },
+   {
+    "index": "sweets",
+    "us_panel": 0.112,
+    "tesco_london": 0.163,
+    "ratio_uk_to_us": 1.46
+   },
+   {
+    "index": "tea_coffee",
+    "us_panel": 0.009,
+    "tesco_london": 0.006,
+    "ratio_uk_to_us": 0.67
+   },
+   {
+    "index": "water",
+    "us_panel": 0.01,
+    "tesco_london": 0.032,
+    "ratio_uk_to_us": 3.2
+   },
+   {
+    "index": "wine",
+    "us_panel": 0.004,
+    "tesco_london": 0.016,
+    "ratio_uk_to_us": 4.0
+   }
+  ]
+ },
+ "B": {
+  "per_category": {
+   "beer": 0.329,
+   "dairy": -0.144,
+   "eggs": -0.369,
+   "fats_oils": -0.316,
+   "fish": -0.163,
+   "fruit_veg": 0.034,
+   "grains": 0.155,
+   "meat_red": 0.243,
+   "poultry": -0.137,
+   "readymade": -0.352,
+   "sauces": -0.172,
+   "soft_drinks": 0.262,
+   "spirits": -0.199,
+   "sweets": -0.089,
+   "tea_coffee": -0.039,
+   "water": 0.437,
+   "wine": 0.535
+  },
+  "mean": 0.001,
+  "areas": 983,
+  "actual_spread": 0.225,
+  "predicted_spread": 0.0041
+ }
+}

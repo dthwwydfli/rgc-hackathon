@@ -1,0 +1,182 @@
+{
+ "train_weeks": "1-40",
+ "test_weeks": [
+  42,
+  44,
+  46,
+  47,
+  50,
+  52
+ ],
+ "test_days": 42,
+ "holiday_or_pre_holiday_days": 3,
+ "households": 1838,
+ "persona_sizes": {
+  "The Value Optimizer": 157,
+  "The Comparison Expert": 157,
+  "The Gift-Giver Archetype": 136,
+  "The Impulse Buyer": 135,
+  "The Seasonal Splurger": 131,
+  "The Bargain Hunter": 129,
+  "The Ethical Consumer": 125,
+  "The Mission Shopper": 120,
+  "The Methodical Perfectionist": 117,
+  "The Humanistic Connector": 114,
+  "The Decisive Alpha": 112,
+  "The Spontaneous Adventurer": 110,
+  "The Bulk Buyer": 102,
+  "The Habitual Creature": 100,
+  "The Luxury Loyalist": 93
+ },
+ "lines_in_test_weeks": 126592,
+ "model": {
+  "backend": "tabicl",
+  "version": "2.2.0"
+ },
+ "calendar_uplift_learned": {
+  "pre_holiday": 1.064,
+  "holiday": 1.09
+ },
+ "total_units": {
+  "predicted": 127435,
+  "actual": 126592,
+  "ratio": 1.007
+ },
+ "total_trips": {
+  "predicted": 13861,
+  "actual": 13446,
+  "ratio": 1.031
+ },
+ "when: trips by persona and hour": {
+  "cells": 255,
+  "error_share": 0.169,
+  "correlation": 0.949
+ },
+ "when: trips by hour, all personas": {
+  "error_share": 0.058,
+  "correlation": 0.989
+ },
+ "what: units by persona, moment and category": {
+  "cells": 3570,
+  "model": {
+   "error_share": 0.256,
+   "correlation": 0.944
+  },
+  "baseline: each persona buys the average mix": {
+   "error_share": 0.383,
+   "correlation": 0.821
+  },
+  "baseline: the persona's own average from weeks 1-40": {
+   "error_share": 0.249,
+   "correlation": 0.949
+  }
+ },
+ "by persona": {
+  "The Bargain Hunter": {
+   "units": 10830,
+   "predicted": 11653,
+   "category_mix_correlation": 0.976,
+   "lift_correlation": 0.711
+  },
+  "The Bulk Buyer": {
+   "units": 10075,
+   "predicted": 10121,
+   "category_mix_correlation": 0.988,
+   "lift_correlation": 0.851
+  },
+  "The Comparison Expert": {
+   "units": 12539,
+   "predicted": 13942,
+   "category_mix_correlation": 0.988,
+   "lift_correlation": 0.713
+  },
+  "The Decisive Alpha": {
+   "units": 5236,
+   "predicted": 4491,
+   "category_mix_correlation": 0.987,
+   "lift_correlation": 0.644
+  },
+  "The Ethical Consumer": {
+   "units": 9150,
+   "predicted": 8380,
+   "category_mix_correlation": 0.972,
+   "lift_correlation": 0.917
+  },
+  "The Gift-Giver Archetype": {
+   "units": 8837,
+   "predicted": 7162,
+   "category_mix_correlation": 0.983,
+   "lift_correlation": 0.796
+  },
+  "The Habitual Creature": {
+   "units": 11083,
+   "predicted": 11198,
+   "category_mix_correlation": 0.985,
+   "lift_correlation": 0.754
+  },
+  "The Humanistic Connector": {
+   "units": 6695,
+   "predicted": 7029,
+   "category_mix_correlation": 0.977,
+   "lift_correlation": 0.978
+  },
+  "The Impulse Buyer": {
+   "units": 9985,
+   "predicted": 10544,
+   "category_mix_correlation": 0.991,
+   "lift_correlation": 0.883
+  },
+  "The Luxury Loyalist": {
+   "units": 5327,
+   "predicted": 5293,
+   "category_mix_correlation": 0.986,
+   "lift_correlation": 0.819
+  },
+  "The Methodical Perfectionist": {
+   "units": 6589,
+   "predicted": 6679,
+   "category_mix_correlation": 0.989,
+   "lift_correlation": 0.895
+  },
+  "The Mission Shopper": {
+   "units": 10847,
+   "predicted": 12710,
+   "category_mix_correlation": 0.947,
+   "lift_correlation": 0.804
+  },
+  "The Seasonal Splurger": {
+   "units": 6353,
+   "predicted": 6354,
+   "category_mix_correlation": 0.983,
+   "lift_correlation": 0.592
+  },
+  "The Spontaneous Adventurer": {
+   "units": 3523,
+   "predicted": 2898,
+   "category_mix_correlation": 0.979,
+   "lift_correlation": 0.641
+  },
+  "The Value Optimizer": {
+   "units": 9523,
+   "predicted": 8973,
+   "category_mix_correlation": 0.986,
+   "lift_correlation": 0.85
+  }
+ },
+ "day by day: units by date, moment and product group": {
+  "cells": 2520,
+  "persona model (knows nothing after week 40)": 0.256,
+  "same weekday last week": 0.313,
+  "mean of last 4 weeks": 0.251,
+  "holiday days": {
+   "days": 3,
+   "persona model": 0.368,
+   "same weekday last week": 0.393,
+   "mean of last 4 weeks": 0.419
+  }
+ },
+ "day by day: total units per day": {
+  "persona model": 0.099,
+  "mean of last 4 weeks": 0.121
+ }
+}

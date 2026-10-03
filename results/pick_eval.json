@@ -1,0 +1,24 @@
+{
+ "n_train_items": 26036,
+ "n_test_items": 3000,
+ "n_categories": 26,
+ "overall mix": {
+  "log_loss": 2.82,
+  "top1": 0.162,
+  "top3": 0.417
+ },
+ "moment only (hour x weekend table)": {
+  "log_loss": 2.725,
+  "top1": 0.19,
+  "top3": 0.435
+ },
+ "persona + moment (tabicl, 5000 context rows)": {
+  "log_loss": 2.701,
+  "top1": 0.202,
+  "top3": 0.443
+ },
+ "model": {
+  "backend": "tabicl",
+  "version": "2.2.0"
+ }
+}
