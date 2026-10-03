@@ -230,13 +230,6 @@ export function SwimlanesScreen({ onToggleDrawer }: SwimlanesScreenProps) {
             <Menu size={22} strokeWidth={1.75} aria-hidden="true" />
           </button>
           <div className="swimlanes-brand">Moments</div>
-          <button
-            type="button"
-            className="swimlanes-pill"
-            onClick={resetToThisWeek}
-          >
-            Today
-          </button>
           <div className="swimlanes-week-nav">
             <button
               type="button"
@@ -257,6 +250,13 @@ export function SwimlanesScreen({ onToggleDrawer }: SwimlanesScreenProps) {
           </div>
         </div>
         <div className="swimlanes-controls">
+          <button
+            type="button"
+            className="swimlanes-pill"
+            onClick={resetToThisWeek}
+          >
+            Today
+          </button>
           <div className="swimlanes-run-slot">
             {isRunning ? (
               <WanderingEyes />
