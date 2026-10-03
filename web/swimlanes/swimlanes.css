@@ -1,0 +1,896 @@
+.swimlanes {
+  --sl-bg: #f7f7f5;
+  --sl-card: #fff;
+  --sl-ink: var(--ink, #1d1d1d);
+  --sl-muted: var(--muted, #5b5b5b);
+  --sl-line: var(--line, rgba(29, 29, 29, 0.1));
+  --sl-lime: var(--action-lime, #b8f000);
+  --sl-green: var(--action-green, #22a651);
+  --sl-teal: var(--evidence-teal, #53cdc5);
+  --sl-indigo: var(--model-indigo, #6a6ae2);
+  --sl-purple: var(--risk-purple, #9c6dba);
+  --sl-label-w: 9.5rem;
+  --sl-header-h: 3.5rem;
+  --tone: var(--sl-lime);
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  font-family: var(--font-ui, Inter, Arial, sans-serif);
+  color: var(--sl-ink);
+  background: var(--sl-bg);
+}
+
+.swimlanes * {
+  box-sizing: border-box;
+}
+
+.swimlanes-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  height: var(--sl-header-h);
+  padding: 0 0.75rem 0 0.35rem;
+  flex-shrink: 0;
+  background: var(--sl-card);
+  border-bottom: 1px solid var(--sl-line);
+}
+
+.swimlanes-brand-cluster {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.swimlanes-menu {
+  display: inline-flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  color: var(--sl-ink);
+}
+
+.swimlanes-menu:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.swimlanes-brand {
+  font-family: var(--font-display, Helvetica, Arial, sans-serif);
+  font-size: 1.35rem;
+  letter-spacing: -0.05em;
+  font-weight: 500;
+}
+
+.swimlanes-week-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.swimlanes-week-arrow {
+  font: inherit;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid var(--sl-line);
+  background: #fff;
+  cursor: pointer;
+  color: var(--sl-ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.swimlanes-week-arrow:hover {
+  background: #f3f3f1;
+}
+
+.swimlanes-run-slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 4.5rem;
+  height: 2.25rem;
+}
+
+.swimlanes-controls {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.swimlanes-pill,
+.swimlanes-run {
+  font: inherit;
+  height: 2.25rem;
+  padding: 0 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--sl-line);
+  background: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 500;
+}
+
+.swimlanes-run {
+  background: var(--sl-lime);
+  border-color: color-mix(in srgb, var(--sl-lime) 70%, #000);
+}
+
+.swimlanes-run:hover:not(:disabled) {
+  filter: brightness(0.97);
+}
+
+.swimlanes-run:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.swimlanes-run svg {
+  width: 0.85rem;
+  height: 0.85rem;
+  fill: currentColor;
+}
+
+.swimlanes-main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+
+.swimlanes-board {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  background: var(--sl-card);
+  overflow: hidden;
+}
+
+.swimlanes-grid {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-template-columns: var(--sl-label-w) repeat(7, minmax(0, 1fr));
+}
+
+.swimlanes-corner,
+.swimlanes-day-head,
+.swimlanes-lane-label,
+.swimlanes-cell {
+  border-bottom: 1px solid var(--sl-line);
+  border-right: 1px solid var(--sl-line);
+  min-width: 0;
+  min-height: 0;
+}
+
+.swimlanes-corner {
+  background: var(--sl-card);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--sl-muted);
+  display: flex;
+  align-items: center;
+}
+
+.swimlanes-day-head {
+  padding: 0.35rem;
+  text-align: center;
+  background: #fafaf8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.swimlanes-day-head strong {
+  display: block;
+  font-family: var(--font-display, Helvetica, Arial, sans-serif);
+  font-size: 1.05rem;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+}
+
+.swimlanes-day-head span {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--sl-muted);
+}
+
+.swimlanes-day-head.is-today strong {
+  color: var(--sl-green);
+}
+
+.swimlanes-lane-label {
+  background: var(--sl-card);
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.15rem;
+  border-left: 3px solid var(--tone);
+}
+
+.swimlanes-lane-label strong {
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.swimlanes-lane-label em {
+  font-style: normal;
+  font-size: 0.7rem;
+  color: var(--sl-muted);
+}
+
+.swimlanes-cell {
+  padding: 0.3rem;
+  background: #fff;
+  display: flex;
+}
+
+.swimlanes-cell button {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  border: 0;
+  border-radius: 3px;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  padding: 0.45rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: color-mix(in srgb, var(--tone) var(--fill, 40%), transparent);
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.swimlanes-cell button.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.swimlanes-cell button:hover:not(.is-empty) {
+  outline: 1px solid color-mix(in srgb, var(--tone) 55%, #000);
+}
+
+.swimlanes-cell button.is-empty {
+  background: transparent;
+  cursor: default;
+  color: #ccc;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transform: none;
+}
+
+.swimlanes-sku {
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--sl-ink);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-transform: capitalize;
+}
+
+.swimlanes-wandering-eyes {
+  --duration: 10s;
+  --eye-color: color-mix(in srgb, var(--sl-green) 16%, transparent);
+  --pupil-color: var(--sl-green);
+  --eye-size: 0.95rem;
+  --eye-gap: 0.2rem;
+  --pupil-scale: 0.32;
+  --blink-scale: 0.375;
+  --travel-scale: 0.3125;
+  display: inline-flex;
+  aspect-ratio: 9 / 4;
+  width: 2.7rem;
+  height: 1.2rem;
+  align-items: center;
+  justify-content: center;
+  color: var(--sl-green);
+}
+
+.swimlanes-wandering-eyes-pair {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--eye-gap);
+}
+
+.swimlanes-wandering-eye {
+  display: inline-block;
+  width: var(--eye-size);
+  height: var(--eye-size);
+  border-radius: 999px;
+  background-color: var(--eye-color);
+  background-image: radial-gradient(
+    circle calc(var(--eye-size) * var(--pupil-scale)),
+    var(--pupil-color) 100%,
+    transparent 0
+  );
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  animation:
+    swimlanes-eyes-move var(--duration) infinite,
+    swimlanes-eyes-blink var(--duration) infinite;
+}
+
+@keyframes swimlanes-eyes-move {
+  0%, 10% { background-position: 0 0; }
+  13%, 40% {
+    background-position: calc(var(--eye-size) * var(--travel-scale) * -1) 0;
+  }
+  43%, 70% {
+    background-position: calc(var(--eye-size) * var(--travel-scale)) 0;
+  }
+  73%, 90% {
+    background-position: 0 calc(var(--eye-size) * var(--travel-scale));
+  }
+  93%, 100% { background-position: 0 0; }
+}
+
+@keyframes swimlanes-eyes-blink {
+  0%, 10%, 12%, 20%, 22%, 40%, 42%, 60%, 62%, 70%, 72%, 90%, 92%, 98%, 100% {
+    height: var(--eye-size);
+  }
+  11%, 21%, 41%, 61%, 71%, 91%, 99% {
+    height: calc(var(--eye-size) * var(--blink-scale));
+  }
+}
+
+.swimlanes-panel {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.swimlanes-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+
+.swimlanes-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(42rem, 100%);
+  height: min(85vh, 44rem);
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.swimlanes-dialog-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+}
+
+.swimlanes-dialog-head {
+  padding: 1rem 1.15rem 0.75rem;
+  border-bottom: 1px solid var(--sl-line);
+  flex-shrink: 0;
+}
+
+.swimlanes-dialog-head-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.swimlanes-dialog h2 {
+  margin: 0;
+  font-family: var(--font-display, Helvetica, Arial, sans-serif);
+  font-size: 1.35rem;
+  letter-spacing: -0.04em;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.swimlanes-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.85rem;
+  margin-top: 0.65rem;
+}
+
+.swimlanes-meta-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  color: var(--sl-muted);
+  max-width: 100%;
+}
+
+.swimlanes-meta-chip span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.swimlanes-close {
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--sl-muted);
+  flex-shrink: 0;
+}
+
+.swimlanes-close:hover {
+  background: #f3f3f1;
+}
+
+.swimlanes-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.25rem;
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid var(--sl-line);
+  flex-shrink: 0;
+  background: #fafaf8;
+}
+
+.swimlanes-tabs button {
+  font: inherit;
+  border: 0;
+  background: transparent;
+  border-radius: 0.4rem;
+  padding: 0.55rem 0.35rem;
+  cursor: pointer;
+  color: var(--sl-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.68rem;
+  font-weight: 500;
+}
+
+.swimlanes-tabs button[aria-selected="true"] {
+  background: #fff;
+  color: var(--sl-ink);
+  box-shadow: 0 0 0 1px var(--sl-line);
+}
+
+.swimlanes-tab-panels {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.swimlanes-tab-panel {
+  position: absolute;
+  inset: 0;
+  overflow: auto;
+  padding: 0.85rem 1.15rem 1.25rem;
+}
+
+.swimlanes-tab-panel[hidden] {
+  display: none;
+}
+
+.swimlanes-cat-card {
+  border: 1px solid var(--sl-line);
+  border-radius: 0.45rem;
+  padding: 0.75rem 0.8rem;
+  margin-bottom: 0.65rem;
+  background: #fff;
+}
+
+.swimlanes-cat-card.is-focus {
+  border-color: color-mix(in srgb, var(--sl-green) 55%, var(--sl-line));
+  background: color-mix(in srgb, var(--sl-lime) 12%, #fff);
+}
+
+.swimlanes-cat-card h3 {
+  margin: 0 0 0.55rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  letter-spacing: -0.02em;
+}
+
+.swimlanes-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.4rem;
+}
+
+.swimlanes-stat {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: var(--sl-ink);
+  background: #f7f7f5;
+  border-radius: 0.35rem;
+  padding: 0.45rem 0.5rem;
+  min-width: 0;
+}
+
+.swimlanes-stat > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.swimlanes-stat em {
+  font-style: normal;
+  font-size: 0.62rem;
+  color: var(--sl-muted);
+  line-height: 1.2;
+}
+
+.swimlanes-stat b {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.swimlanes-stat svg {
+  color: var(--sl-muted);
+  margin-top: 0.1rem;
+  flex-shrink: 0;
+}
+
+.swimlanes-action-lines {
+  margin-top: 0.55rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.swimlanes-action-line,
+.swimlanes-example {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: var(--sl-ink);
+  line-height: 1.35;
+}
+
+.swimlanes-action-line svg {
+  color: var(--sl-green);
+  margin-top: 0.1rem;
+  flex-shrink: 0;
+}
+
+.swimlanes-example {
+  margin-top: 0.55rem;
+  color: var(--sl-muted);
+}
+
+.swimlanes-example svg {
+  color: var(--sl-indigo);
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.swimlanes-persona {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.35rem 0.75rem;
+  align-items: center;
+  margin-bottom: 0.85rem;
+}
+
+.swimlanes-persona-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.swimlanes-persona-pct {
+  font-size: 0.8rem;
+  color: var(--sl-muted);
+  font-variant-numeric: tabular-nums;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  min-width: 2.5rem;
+  text-align: right;
+}
+
+.swimlanes-persona-track {
+  grid-column: 1 / -1;
+  min-height: 1rem;
+}
+
+.swimlanes-persona-bar {
+  height: 0.4rem;
+  background: #eee;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.swimlanes-persona-bar > span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--sl-teal);
+  border-radius: 999px;
+  transition: width 0.55s ease-out;
+}
+
+.swimlanes-persona-bar.is-ready > span {
+  width: var(--w);
+}
+
+.swimlanes-acc-loader {
+  --track-ch: 28;
+  --duration: 1.05s;
+  --mask-color: #fff;
+  position: relative;
+  width: calc(var(--track-ch) * 1ch);
+  max-width: 100%;
+  height: 1em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.72rem;
+  line-height: 1;
+  color: var(--sl-teal);
+  overflow: hidden;
+  user-select: none;
+}
+
+.swimlanes-acc-loader .acc-track {
+  opacity: 0.35;
+  white-space: nowrap;
+}
+
+.swimlanes-acc-loader .acc-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--mask-color);
+  white-space: nowrap;
+  animation: swimlanes-acc-slide var(--duration) linear infinite;
+  animation-delay: var(--delay, 0ms);
+}
+
+@keyframes swimlanes-acc-slide {
+  from { transform: translateX(-4ch); }
+  to { transform: translateX(calc(var(--track-ch) * 1ch)); }
+}
+
+.swimlanes-week-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--sl-line);
+}
+
+.swimlanes-week-card:last-child {
+  border-bottom: 0;
+}
+
+.swimlanes-week-num {
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--sl-indigo) 12%, #fff);
+  color: var(--sl-indigo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.swimlanes-week-num svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.swimlanes-week-card strong {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.swimlanes-week-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.15rem;
+  font-size: 0.72rem;
+  color: var(--sl-muted);
+}
+
+.swimlanes-week-mult {
+  margin-left: auto;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--sl-ink);
+  font-size: 0.85rem;
+}
+
+.swimlanes-horizon-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  padding: 0.7rem 0.75rem;
+  border-radius: 0.45rem;
+  background: #f7f7f5;
+  margin-bottom: 0.85rem;
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+
+.swimlanes-horizon-banner svg {
+  color: var(--sl-green);
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.swimlanes-channel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+@media (max-width: 520px) {
+  .swimlanes-channel-grid {
+    grid-template-columns: 1fr;
+  }
+  .swimlanes-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+.swimlanes-channel-card {
+  border: 1px solid var(--sl-line);
+  border-radius: 0.5rem;
+  padding: 0.85rem;
+  background: #fff;
+}
+
+.swimlanes-channel-card h3 {
+  margin: 0 0 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.swimlanes-channel-card h3 svg {
+  color: var(--sl-muted);
+  flex-shrink: 0;
+}
+
+.swimlanes-channel-card ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.swimlanes-channel-card li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  padding: 0.35rem 0;
+  border-top: 1px solid var(--sl-line);
+}
+
+.swimlanes-channel-card li:first-child {
+  border-top: 0;
+}
+
+.swimlanes-channel-card li svg {
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.05rem;
+  flex-shrink: 0;
+}
+
+.swimlanes-channel-card li.do svg {
+  color: var(--sl-green);
+}
+
+.swimlanes-channel-card li.dont svg {
+  color: #b45309;
+}
+
+.swimlanes-season-note {
+  margin-top: 0.85rem;
+  padding: 0.7rem 0.75rem;
+  border-radius: 0.45rem;
+  background: color-mix(in srgb, var(--sl-lime) 18%, #fff);
+  font-size: 0.78rem;
+  line-height: 1.4;
+  display: flex;
+  gap: 0.45rem;
+  align-items: flex-start;
+}
+
+.swimlanes-season-note svg {
+  color: var(--sl-green);
+  flex-shrink: 0;
+}
+
+.swimlanes-caveat-bar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  padding: 0.65rem 1.15rem;
+  border-top: 1px solid var(--sl-line);
+  background: #fafaf8;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  color: var(--sl-muted);
+}
+
+.swimlanes-caveat-bar svg {
+  color: #b45309;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.swimlanes-empty-tab,
+.swimlanes-panel-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 8rem;
+  color: var(--sl-muted);
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.swimlanes-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
