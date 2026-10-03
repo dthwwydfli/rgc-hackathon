@@ -1,0 +1,4803 @@
+{
+  "updated_at": "2026-10-03T15:00:00Z",
+  "source": "seed",
+  "note": "Dense placeholder results for FE week grid. Not validated.",
+  "n_scored": 96,
+  "n_other": 8,
+  "accuracy": {
+    "overall": {
+      "pct": 51,
+      "n": 96
+    },
+    "by_moment": {
+      "morning_rush": {
+        "pct": 53,
+        "n": 12
+      },
+      "mid_morning": {
+        "pct": 52,
+        "n": 12
+      },
+      "quick_lunch": {
+        "pct": 52,
+        "n": 12
+      },
+      "afternoon_lull": {
+        "pct": 48,
+        "n": 12
+      },
+      "commute_home": {
+        "pct": 53,
+        "n": 12
+      },
+      "post_workout": {
+        "pct": 53,
+        "n": 12
+      },
+      "evening_treat": {
+        "pct": 54,
+        "n": 12
+      },
+      "late_night": {
+        "pct": 51,
+        "n": 12
+      }
+    },
+    "by_persona": {
+      "gym_regular": {
+        "pct": 55,
+        "n": 32
+      },
+      "budget_shopper": {
+        "pct": 50,
+        "n": 32
+      },
+      "rushed_commuter": {
+        "pct": 48,
+        "n": 32
+      }
+    }
+  },
+  "baselines": {
+    "random": {
+      "pct": 7,
+      "n": 96
+    },
+    "cheapest_wins": {
+      "pct": 22,
+      "n": 96
+    }
+  },
+  "cells": {
+    "gym_regular|morning_rush": {
+      "n_real": 6,
+      "evidence": "solid",
+      "predicted_shares": {
+        "banana": 0.28,
+        "croissant": 0.18,
+        "protein_bar": 0.045,
+        "challenger": 0.045,
+        "oat_bar": 0.045,
+        "greek_yogurt": 0.045,
+        "apple": 0.045,
+        "energy_gel": 0.045,
+        "trail_mix": 0.045,
+        "dark_chocolate": 0.045,
+        "rice_cakes": 0.045,
+        "cold_brew": 0.045,
+        "hummus_pot": 0.045,
+        "protein_shake": 0.045
+      },
+      "real_shares": {
+        "banana": 0.28,
+        "croissant": 0.18,
+        "protein_bar": 0.0405,
+        "challenger": 0.0405,
+        "oat_bar": 0.0405,
+        "greek_yogurt": 0.0405,
+        "apple": 0.0405,
+        "energy_gel": 0.0405,
+        "trail_mix": 0.0405,
+        "dark_chocolate": 0.0405,
+        "rice_cakes": 0.0405,
+        "cold_brew": 0.0405,
+        "hummus_pot": 0.0405,
+        "protein_shake": 0.0405
+      },
+      "verdict_by_product": {
+        "banana": "win",
+        "croissant": "win",
+        "protein_bar": "lose",
+        "challenger": "lose",
+        "oat_bar": "lose",
+        "greek_yogurt": "lose",
+        "apple": "lose",
+        "energy_gel": "lose",
+        "trail_mix": "lose",
+        "dark_chocolate": "lose",
+        "rice_cakes": "lose",
+        "cold_brew": "lose",
+        "hummus_pot": "lose",
+        "protein_shake": "lose"
+      },
+      "driver_by_product": {
+        "banana": "health",
+        "croissant": "health",
+        "protein_bar": "visibility",
+        "challenger": "visibility",
+        "oat_bar": "visibility",
+        "greek_yogurt": "visibility",
+        "apple": "visibility",
+        "energy_gel": "visibility",
+        "trail_mix": "visibility",
+        "dark_chocolate": "visibility",
+        "rice_cakes": "visibility",
+        "cold_brew": "visibility",
+        "hummus_pot": "visibility",
+        "protein_shake": "visibility"
+      },
+      "explanation_by_product": {
+        "banana": "Bananas wins morning_rush for gym_regular.",
+        "croissant": "Croissants wins morning_rush for gym_regular.",
+        "protein_bar": "Grenade High Protein Bar weaker in morning_rush.",
+        "challenger": "Cocoa Hazelnut Protein Bar weaker in morning_rush.",
+        "oat_bar": "Nature Valley Oats & Honey weaker in morning_rush.",
+        "greek_yogurt": "Fage Total 0% weaker in morning_rush.",
+        "apple": "Royal Gala Apples weaker in morning_rush.",
+        "energy_gel": "SiS GO Isotonic Gel weaker in morning_rush.",
+        "trail_mix": "Mixed Nuts & Raisins weaker in morning_rush.",
+        "dark_chocolate": "Lindt Excellence 85% weaker in morning_rush.",
+        "rice_cakes": "Kallo Lightly Salted Rice Cakes weaker in morning_rush.",
+        "cold_brew": "Starbucks Cold Brew Can weaker in morning_rush.",
+        "hummus_pot": "Sabra Classic Hummus weaker in morning_rush.",
+        "protein_shake": "Puffy Protein Shake Vanilla weaker in morning_rush."
+      },
+      "nearly_chose": [
+        {
+          "product_id": "banana",
+          "reason": "Closest alternative",
+          "count": 2
+        }
+      ],
+      "quotes": [
+        {
+          "response_id": "mock-gym_regular-morning_rush",
+          "text": "Went for something quick in morning rush."
+        }
+      ],
+      "actions_by_product": {
+        "banana": {
+          "next_step": "Test banana in morning rush",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "croissant": {
+          "next_step": "Test croissant in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_bar": {
+          "next_step": "Test protein bar in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "challenger": {
+          "next_step": "Test challenger in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "oat_bar": {
+          "next_step": "Test oat bar in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "greek_yogurt": {
+          "next_step": "Test greek yogurt in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "apple": {
+          "next_step": "Test apple in morning rush",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "energy_gel": {
+          "next_step": "Test energy gel in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "trail_mix": {
+          "next_step": "Test trail mix in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "dark_chocolate": {
+          "next_step": "Test dark chocolate in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "rice_cakes": {
+          "next_step": "Test rice cakes in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "cold_brew": {
+          "next_step": "Test cold brew in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "hummus_pot": {
+          "next_step": "Test hummus pot in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_shake": {
+          "next_step": "Test protein shake in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        }
+      }
+    },
+    "gym_regular|mid_morning": {
+      "n_real": 6,
+      "evidence": "solid",
+      "predicted_shares": {
+        "oat_bar": 0.28,
+        "cold_brew": 0.18,
+        "banana": 0.045,
+        "protein_bar": 0.045,
+        "croissant": 0.045,
+        "challenger": 0.045,
+        "greek_yogurt": 0.045,
+        "apple": 0.045,
+        "energy_gel": 0.045,
+        "trail_mix": 0.045,
+        "dark_chocolate": 0.045,
+        "rice_cakes": 0.045,
+        "hummus_pot": 0.045,
+        "protein_shake": 0.045
+      },
+      "real_shares": {
+        "oat_bar": 0.28,
+        "cold_brew": 0.18,
+        "banana": 0.0405,
+        "protein_bar": 0.0405,
+        "croissant": 0.0405,
+        "challenger": 0.0405,
+        "greek_yogurt": 0.0405,
+        "apple": 0.0405,
+        "energy_gel": 0.0405,
+        "trail_mix": 0.0405,
+        "dark_chocolate": 0.0405,
+        "rice_cakes": 0.0405,
+        "hummus_pot": 0.0405,
+        "protein_shake": 0.0405
+      },
+      "verdict_by_product": {
+        "oat_bar": "win",
+        "cold_brew": "win",
+        "banana": "lose",
+        "protein_bar": "lose",
+        "croissant": "lose",
+        "challenger": "lose",
+        "greek_yogurt": "lose",
+        "apple": "lose",
+        "energy_gel": "lose",
+        "trail_mix": "lose",
+        "dark_chocolate": "lose",
+        "rice_cakes": "lose",
+        "hummus_pot": "lose",
+        "protein_shake": "lose"
+      },
+      "driver_by_product": {
+        "oat_bar": "health",
+        "cold_brew": "health",
+        "banana": "visibility",
+        "protein_bar": "visibility",
+        "croissant": "visibility",
+        "challenger": "visibility",
+        "greek_yogurt": "visibility",
+        "apple": "visibility",
+        "energy_gel": "visibility",
+        "trail_mix": "visibility",
+        "dark_chocolate": "visibility",
+        "rice_cakes": "visibility",
+        "hummus_pot": "visibility",
+        "protein_shake": "visibility"
+      },
+      "explanation_by_product": {
+        "oat_bar": "Nature Valley Oats & Honey wins mid_morning for gym_regular.",
+        "cold_brew": "Starbucks Cold Brew Can wins mid_morning for gym_regular.",
+        "banana": "Bananas weaker in mid_morning.",
+        "protein_bar": "Grenade High Protein Bar weaker in mid_morning.",
+        "croissant": "Croissants weaker in mid_morning.",
+        "challenger": "Cocoa Hazelnut Protein Bar weaker in mid_morning.",
+        "greek_yogurt": "Fage Total 0% weaker in mid_morning.",
+        "apple": "Royal Gala Apples weaker in mid_morning.",
+        "energy_gel": "SiS GO Isotonic Gel weaker in mid_morning.",
+        "trail_mix": "Mixed Nuts & Raisins weaker in mid_morning.",
+        "dark_chocolate": "Lindt Excellence 85% weaker in mid_morning.",
+        "rice_cakes": "Kallo Lightly Salted Rice Cakes weaker in mid_morning.",
+        "hummus_pot": "Sabra Classic Hummus weaker in mid_morning.",
+        "protein_shake": "Puffy Protein Shake Vanilla weaker in mid_morning."
+      },
+      "nearly_chose": [
+        {
+          "product_id": "oat_bar",
+          "reason": "Closest alternative",
+          "count": 2
+        }
+      ],
+      "quotes": [
+        {
+          "response_id": "mock-gym_regular-mid_morning",
+          "text": "Went for something quick in mid morning."
+        }
+      ],
+      "actions_by_product": {
+        "oat_bar": {
+          "next_step": "Test oat bar in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "cold_brew": {
+          "next_step": "Test cold brew in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "banana": {
+          "next_step": "Test banana in mid morning",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_bar": {
+          "next_step": "Test protein bar in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "croissant": {
+          "next_step": "Test croissant in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "challenger": {
+          "next_step": "Test challenger in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "greek_yogurt": {
+          "next_step": "Test greek yogurt in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "apple": {
+          "next_step": "Test apple in mid morning",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "energy_gel": {
+          "next_step": "Test energy gel in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "trail_mix": {
+          "next_step": "Test trail mix in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "dark_chocolate": {
+          "next_step": "Test dark chocolate in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "rice_cakes": {
+          "next_step": "Test rice cakes in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "hummus_pot": {
+          "next_step": "Test hummus pot in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_shake": {
+          "next_step": "Test protein shake in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        }
+      }
+    },
+    "gym_regular|quick_lunch": {
+      "n_real": 6,
+      "evidence": "solid",
+      "predicted_shares": {
+        "greek_yogurt": 0.28,
+        "hummus_pot": 0.18,
+        "banana": 0.045,
+        "protein_bar": 0.045,
+        "croissant": 0.045,
+        "challenger": 0.045,
+        "oat_bar": 0.045,
+        "apple": 0.045,
+        "energy_gel": 0.045,
+        "trail_mix": 0.045,
+        "dark_chocolate": 0.045,
+        "rice_cakes": 0.045,
+        "cold_brew": 0.045,
+        "protein_shake": 0.045
+      },
+      "real_shares": {
+        "greek_yogurt": 0.28,
+        "hummus_pot": 0.18,
+        "banana": 0.0405,
+        "protein_bar": 0.0405,
+        "croissant": 0.0405,
+        "challenger": 0.0405,
+        "oat_bar": 0.0405,
+        "apple": 0.0405,
+        "energy_gel": 0.0405,
+        "trail_mix": 0.0405,
+        "dark_chocolate": 0.0405,
+        "rice_cakes": 0.0405,
+        "cold_brew": 0.0405,
+        "protein_shake": 0.0405
+      },
+      "verdict_by_product": {
+        "greek_yogurt": "win",
+        "hummus_pot": "win",
+        "banana": "lose",
+        "protein_bar": "lose",
+        "croissant": "lose",
+        "challenger": "lose",
+        "oat_bar": "lose",
+        "apple": "lose",
+        "energy_gel": "lose",
+        "trail_mix": "lose",
+        "dark_chocolate": "lose",
+        "rice_cakes": "lose",
+        "cold_brew": "lose",
+        "protein_shake": "lose"
+      },
+      "driver_by_product": {
+        "greek_yogurt": "health",
+        "hummus_pot": "health",
+        "banana": "visibility",
+        "protein_bar": "visibility",
+        "croissant": "visibility",
+        "challenger": "visibility",
+        "oat_bar": "visibility",
+        "apple": "visibility",
+        "energy_gel": "visibility",
+        "trail_mix": "visibility",
+        "dark_chocolate": "visibility",
+        "rice_cakes": "visibility",
+        "cold_brew": "visibility",
+        "protein_shake": "visibility"
+      },
+      "explanation_by_product": {
+        "greek_yogurt": "Fage Total 0% wins quick_lunch for gym_regular.",
+        "hummus_pot": "Sabra Classic Hummus wins quick_lunch for gym_regular.",
+        "banana": "Bananas weaker in quick_lunch.",
+        "protein_bar": "Grenade High Protein Bar weaker in quick_lunch.",
+        "croissant": "Croissants weaker in quick_lunch.",
+        "challenger": "Cocoa Hazelnut Protein Bar weaker in quick_lunch.",
+        "oat_bar": "Nature Valley Oats & Honey weaker in quick_lunch.",
+        "apple": "Royal Gala Apples weaker in quick_lunch.",
+        "energy_gel": "SiS GO Isotonic Gel weaker in quick_lunch.",
+        "trail_mix": "Mixed Nuts & Raisins weaker in quick_lunch.",
+        "dark_chocolate": "Lindt Excellence 85% weaker in quick_lunch.",
+        "rice_cakes": "Kallo Lightly Salted Rice Cakes weaker in quick_lunch.",
+        "cold_brew": "Starbucks Cold Brew Can weaker in quick_lunch.",
+        "protein_shake": "Puffy Protein Shake Vanilla weaker in quick_lunch."
+      },
+      "nearly_chose": [
+        {
+          "product_id": "greek_yogurt",
+          "reason": "Closest alternative",
+          "count": 2
+        }
+      ],
+      "quotes": [
+        {
+          "response_id": "mock-gym_regular-quick_lunch",
+          "text": "Went for something quick in quick lunch."
+        }
+      ],
+      "actions_by_product": {
+        "greek_yogurt": {
+          "next_step": "Test greek yogurt in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "hummus_pot": {
+          "next_step": "Test hummus pot in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "banana": {
+          "next_step": "Test banana in quick lunch",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_bar": {
+          "next_step": "Test protein bar in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "croissant": {
+          "next_step": "Test croissant in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "challenger": {
+          "next_step": "Test challenger in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "oat_bar": {
+          "next_step": "Test oat bar in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "apple": {
+          "next_step": "Test apple in quick lunch",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "energy_gel": {
+          "next_step": "Test energy gel in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "trail_mix": {
+          "next_step": "Test trail mix in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "dark_chocolate": {
+          "next_step": "Test dark chocolate in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "rice_cakes": {
+          "next_step": "Test rice cakes in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "cold_brew": {
+          "next_step": "Test cold brew in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_shake": {
+          "next_step": "Test protein shake in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        }
+      }
+    },
+    "gym_regular|afternoon_lull": {
+      "n_real": 6,
+      "evidence": "solid",
+      "predicted_shares": {
+        "apple": 0.28,
+        "rice_cakes": 0.18,
+        "banana": 0.045,
+        "protein_bar": 0.045,
+        "croissant": 0.045,
+        "challenger": 0.045,
+        "oat_bar": 0.045,
+        "greek_yogurt": 0.045,
+        "energy_gel": 0.045,
+        "trail_mix": 0.045,
+        "dark_chocolate": 0.045,
+        "cold_brew": 0.045,
+        "hummus_pot": 0.045,
+        "protein_shake": 0.045
+      },
+      "real_shares": {
+        "apple": 0.28,
+        "rice_cakes": 0.18,
+        "banana": 0.0405,
+        "protein_bar": 0.0405,
+        "croissant": 0.0405,
+        "challenger": 0.0405,
+        "oat_bar": 0.0405,
+        "greek_yogurt": 0.0405,
+        "energy_gel": 0.0405,
+        "trail_mix": 0.0405,
+        "dark_chocolate": 0.0405,
+        "cold_brew": 0.0405,
+        "hummus_pot": 0.0405,
+        "protein_shake": 0.0405
+      },
+      "verdict_by_product": {
+        "apple": "win",
+        "rice_cakes": "win",
+        "banana": "lose",
+        "protein_bar": "lose",
+        "croissant": "lose",
+        "challenger": "lose",
+        "oat_bar": "lose",
+        "greek_yogurt": "lose",
+        "energy_gel": "lose",
+        "trail_mix": "lose",
+        "dark_chocolate": "lose",
+        "cold_brew": "lose",
+        "hummus_pot": "lose",
+        "protein_shake": "lose"
+      },
+      "driver_by_product": {
+        "apple": "health",
+        "rice_cakes": "health",
+        "banana": "visibility",
+        "protein_bar": "visibility",
+        "croissant": "visibility",
+        "challenger": "visibility",
+        "oat_bar": "visibility",
+        "greek_yogurt": "visibility",
+        "energy_gel": "visibility",
+        "trail_mix": "visibility",
+        "dark_chocolate": "visibility",
+        "cold_brew": "visibility",
+        "hummus_pot": "visibility",
+        "protein_shake": "visibility"
+      },
+      "explanation_by_product": {
+        "apple": "Royal Gala Apples wins afternoon_lull for gym_regular.",
+        "rice_cakes": "Kallo Lightly Salted Rice Cakes wins afternoon_lull for gym_regular.",
+        "banana": "Bananas weaker in afternoon_lull.",
+        "protein_bar": "Grenade High Protein Bar weaker in afternoon_lull.",
+        "croissant": "Croissants weaker in afternoon_lull.",
+        "challenger": "Cocoa Hazelnut Protein Bar weaker in afternoon_lull.",
+        "oat_bar": "Nature Valley Oats & Honey weaker in afternoon_lull.",
+        "greek_yogurt": "Fage Total 0% weaker in afternoon_lull.",
+        "energy_gel": "SiS GO Isotonic Gel weaker in afternoon_lull.",
+        "trail_mix": "Mixed Nuts & Raisins weaker in afternoon_lull.",
+        "dark_chocolate": "Lindt Excellence 85% weaker in afternoon_lull.",
+        "cold_brew": "Starbucks Cold Brew Can weaker in afternoon_lull.",
+        "hummus_pot": "Sabra Classic Hummus weaker in afternoon_lull.",
+        "protein_shake": "Puffy Protein Shake Vanilla weaker in afternoon_lull."
+      },
+      "nearly_chose": [
+        {
+          "product_id": "apple",
+          "reason": "Closest alternative",
+          "count": 2
+        }
+      ],
+      "quotes": [
+        {
+          "response_id": "mock-gym_regular-afternoon_lull",
+          "text": "Went for something quick in afternoon lull."
+        }
+      ],
+      "actions_by_product": {
+        "apple": {
+          "next_step": "Test apple in afternoon lull",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "rice_cakes": {
+          "next_step": "Test rice cakes in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "banana": {
+          "next_step": "Test banana in afternoon lull",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_bar": {
+          "next_step": "Test protein bar in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "croissant": {
+          "next_step": "Test croissant in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "challenger": {
+          "next_step": "Test challenger in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "oat_bar": {
+          "next_step": "Test oat bar in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "greek_yogurt": {
+          "next_step": "Test greek yogurt in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "energy_gel": {
+          "next_step": "Test energy gel in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "trail_mix": {
+          "next_step": "Test trail mix in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "dark_chocolate": {
+          "next_step": "Test dark chocolate in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "cold_brew": {
+          "next_step": "Test cold brew in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "hummus_pot": {
+          "next_step": "Test hummus pot in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_shake": {
+          "next_step": "Test protein shake in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        }
+      }
+    },
+    "gym_regular|commute_home": {
+      "n_real": 6,
+      "evidence": "solid",
+      "predicted_shares": {
+        "energy_gel": 0.28,
+        "trail_mix": 0.18,
+        "banana": 0.045,
+        "protein_bar": 0.045,
+        "croissant": 0.045,
+        "challenger": 0.045,
+        "oat_bar": 0.045,
+        "greek_yogurt": 0.045,
+        "apple": 0.045,
+        "dark_chocolate": 0.045,
+        "rice_cakes": 0.045,
+        "cold_brew": 0.045,
+        "hummus_pot": 0.045,
+        "protein_shake": 0.045
+      },
+      "real_shares": {
+        "energy_gel": 0.28,
+        "trail_mix": 0.18,
+        "banana": 0.0405,
+        "protein_bar": 0.0405,
+        "croissant": 0.0405,
+        "challenger": 0.0405,
+        "oat_bar": 0.0405,
+        "greek_yogurt": 0.0405,
+        "apple": 0.0405,
+        "dark_chocolate": 0.0405,
+        "rice_cakes": 0.0405,
+        "cold_brew": 0.0405,
+        "hummus_pot": 0.0405,
+        "protein_shake": 0.0405
+      },
+      "verdict_by_product": {
+        "energy_gel": "win",
+        "trail_mix": "win",
+        "banana": "lose",
+        "protein_bar": "lose",
+        "croissant": "lose",
+        "challenger": "lose",
+        "oat_bar": "lose",
+        "greek_yogurt": "lose",
+        "apple": "lose",
+        "dark_chocolate": "lose",
+        "rice_cakes": "lose",
+        "cold_brew": "lose",
+        "hummus_pot": "lose",
+        "protein_shake": "lose"
+      },
+      "driver_by_product": {
+        "energy_gel": "health",
+        "trail_mix": "health",
+        "banana": "visibility",
+        "protein_bar": "visibility",
+        "croissant": "visibility",
+        "challenger": "visibility",
+        "oat_bar": "visibility",
+        "greek_yogurt": "visibility",
+        "apple": "visibility",
+        "dark_chocolate": "visibility",
+        "rice_cakes": "visibility",
+        "cold_brew": "visibility",
+        "hummus_pot": "visibility",
+        "protein_shake": "visibility"
+      },
+      "explanation_by_product": {
+        "energy_gel": "SiS GO Isotonic Gel wins commute_home for gym_regular.",
+        "trail_mix": "Mixed Nuts & Raisins wins commute_home for gym_regular.",
+        "banana": "Bananas weaker in commute_home.",
+        "protein_bar": "Grenade High Protein Bar weaker in commute_home.",
+        "croissant": "Croissants weaker in commute_home.",
+        "challenger": "Cocoa Hazelnut Protein Bar weaker in commute_home.",
+        "oat_bar": "Nature Valley Oats & Honey weaker in commute_home.",
+        "greek_yogurt": "Fage Total 0% weaker in commute_home.",
+        "apple": "Royal Gala Apples weaker in commute_home.",
+        "dark_chocolate": "Lindt Excellence 85% weaker in commute_home.",
+        "rice_cakes": "Kallo Lightly Salted Rice Cakes weaker in commute_home.",
+        "cold_brew": "Starbucks Cold Brew Can weaker in commute_home.",
+        "hummus_pot": "Sabra Classic Hummus weaker in commute_home.",
+        "protein_shake": "Puffy Protein Shake Vanilla weaker in commute_home."
+      },
+      "nearly_chose": [
+        {
+          "product_id": "energy_gel",
+          "reason": "Closest alternative",
+          "count": 2
+        }
+      ],
+      "quotes": [
+        {
+          "response_id": "mock-gym_regular-commute_home",
+          "text": "Went for something quick in commute home."
+        }
+      ],
+      "actions_by_product": {
+        "energy_gel": {
+          "next_step": "Test energy gel in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "trail_mix": {
+          "next_step": "Test trail mix in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "banana": {
+          "next_step": "Test banana in commute home",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_bar": {
+          "next_step": "Test protein bar in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "croissant": {
+          "next_step": "Test croissant in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "challenger": {
+          "next_step": "Test challenger in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "oat_bar": {
+          "next_step": "Test oat bar in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "greek_yogurt": {
+          "next_step": "Test greek yogurt in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "apple": {
+          "next_step": "Test apple in commute home",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "dark_chocolate": {
+          "next_step": "Test dark chocolate in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "rice_cakes": {
+          "next_step": "Test rice cakes in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "cold_brew": {
+          "next_step": "Test cold brew in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "hummus_pot": {
+          "next_step": "Test hummus pot in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_shake": {
+          "next_step": "Test protein shake in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        }
+      }
+    },
+    "gym_regular|post_workout": {
+      "n_real": 6,
+      "evidence": "solid",
+      "predicted_shares": {
+        "protein_bar": 0.28,
+        "challenger": 0.18,
+        "protein_shake": 0.18,
+        "banana": 0.0327,
+        "croissant": 0.0327,
+        "oat_bar": 0.0327,
+        "greek_yogurt": 0.0327,
+        "apple": 0.0327,
+        "energy_gel": 0.0327,
+        "trail_mix": 0.0327,
+        "dark_chocolate": 0.0327,
+        "rice_cakes": 0.0327,
+        "cold_brew": 0.0327,
+        "hummus_pot": 0.0327
+      },
+      "real_shares": {
+        "protein_bar": 0.28,
+        "challenger": 0.18,
+        "protein_shake": 0.18,
+        "banana": 0.0295,
+        "croissant": 0.0295,
+        "oat_bar": 0.0295,
+        "greek_yogurt": 0.0295,
+        "apple": 0.0295,
+        "energy_gel": 0.0295,
+        "trail_mix": 0.0295,
+        "dark_chocolate": 0.0295,
+        "rice_cakes": 0.0295,
+        "cold_brew": 0.0295,
+        "hummus_pot": 0.0295
+      },
+      "verdict_by_product": {
+        "protein_bar": "win",
+        "challenger": "win",
+        "protein_shake": "win",
+        "banana": "lose",
+        "croissant": "lose",
+        "oat_bar": "lose",
+        "greek_yogurt": "lose",
+        "apple": "lose",
+        "energy_gel": "lose",
+        "trail_mix": "lose",
+        "dark_chocolate": "lose",
+        "rice_cakes": "lose",
+        "cold_brew": "lose",
+        "hummus_pot": "lose"
+      },
+      "driver_by_product": {
+        "protein_bar": "health",
+        "challenger": "health",
+        "protein_shake": "health",
+        "banana": "visibility",
+        "croissant": "visibility",
+        "oat_bar": "visibility",
+        "greek_yogurt": "visibility",
+        "apple": "visibility",
+        "energy_gel": "visibility",
+        "trail_mix": "visibility",
+        "dark_chocolate": "visibility",
+        "rice_cakes": "visibility",
+        "cold_brew": "visibility",
+        "hummus_pot": "visibility"
+      },
+      "explanation_by_product": {
+        "protein_bar": "Grenade High Protein Bar wins post_workout for gym_regular.",
+        "challenger": "Cocoa Hazelnut Protein Bar wins post_workout for gym_regular.",
+        "protein_shake": "Puffy Protein Shake Vanilla wins post_workout for gym_regular.",
+        "banana": "Bananas weaker in post_workout.",
+        "croissant": "Croissants weaker in post_workout.",
+        "oat_bar": "Nature Valley Oats & Honey weaker in post_workout.",
+        "greek_yogurt": "Fage Total 0% weaker in post_workout.",
+        "apple": "Royal Gala Apples weaker in post_workout.",
+        "energy_gel": "SiS GO Isotonic Gel weaker in post_workout.",
+        "trail_mix": "Mixed Nuts & Raisins weaker in post_workout.",
+        "dark_chocolate": "Lindt Excellence 85% weaker in post_workout.",
+        "rice_cakes": "Kallo Lightly Salted Rice Cakes weaker in post_workout.",
+        "cold_brew": "Starbucks Cold Brew Can weaker in post_workout.",
+        "hummus_pot": "Sabra Classic Hummus weaker in post_workout."
+      },
+      "nearly_chose": [
+        {
+          "product_id": "protein_bar",
+          "reason": "Closest alternative",
+          "count": 2
+        }
+      ],
+      "quotes": [
+        {
+          "response_id": "mock-gym_regular-post_workout",
+          "text": "Went for something quick in post workout."
+        }
+      ],
+      "actions_by_product": {
+        "protein_bar": {
+          "next_step": "Test protein bar in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "challenger": {
+          "next_step": "Test challenger in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_shake": {
+          "next_step": "Test protein shake in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "banana": {
+          "next_step": "Test banana in post workout",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "croissant": {
+          "next_step": "Test croissant in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "oat_bar": {
+          "next_step": "Test oat bar in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "greek_yogurt": {
+          "next_step": "Test greek yogurt in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "apple": {
+          "next_step": "Test apple in post workout",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "energy_gel": {
+          "next_step": "Test energy gel in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "trail_mix": {
+          "next_step": "Test trail mix in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "dark_chocolate": {
+          "next_step": "Test dark chocolate in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "rice_cakes": {
+          "next_step": "Test rice cakes in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "cold_brew": {
+          "next_step": "Test cold brew in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "hummus_pot": {
+          "next_step": "Test hummus pot in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        }
+      }
+    },
+    "gym_regular|evening_treat": {
+      "n_real": 6,
+      "evidence": "solid",
+      "predicted_shares": {
+        "dark_chocolate": 0.42,
+        "banana": 0.0446,
+        "protein_bar": 0.0446,
+        "croissant": 0.0446,
+        "challenger": 0.0446,
+        "oat_bar": 0.0446,
+        "greek_yogurt": 0.0446,
+        "apple": 0.0446,
+        "energy_gel": 0.0446,
+        "trail_mix": 0.0446,
+        "rice_cakes": 0.0446,
+        "cold_brew": 0.0446,
+        "hummus_pot": 0.0446,
+        "protein_shake": 0.0446
+      },
+      "real_shares": {
+        "dark_chocolate": 0.42,
+        "banana": 0.0402,
+        "protein_bar": 0.0402,
+        "croissant": 0.0402,
+        "challenger": 0.0402,
+        "oat_bar": 0.0402,
+        "greek_yogurt": 0.0402,
+        "apple": 0.0402,
+        "energy_gel": 0.0402,
+        "trail_mix": 0.0402,
+        "rice_cakes": 0.0402,
+        "cold_brew": 0.0402,
+        "hummus_pot": 0.0402,
+        "protein_shake": 0.0402
+      },
+      "verdict_by_product": {
+        "dark_chocolate": "win",
+        "banana": "lose",
+        "protein_bar": "lose",
+        "croissant": "lose",
+        "challenger": "lose",
+        "oat_bar": "lose",
+        "greek_yogurt": "lose",
+        "apple": "lose",
+        "energy_gel": "lose",
+        "trail_mix": "lose",
+        "rice_cakes": "lose",
+        "cold_brew": "lose",
+        "hummus_pot": "lose",
+        "protein_shake": "lose"
+      },
+      "driver_by_product": {
+        "dark_chocolate": "health",
+        "banana": "visibility",
+        "protein_bar": "visibility",
+        "croissant": "visibility",
+        "challenger": "visibility",
+        "oat_bar": "visibility",
+        "greek_yogurt": "visibility",
+        "apple": "visibility",
+        "energy_gel": "visibility",
+        "trail_mix": "visibility",
+        "rice_cakes": "visibility",
+        "cold_brew": "visibility",
+        "hummus_pot": "visibility",
+        "protein_shake": "visibility"
+      },
+      "explanation_by_product": {
+        "dark_chocolate": "Lindt Excellence 85% wins evening_treat for gym_regular.",
+        "banana": "Bananas weaker in evening_treat.",
+        "protein_bar": "Grenade High Protein Bar weaker in evening_treat.",
+        "croissant": "Croissants weaker in evening_treat.",
+        "challenger": "Cocoa Hazelnut Protein Bar weaker in evening_treat.",
+        "oat_bar": "Nature Valley Oats & Honey weaker in evening_treat.",
+        "greek_yogurt": "Fage Total 0% weaker in evening_treat.",
+        "apple": "Royal Gala Apples weaker in evening_treat.",
+        "energy_gel": "SiS GO Isotonic Gel weaker in evening_treat.",
+        "trail_mix": "Mixed Nuts & Raisins weaker in evening_treat.",
+        "rice_cakes": "Kallo Lightly Salted Rice Cakes weaker in evening_treat.",
+        "cold_brew": "Starbucks Cold Brew Can weaker in evening_treat.",
+        "hummus_pot": "Sabra Classic Hummus weaker in evening_treat.",
+        "protein_shake": "Puffy Protein Shake Vanilla weaker in evening_treat."
+      },
+      "nearly_chose": [
+        {
+          "product_id": "dark_chocolate",
+          "reason": "Closest alternative",
+          "count": 2
+        }
+      ],
+      "quotes": [
+        {
+          "response_id": "mock-gym_regular-evening_treat",
+          "text": "Went for something quick in evening treat."
+        }
+      ],
+      "actions_by_product": {
+        "dark_chocolate": {
+          "next_step": "Test dark chocolate in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "banana": {
+          "next_step": "Test banana in evening treat",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_bar": {
+          "next_step": "Test protein bar in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "croissant": {
+          "next_step": "Test croissant in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "challenger": {
+          "next_step": "Test challenger in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "oat_bar": {
+          "next_step": "Test oat bar in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "greek_yogurt": {
+          "next_step": "Test greek yogurt in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "apple": {
+          "next_step": "Test apple in evening treat",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "energy_gel": {
+          "next_step": "Test energy gel in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "trail_mix": {
+          "next_step": "Test trail mix in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "rice_cakes": {
+          "next_step": "Test rice cakes in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "cold_brew": {
+          "next_step": "Test cold brew in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "hummus_pot": {
+          "next_step": "Test hummus pot in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_shake": {
+          "next_step": "Test protein shake in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        }
+      }
+    },
+    "gym_regular|late_night": {
+      "n_real": 0,
+      "evidence": "dashed",
+      "predicted_shares": {
+        "banana": 0.0714,
+        "protein_bar": 0.0714,
+        "croissant": 0.0714,
+        "challenger": 0.0714,
+        "oat_bar": 0.0714,
+        "greek_yogurt": 0.0714,
+        "apple": 0.0714,
+        "energy_gel": 0.0714,
+        "trail_mix": 0.0714,
+        "dark_chocolate": 0.0714,
+        "rice_cakes": 0.0714,
+        "cold_brew": 0.0714,
+        "hummus_pot": 0.0714,
+        "protein_shake": 0.0714
+      },
+      "real_shares": {
+        "banana": 0.0643,
+        "protein_bar": 0.0643,
+        "croissant": 0.0643,
+        "challenger": 0.0643,
+        "oat_bar": 0.0643,
+        "greek_yogurt": 0.0643,
+        "apple": 0.0643,
+        "energy_gel": 0.0643,
+        "trail_mix": 0.0643,
+        "dark_chocolate": 0.0643,
+        "rice_cakes": 0.0643,
+        "cold_brew": 0.0643,
+        "hummus_pot": 0.0643,
+        "protein_shake": 0.0643
+      },
+      "verdict_by_product": {
+        "banana": "lose",
+        "protein_bar": "lose",
+        "croissant": "lose",
+        "challenger": "lose",
+        "oat_bar": "lose",
+        "greek_yogurt": "lose",
+        "apple": "lose",
+        "energy_gel": "lose",
+        "trail_mix": "lose",
+        "dark_chocolate": "lose",
+        "rice_cakes": "lose",
+        "cold_brew": "lose",
+        "hummus_pot": "lose",
+        "protein_shake": "lose"
+      },
+      "driver_by_product": {
+        "banana": "visibility",
+        "protein_bar": "visibility",
+        "croissant": "visibility",
+        "challenger": "visibility",
+        "oat_bar": "visibility",
+        "greek_yogurt": "visibility",
+        "apple": "visibility",
+        "energy_gel": "visibility",
+        "trail_mix": "visibility",
+        "dark_chocolate": "visibility",
+        "rice_cakes": "visibility",
+        "cold_brew": "visibility",
+        "hummus_pot": "visibility",
+        "protein_shake": "visibility"
+      },
+      "explanation_by_product": {
+        "banana": "Bananas weaker in late_night.",
+        "protein_bar": "Grenade High Protein Bar weaker in late_night.",
+        "croissant": "Croissants weaker in late_night.",
+        "challenger": "Cocoa Hazelnut Protein Bar weaker in late_night.",
+        "oat_bar": "Nature Valley Oats & Honey weaker in late_night.",
+        "greek_yogurt": "Fage Total 0% weaker in late_night.",
+        "apple": "Royal Gala Apples weaker in late_night.",
+        "energy_gel": "SiS GO Isotonic Gel weaker in late_night.",
+        "trail_mix": "Mixed Nuts & Raisins weaker in late_night.",
+        "dark_chocolate": "Lindt Excellence 85% weaker in late_night.",
+        "rice_cakes": "Kallo Lightly Salted Rice Cakes weaker in late_night.",
+        "cold_brew": "Starbucks Cold Brew Can weaker in late_night.",
+        "hummus_pot": "Sabra Classic Hummus weaker in late_night.",
+        "protein_shake": "Puffy Protein Shake Vanilla weaker in late_night."
+      },
+      "nearly_chose": [],
+      "quotes": [
+        {
+          "response_id": "mock-gym_regular-late_night",
+          "text": "Went for something quick in late night."
+        }
+      ],
+      "actions_by_product": {
+        "banana": {
+          "next_step": "Test banana in late night",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_bar": {
+          "next_step": "Test protein bar in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "croissant": {
+          "next_step": "Test croissant in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "challenger": {
+          "next_step": "Test challenger in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "oat_bar": {
+          "next_step": "Test oat bar in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "greek_yogurt": {
+          "next_step": "Test greek yogurt in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "apple": {
+          "next_step": "Test apple in late night",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "energy_gel": {
+          "next_step": "Test energy gel in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "trail_mix": {
+          "next_step": "Test trail mix in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "dark_chocolate": {
+          "next_step": "Test dark chocolate in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "rice_cakes": {
+          "next_step": "Test rice cakes in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "cold_brew": {
+          "next_step": "Test cold brew in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "hummus_pot": {
+          "next_step": "Test hummus pot in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_shake": {
+          "next_step": "Test protein shake in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        }
+      }
+    },
+    "budget_shopper|morning_rush": {
+      "n_real": 6,
+      "evidence": "solid",
+      "predicted_shares": {
+        "banana": 0.28,
+        "croissant": 0.18,
+        "protein_bar": 0.045,
+        "challenger": 0.045,
+        "oat_bar": 0.045,
+        "greek_yogurt": 0.045,
+        "apple": 0.045,
+        "energy_gel": 0.045,
+        "trail_mix": 0.045,
+        "dark_chocolate": 0.045,
+        "rice_cakes": 0.045,
+        "cold_brew": 0.045,
+        "hummus_pot": 0.045,
+        "protein_shake": 0.045
+      },
+      "real_shares": {
+        "banana": 0.28,
+        "croissant": 0.18,
+        "protein_bar": 0.0405,
+        "challenger": 0.0405,
+        "oat_bar": 0.0405,
+        "greek_yogurt": 0.0405,
+        "apple": 0.0405,
+        "energy_gel": 0.0405,
+        "trail_mix": 0.0405,
+        "dark_chocolate": 0.0405,
+        "rice_cakes": 0.0405,
+        "cold_brew": 0.0405,
+        "hummus_pot": 0.0405,
+        "protein_shake": 0.0405
+      },
+      "verdict_by_product": {
+        "banana": "win",
+        "croissant": "win",
+        "protein_bar": "lose",
+        "challenger": "lose",
+        "oat_bar": "lose",
+        "greek_yogurt": "lose",
+        "apple": "lose",
+        "energy_gel": "lose",
+        "trail_mix": "lose",
+        "dark_chocolate": "lose",
+        "rice_cakes": "lose",
+        "cold_brew": "lose",
+        "hummus_pot": "lose",
+        "protein_shake": "lose"
+      },
+      "driver_by_product": {
+        "banana": "health",
+        "croissant": "health",
+        "protein_bar": "visibility",
+        "challenger": "visibility",
+        "oat_bar": "visibility",
+        "greek_yogurt": "visibility",
+        "apple": "visibility",
+        "energy_gel": "visibility",
+        "trail_mix": "visibility",
+        "dark_chocolate": "visibility",
+        "rice_cakes": "visibility",
+        "cold_brew": "visibility",
+        "hummus_pot": "visibility",
+        "protein_shake": "visibility"
+      },
+      "explanation_by_product": {
+        "banana": "Bananas wins morning_rush for budget_shopper.",
+        "croissant": "Croissants wins morning_rush for budget_shopper.",
+        "protein_bar": "Grenade High Protein Bar weaker in morning_rush.",
+        "challenger": "Cocoa Hazelnut Protein Bar weaker in morning_rush.",
+        "oat_bar": "Nature Valley Oats & Honey weaker in morning_rush.",
+        "greek_yogurt": "Fage Total 0% weaker in morning_rush.",
+        "apple": "Royal Gala Apples weaker in morning_rush.",
+        "energy_gel": "SiS GO Isotonic Gel weaker in morning_rush.",
+        "trail_mix": "Mixed Nuts & Raisins weaker in morning_rush.",
+        "dark_chocolate": "Lindt Excellence 85% weaker in morning_rush.",
+        "rice_cakes": "Kallo Lightly Salted Rice Cakes weaker in morning_rush.",
+        "cold_brew": "Starbucks Cold Brew Can weaker in morning_rush.",
+        "hummus_pot": "Sabra Classic Hummus weaker in morning_rush.",
+        "protein_shake": "Puffy Protein Shake Vanilla weaker in morning_rush."
+      },
+      "nearly_chose": [
+        {
+          "product_id": "banana",
+          "reason": "Closest alternative",
+          "count": 2
+        }
+      ],
+      "quotes": [
+        {
+          "response_id": "mock-budget_shopper-morning_rush",
+          "text": "Went for something quick in morning rush."
+        }
+      ],
+      "actions_by_product": {
+        "banana": {
+          "next_step": "Test banana in morning rush",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "croissant": {
+          "next_step": "Test croissant in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_bar": {
+          "next_step": "Test protein bar in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "challenger": {
+          "next_step": "Test challenger in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "oat_bar": {
+          "next_step": "Test oat bar in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "greek_yogurt": {
+          "next_step": "Test greek yogurt in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "apple": {
+          "next_step": "Test apple in morning rush",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "energy_gel": {
+          "next_step": "Test energy gel in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "trail_mix": {
+          "next_step": "Test trail mix in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "dark_chocolate": {
+          "next_step": "Test dark chocolate in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "rice_cakes": {
+          "next_step": "Test rice cakes in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "cold_brew": {
+          "next_step": "Test cold brew in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "hummus_pot": {
+          "next_step": "Test hummus pot in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_shake": {
+          "next_step": "Test protein shake in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        }
+      }
+    },
+    "budget_shopper|mid_morning": {
+      "n_real": 6,
+      "evidence": "solid",
+      "predicted_shares": {
+        "oat_bar": 0.28,
+        "cold_brew": 0.18,
+        "banana": 0.045,
+        "protein_bar": 0.045,
+        "croissant": 0.045,
+        "challenger": 0.045,
+        "greek_yogurt": 0.045,
+        "apple": 0.045,
+        "energy_gel": 0.045,
+        "trail_mix": 0.045,
+        "dark_chocolate": 0.045,
+        "rice_cakes": 0.045,
+        "hummus_pot": 0.045,
+        "protein_shake": 0.045
+      },
+      "real_shares": {
+        "oat_bar": 0.28,
+        "cold_brew": 0.18,
+        "banana": 0.0405,
+        "protein_bar": 0.0405,
+        "croissant": 0.0405,
+        "challenger": 0.0405,
+        "greek_yogurt": 0.0405,
+        "apple": 0.0405,
+        "energy_gel": 0.0405,
+        "trail_mix": 0.0405,
+        "dark_chocolate": 0.0405,
+        "rice_cakes": 0.0405,
+        "hummus_pot": 0.0405,
+        "protein_shake": 0.0405
+      },
+      "verdict_by_product": {
+        "oat_bar": "win",
+        "cold_brew": "win",
+        "banana": "lose",
+        "protein_bar": "lose",
+        "croissant": "lose",
+        "challenger": "lose",
+        "greek_yogurt": "lose",
+        "apple": "lose",
+        "energy_gel": "lose",
+        "trail_mix": "lose",
+        "dark_chocolate": "lose",
+        "rice_cakes": "lose",
+        "hummus_pot": "lose",
+        "protein_shake": "lose"
+      },
+      "driver_by_product": {
+        "oat_bar": "health",
+        "cold_brew": "health",
+        "banana": "visibility",
+        "protein_bar": "visibility",
+        "croissant": "visibility",
+        "challenger": "visibility",
+        "greek_yogurt": "visibility",
+        "apple": "visibility",
+        "energy_gel": "visibility",
+        "trail_mix": "visibility",
+        "dark_chocolate": "visibility",
+        "rice_cakes": "visibility",
+        "hummus_pot": "visibility",
+        "protein_shake": "visibility"
+      },
+      "explanation_by_product": {
+        "oat_bar": "Nature Valley Oats & Honey wins mid_morning for budget_shopper.",
+        "cold_brew": "Starbucks Cold Brew Can wins mid_morning for budget_shopper.",
+        "banana": "Bananas weaker in mid_morning.",
+        "protein_bar": "Grenade High Protein Bar weaker in mid_morning.",
+        "croissant": "Croissants weaker in mid_morning.",
+        "challenger": "Cocoa Hazelnut Protein Bar weaker in mid_morning.",
+        "greek_yogurt": "Fage Total 0% weaker in mid_morning.",
+        "apple": "Royal Gala Apples weaker in mid_morning.",
+        "energy_gel": "SiS GO Isotonic Gel weaker in mid_morning.",
+        "trail_mix": "Mixed Nuts & Raisins weaker in mid_morning.",
+        "dark_chocolate": "Lindt Excellence 85% weaker in mid_morning.",
+        "rice_cakes": "Kallo Lightly Salted Rice Cakes weaker in mid_morning.",
+        "hummus_pot": "Sabra Classic Hummus weaker in mid_morning.",
+        "protein_shake": "Puffy Protein Shake Vanilla weaker in mid_morning."
+      },
+      "nearly_chose": [
+        {
+          "product_id": "oat_bar",
+          "reason": "Closest alternative",
+          "count": 2
+        }
+      ],
+      "quotes": [
+        {
+          "response_id": "mock-budget_shopper-mid_morning",
+          "text": "Went for something quick in mid morning."
+        }
+      ],
+      "actions_by_product": {
+        "oat_bar": {
+          "next_step": "Test oat bar in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "cold_brew": {
+          "next_step": "Test cold brew in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "banana": {
+          "next_step": "Test banana in mid morning",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_bar": {
+          "next_step": "Test protein bar in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "croissant": {
+          "next_step": "Test croissant in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "challenger": {
+          "next_step": "Test challenger in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "greek_yogurt": {
+          "next_step": "Test greek yogurt in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "apple": {
+          "next_step": "Test apple in mid morning",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "energy_gel": {
+          "next_step": "Test energy gel in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "trail_mix": {
+          "next_step": "Test trail mix in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "dark_chocolate": {
+          "next_step": "Test dark chocolate in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "rice_cakes": {
+          "next_step": "Test rice cakes in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "hummus_pot": {
+          "next_step": "Test hummus pot in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_shake": {
+          "next_step": "Test protein shake in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        }
+      }
+    },
+    "budget_shopper|quick_lunch": {
+      "n_real": 6,
+      "evidence": "solid",
+      "predicted_shares": {
+        "greek_yogurt": 0.28,
+        "hummus_pot": 0.18,
+        "banana": 0.045,
+        "protein_bar": 0.045,
+        "croissant": 0.045,
+        "challenger": 0.045,
+        "oat_bar": 0.045,
+        "apple": 0.045,
+        "energy_gel": 0.045,
+        "trail_mix": 0.045,
+        "dark_chocolate": 0.045,
+        "rice_cakes": 0.045,
+        "cold_brew": 0.045,
+        "protein_shake": 0.045
+      },
+      "real_shares": {
+        "greek_yogurt": 0.28,
+        "hummus_pot": 0.18,
+        "banana": 0.0405,
+        "protein_bar": 0.0405,
+        "croissant": 0.0405,
+        "challenger": 0.0405,
+        "oat_bar": 0.0405,
+        "apple": 0.0405,
+        "energy_gel": 0.0405,
+        "trail_mix": 0.0405,
+        "dark_chocolate": 0.0405,
+        "rice_cakes": 0.0405,
+        "cold_brew": 0.0405,
+        "protein_shake": 0.0405
+      },
+      "verdict_by_product": {
+        "greek_yogurt": "win",
+        "hummus_pot": "win",
+        "banana": "lose",
+        "protein_bar": "lose",
+        "croissant": "lose",
+        "challenger": "lose",
+        "oat_bar": "lose",
+        "apple": "lose",
+        "energy_gel": "lose",
+        "trail_mix": "lose",
+        "dark_chocolate": "lose",
+        "rice_cakes": "lose",
+        "cold_brew": "lose",
+        "protein_shake": "lose"
+      },
+      "driver_by_product": {
+        "greek_yogurt": "health",
+        "hummus_pot": "health",
+        "banana": "visibility",
+        "protein_bar": "visibility",
+        "croissant": "visibility",
+        "challenger": "visibility",
+        "oat_bar": "visibility",
+        "apple": "visibility",
+        "energy_gel": "visibility",
+        "trail_mix": "visibility",
+        "dark_chocolate": "visibility",
+        "rice_cakes": "visibility",
+        "cold_brew": "visibility",
+        "protein_shake": "visibility"
+      },
+      "explanation_by_product": {
+        "greek_yogurt": "Fage Total 0% wins quick_lunch for budget_shopper.",
+        "hummus_pot": "Sabra Classic Hummus wins quick_lunch for budget_shopper.",
+        "banana": "Bananas weaker in quick_lunch.",
+        "protein_bar": "Grenade High Protein Bar weaker in quick_lunch.",
+        "croissant": "Croissants weaker in quick_lunch.",
+        "challenger": "Cocoa Hazelnut Protein Bar weaker in quick_lunch.",
+        "oat_bar": "Nature Valley Oats & Honey weaker in quick_lunch.",
+        "apple": "Royal Gala Apples weaker in quick_lunch.",
+        "energy_gel": "SiS GO Isotonic Gel weaker in quick_lunch.",
+        "trail_mix": "Mixed Nuts & Raisins weaker in quick_lunch.",
+        "dark_chocolate": "Lindt Excellence 85% weaker in quick_lunch.",
+        "rice_cakes": "Kallo Lightly Salted Rice Cakes weaker in quick_lunch.",
+        "cold_brew": "Starbucks Cold Brew Can weaker in quick_lunch.",
+        "protein_shake": "Puffy Protein Shake Vanilla weaker in quick_lunch."
+      },
+      "nearly_chose": [
+        {
+          "product_id": "greek_yogurt",
+          "reason": "Closest alternative",
+          "count": 2
+        }
+      ],
+      "quotes": [
+        {
+          "response_id": "mock-budget_shopper-quick_lunch",
+          "text": "Went for something quick in quick lunch."
+        }
+      ],
+      "actions_by_product": {
+        "greek_yogurt": {
+          "next_step": "Test greek yogurt in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "hummus_pot": {
+          "next_step": "Test hummus pot in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "banana": {
+          "next_step": "Test banana in quick lunch",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_bar": {
+          "next_step": "Test protein bar in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "croissant": {
+          "next_step": "Test croissant in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "challenger": {
+          "next_step": "Test challenger in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "oat_bar": {
+          "next_step": "Test oat bar in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "apple": {
+          "next_step": "Test apple in quick lunch",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "energy_gel": {
+          "next_step": "Test energy gel in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "trail_mix": {
+          "next_step": "Test trail mix in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "dark_chocolate": {
+          "next_step": "Test dark chocolate in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "rice_cakes": {
+          "next_step": "Test rice cakes in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "cold_brew": {
+          "next_step": "Test cold brew in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_shake": {
+          "next_step": "Test protein shake in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        }
+      }
+    },
+    "budget_shopper|afternoon_lull": {
+      "n_real": 6,
+      "evidence": "solid",
+      "predicted_shares": {
+        "apple": 0.28,
+        "rice_cakes": 0.18,
+        "banana": 0.045,
+        "protein_bar": 0.045,
+        "croissant": 0.045,
+        "challenger": 0.045,
+        "oat_bar": 0.045,
+        "greek_yogurt": 0.045,
+        "energy_gel": 0.045,
+        "trail_mix": 0.045,
+        "dark_chocolate": 0.045,
+        "cold_brew": 0.045,
+        "hummus_pot": 0.045,
+        "protein_shake": 0.045
+      },
+      "real_shares": {
+        "apple": 0.28,
+        "rice_cakes": 0.18,
+        "banana": 0.0405,
+        "protein_bar": 0.0405,
+        "croissant": 0.0405,
+        "challenger": 0.0405,
+        "oat_bar": 0.0405,
+        "greek_yogurt": 0.0405,
+        "energy_gel": 0.0405,
+        "trail_mix": 0.0405,
+        "dark_chocolate": 0.0405,
+        "cold_brew": 0.0405,
+        "hummus_pot": 0.0405,
+        "protein_shake": 0.0405
+      },
+      "verdict_by_product": {
+        "apple": "win",
+        "rice_cakes": "win",
+        "banana": "lose",
+        "protein_bar": "lose",
+        "croissant": "lose",
+        "challenger": "lose",
+        "oat_bar": "lose",
+        "greek_yogurt": "lose",
+        "energy_gel": "lose",
+        "trail_mix": "lose",
+        "dark_chocolate": "lose",
+        "cold_brew": "lose",
+        "hummus_pot": "lose",
+        "protein_shake": "lose"
+      },
+      "driver_by_product": {
+        "apple": "health",
+        "rice_cakes": "health",
+        "banana": "visibility",
+        "protein_bar": "visibility",
+        "croissant": "visibility",
+        "challenger": "visibility",
+        "oat_bar": "visibility",
+        "greek_yogurt": "visibility",
+        "energy_gel": "visibility",
+        "trail_mix": "visibility",
+        "dark_chocolate": "visibility",
+        "cold_brew": "visibility",
+        "hummus_pot": "visibility",
+        "protein_shake": "visibility"
+      },
+      "explanation_by_product": {
+        "apple": "Royal Gala Apples wins afternoon_lull for budget_shopper.",
+        "rice_cakes": "Kallo Lightly Salted Rice Cakes wins afternoon_lull for budget_shopper.",
+        "banana": "Bananas weaker in afternoon_lull.",
+        "protein_bar": "Grenade High Protein Bar weaker in afternoon_lull.",
+        "croissant": "Croissants weaker in afternoon_lull.",
+        "challenger": "Cocoa Hazelnut Protein Bar weaker in afternoon_lull.",
+        "oat_bar": "Nature Valley Oats & Honey weaker in afternoon_lull.",
+        "greek_yogurt": "Fage Total 0% weaker in afternoon_lull.",
+        "energy_gel": "SiS GO Isotonic Gel weaker in afternoon_lull.",
+        "trail_mix": "Mixed Nuts & Raisins weaker in afternoon_lull.",
+        "dark_chocolate": "Lindt Excellence 85% weaker in afternoon_lull.",
+        "cold_brew": "Starbucks Cold Brew Can weaker in afternoon_lull.",
+        "hummus_pot": "Sabra Classic Hummus weaker in afternoon_lull.",
+        "protein_shake": "Puffy Protein Shake Vanilla weaker in afternoon_lull."
+      },
+      "nearly_chose": [
+        {
+          "product_id": "apple",
+          "reason": "Closest alternative",
+          "count": 2
+        }
+      ],
+      "quotes": [
+        {
+          "response_id": "mock-budget_shopper-afternoon_lull",
+          "text": "Went for something quick in afternoon lull."
+        }
+      ],
+      "actions_by_product": {
+        "apple": {
+          "next_step": "Test apple in afternoon lull",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "rice_cakes": {
+          "next_step": "Test rice cakes in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "banana": {
+          "next_step": "Test banana in afternoon lull",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_bar": {
+          "next_step": "Test protein bar in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "croissant": {
+          "next_step": "Test croissant in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "challenger": {
+          "next_step": "Test challenger in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "oat_bar": {
+          "next_step": "Test oat bar in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "greek_yogurt": {
+          "next_step": "Test greek yogurt in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "energy_gel": {
+          "next_step": "Test energy gel in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "trail_mix": {
+          "next_step": "Test trail mix in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "dark_chocolate": {
+          "next_step": "Test dark chocolate in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "cold_brew": {
+          "next_step": "Test cold brew in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "hummus_pot": {
+          "next_step": "Test hummus pot in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_shake": {
+          "next_step": "Test protein shake in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        }
+      }
+    },
+    "budget_shopper|commute_home": {
+      "n_real": 6,
+      "evidence": "solid",
+      "predicted_shares": {
+        "energy_gel": 0.28,
+        "trail_mix": 0.18,
+        "banana": 0.045,
+        "protein_bar": 0.045,
+        "croissant": 0.045,
+        "challenger": 0.045,
+        "oat_bar": 0.045,
+        "greek_yogurt": 0.045,
+        "apple": 0.045,
+        "dark_chocolate": 0.045,
+        "rice_cakes": 0.045,
+        "cold_brew": 0.045,
+        "hummus_pot": 0.045,
+        "protein_shake": 0.045
+      },
+      "real_shares": {
+        "energy_gel": 0.28,
+        "trail_mix": 0.18,
+        "banana": 0.0405,
+        "protein_bar": 0.0405,
+        "croissant": 0.0405,
+        "challenger": 0.0405,
+        "oat_bar": 0.0405,
+        "greek_yogurt": 0.0405,
+        "apple": 0.0405,
+        "dark_chocolate": 0.0405,
+        "rice_cakes": 0.0405,
+        "cold_brew": 0.0405,
+        "hummus_pot": 0.0405,
+        "protein_shake": 0.0405
+      },
+      "verdict_by_product": {
+        "energy_gel": "win",
+        "trail_mix": "win",
+        "banana": "lose",
+        "protein_bar": "lose",
+        "croissant": "lose",
+        "challenger": "lose",
+        "oat_bar": "lose",
+        "greek_yogurt": "lose",
+        "apple": "lose",
+        "dark_chocolate": "lose",
+        "rice_cakes": "lose",
+        "cold_brew": "lose",
+        "hummus_pot": "lose",
+        "protein_shake": "lose"
+      },
+      "driver_by_product": {
+        "energy_gel": "health",
+        "trail_mix": "health",
+        "banana": "visibility",
+        "protein_bar": "visibility",
+        "croissant": "visibility",
+        "challenger": "visibility",
+        "oat_bar": "visibility",
+        "greek_yogurt": "visibility",
+        "apple": "visibility",
+        "dark_chocolate": "visibility",
+        "rice_cakes": "visibility",
+        "cold_brew": "visibility",
+        "hummus_pot": "visibility",
+        "protein_shake": "visibility"
+      },
+      "explanation_by_product": {
+        "energy_gel": "SiS GO Isotonic Gel wins commute_home for budget_shopper.",
+        "trail_mix": "Mixed Nuts & Raisins wins commute_home for budget_shopper.",
+        "banana": "Bananas weaker in commute_home.",
+        "protein_bar": "Grenade High Protein Bar weaker in commute_home.",
+        "croissant": "Croissants weaker in commute_home.",
+        "challenger": "Cocoa Hazelnut Protein Bar weaker in commute_home.",
+        "oat_bar": "Nature Valley Oats & Honey weaker in commute_home.",
+        "greek_yogurt": "Fage Total 0% weaker in commute_home.",
+        "apple": "Royal Gala Apples weaker in commute_home.",
+        "dark_chocolate": "Lindt Excellence 85% weaker in commute_home.",
+        "rice_cakes": "Kallo Lightly Salted Rice Cakes weaker in commute_home.",
+        "cold_brew": "Starbucks Cold Brew Can weaker in commute_home.",
+        "hummus_pot": "Sabra Classic Hummus weaker in commute_home.",
+        "protein_shake": "Puffy Protein Shake Vanilla weaker in commute_home."
+      },
+      "nearly_chose": [
+        {
+          "product_id": "energy_gel",
+          "reason": "Closest alternative",
+          "count": 2
+        }
+      ],
+      "quotes": [
+        {
+          "response_id": "mock-budget_shopper-commute_home",
+          "text": "Went for something quick in commute home."
+        }
+      ],
+      "actions_by_product": {
+        "energy_gel": {
+          "next_step": "Test energy gel in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "trail_mix": {
+          "next_step": "Test trail mix in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "banana": {
+          "next_step": "Test banana in commute home",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_bar": {
+          "next_step": "Test protein bar in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "croissant": {
+          "next_step": "Test croissant in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "challenger": {
+          "next_step": "Test challenger in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "oat_bar": {
+          "next_step": "Test oat bar in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "greek_yogurt": {
+          "next_step": "Test greek yogurt in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "apple": {
+          "next_step": "Test apple in commute home",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "dark_chocolate": {
+          "next_step": "Test dark chocolate in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "rice_cakes": {
+          "next_step": "Test rice cakes in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "cold_brew": {
+          "next_step": "Test cold brew in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "hummus_pot": {
+          "next_step": "Test hummus pot in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_shake": {
+          "next_step": "Test protein shake in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        }
+      }
+    },
+    "budget_shopper|post_workout": {
+      "n_real": 6,
+      "evidence": "solid",
+      "predicted_shares": {
+        "protein_bar": 0.28,
+        "challenger": 0.18,
+        "protein_shake": 0.18,
+        "banana": 0.0327,
+        "croissant": 0.0327,
+        "oat_bar": 0.0327,
+        "greek_yogurt": 0.0327,
+        "apple": 0.0327,
+        "energy_gel": 0.0327,
+        "trail_mix": 0.0327,
+        "dark_chocolate": 0.0327,
+        "rice_cakes": 0.0327,
+        "cold_brew": 0.0327,
+        "hummus_pot": 0.0327
+      },
+      "real_shares": {
+        "protein_bar": 0.28,
+        "challenger": 0.18,
+        "protein_shake": 0.18,
+        "banana": 0.0295,
+        "croissant": 0.0295,
+        "oat_bar": 0.0295,
+        "greek_yogurt": 0.0295,
+        "apple": 0.0295,
+        "energy_gel": 0.0295,
+        "trail_mix": 0.0295,
+        "dark_chocolate": 0.0295,
+        "rice_cakes": 0.0295,
+        "cold_brew": 0.0295,
+        "hummus_pot": 0.0295
+      },
+      "verdict_by_product": {
+        "protein_bar": "win",
+        "challenger": "win",
+        "protein_shake": "win",
+        "banana": "lose",
+        "croissant": "lose",
+        "oat_bar": "lose",
+        "greek_yogurt": "lose",
+        "apple": "lose",
+        "energy_gel": "lose",
+        "trail_mix": "lose",
+        "dark_chocolate": "lose",
+        "rice_cakes": "lose",
+        "cold_brew": "lose",
+        "hummus_pot": "lose"
+      },
+      "driver_by_product": {
+        "protein_bar": "health",
+        "challenger": "health",
+        "protein_shake": "health",
+        "banana": "visibility",
+        "croissant": "visibility",
+        "oat_bar": "visibility",
+        "greek_yogurt": "visibility",
+        "apple": "visibility",
+        "energy_gel": "visibility",
+        "trail_mix": "visibility",
+        "dark_chocolate": "visibility",
+        "rice_cakes": "visibility",
+        "cold_brew": "visibility",
+        "hummus_pot": "visibility"
+      },
+      "explanation_by_product": {
+        "protein_bar": "Grenade High Protein Bar wins post_workout for budget_shopper.",
+        "challenger": "Cocoa Hazelnut Protein Bar wins post_workout for budget_shopper.",
+        "protein_shake": "Puffy Protein Shake Vanilla wins post_workout for budget_shopper.",
+        "banana": "Bananas weaker in post_workout.",
+        "croissant": "Croissants weaker in post_workout.",
+        "oat_bar": "Nature Valley Oats & Honey weaker in post_workout.",
+        "greek_yogurt": "Fage Total 0% weaker in post_workout.",
+        "apple": "Royal Gala Apples weaker in post_workout.",
+        "energy_gel": "SiS GO Isotonic Gel weaker in post_workout.",
+        "trail_mix": "Mixed Nuts & Raisins weaker in post_workout.",
+        "dark_chocolate": "Lindt Excellence 85% weaker in post_workout.",
+        "rice_cakes": "Kallo Lightly Salted Rice Cakes weaker in post_workout.",
+        "cold_brew": "Starbucks Cold Brew Can weaker in post_workout.",
+        "hummus_pot": "Sabra Classic Hummus weaker in post_workout."
+      },
+      "nearly_chose": [
+        {
+          "product_id": "protein_bar",
+          "reason": "Closest alternative",
+          "count": 2
+        }
+      ],
+      "quotes": [
+        {
+          "response_id": "mock-budget_shopper-post_workout",
+          "text": "Went for something quick in post workout."
+        }
+      ],
+      "actions_by_product": {
+        "protein_bar": {
+          "next_step": "Test protein bar in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "challenger": {
+          "next_step": "Test challenger in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_shake": {
+          "next_step": "Test protein shake in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "banana": {
+          "next_step": "Test banana in post workout",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "croissant": {
+          "next_step": "Test croissant in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "oat_bar": {
+          "next_step": "Test oat bar in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "greek_yogurt": {
+          "next_step": "Test greek yogurt in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "apple": {
+          "next_step": "Test apple in post workout",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "energy_gel": {
+          "next_step": "Test energy gel in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "trail_mix": {
+          "next_step": "Test trail mix in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "dark_chocolate": {
+          "next_step": "Test dark chocolate in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "rice_cakes": {
+          "next_step": "Test rice cakes in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "cold_brew": {
+          "next_step": "Test cold brew in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "hummus_pot": {
+          "next_step": "Test hummus pot in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        }
+      }
+    },
+    "budget_shopper|evening_treat": {
+      "n_real": 6,
+      "evidence": "solid",
+      "predicted_shares": {
+        "dark_chocolate": 0.42,
+        "banana": 0.0446,
+        "protein_bar": 0.0446,
+        "croissant": 0.0446,
+        "challenger": 0.0446,
+        "oat_bar": 0.0446,
+        "greek_yogurt": 0.0446,
+        "apple": 0.0446,
+        "energy_gel": 0.0446,
+        "trail_mix": 0.0446,
+        "rice_cakes": 0.0446,
+        "cold_brew": 0.0446,
+        "hummus_pot": 0.0446,
+        "protein_shake": 0.0446
+      },
+      "real_shares": {
+        "dark_chocolate": 0.42,
+        "banana": 0.0402,
+        "protein_bar": 0.0402,
+        "croissant": 0.0402,
+        "challenger": 0.0402,
+        "oat_bar": 0.0402,
+        "greek_yogurt": 0.0402,
+        "apple": 0.0402,
+        "energy_gel": 0.0402,
+        "trail_mix": 0.0402,
+        "rice_cakes": 0.0402,
+        "cold_brew": 0.0402,
+        "hummus_pot": 0.0402,
+        "protein_shake": 0.0402
+      },
+      "verdict_by_product": {
+        "dark_chocolate": "win",
+        "banana": "lose",
+        "protein_bar": "lose",
+        "croissant": "lose",
+        "challenger": "lose",
+        "oat_bar": "lose",
+        "greek_yogurt": "lose",
+        "apple": "lose",
+        "energy_gel": "lose",
+        "trail_mix": "lose",
+        "rice_cakes": "lose",
+        "cold_brew": "lose",
+        "hummus_pot": "lose",
+        "protein_shake": "lose"
+      },
+      "driver_by_product": {
+        "dark_chocolate": "health",
+        "banana": "visibility",
+        "protein_bar": "visibility",
+        "croissant": "visibility",
+        "challenger": "visibility",
+        "oat_bar": "visibility",
+        "greek_yogurt": "visibility",
+        "apple": "visibility",
+        "energy_gel": "visibility",
+        "trail_mix": "visibility",
+        "rice_cakes": "visibility",
+        "cold_brew": "visibility",
+        "hummus_pot": "visibility",
+        "protein_shake": "visibility"
+      },
+      "explanation_by_product": {
+        "dark_chocolate": "Lindt Excellence 85% wins evening_treat for budget_shopper.",
+        "banana": "Bananas weaker in evening_treat.",
+        "protein_bar": "Grenade High Protein Bar weaker in evening_treat.",
+        "croissant": "Croissants weaker in evening_treat.",
+        "challenger": "Cocoa Hazelnut Protein Bar weaker in evening_treat.",
+        "oat_bar": "Nature Valley Oats & Honey weaker in evening_treat.",
+        "greek_yogurt": "Fage Total 0% weaker in evening_treat.",
+        "apple": "Royal Gala Apples weaker in evening_treat.",
+        "energy_gel": "SiS GO Isotonic Gel weaker in evening_treat.",
+        "trail_mix": "Mixed Nuts & Raisins weaker in evening_treat.",
+        "rice_cakes": "Kallo Lightly Salted Rice Cakes weaker in evening_treat.",
+        "cold_brew": "Starbucks Cold Brew Can weaker in evening_treat.",
+        "hummus_pot": "Sabra Classic Hummus weaker in evening_treat.",
+        "protein_shake": "Puffy Protein Shake Vanilla weaker in evening_treat."
+      },
+      "nearly_chose": [
+        {
+          "product_id": "dark_chocolate",
+          "reason": "Closest alternative",
+          "count": 2
+        }
+      ],
+      "quotes": [
+        {
+          "response_id": "mock-budget_shopper-evening_treat",
+          "text": "Went for something quick in evening treat."
+        }
+      ],
+      "actions_by_product": {
+        "dark_chocolate": {
+          "next_step": "Test dark chocolate in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "banana": {
+          "next_step": "Test banana in evening treat",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_bar": {
+          "next_step": "Test protein bar in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "croissant": {
+          "next_step": "Test croissant in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "challenger": {
+          "next_step": "Test challenger in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "oat_bar": {
+          "next_step": "Test oat bar in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "greek_yogurt": {
+          "next_step": "Test greek yogurt in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "apple": {
+          "next_step": "Test apple in evening treat",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "energy_gel": {
+          "next_step": "Test energy gel in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "trail_mix": {
+          "next_step": "Test trail mix in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "rice_cakes": {
+          "next_step": "Test rice cakes in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "cold_brew": {
+          "next_step": "Test cold brew in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "hummus_pot": {
+          "next_step": "Test hummus pot in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_shake": {
+          "next_step": "Test protein shake in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        }
+      }
+    },
+    "budget_shopper|late_night": {
+      "n_real": 0,
+      "evidence": "dashed",
+      "predicted_shares": {
+        "banana": 0.0714,
+        "protein_bar": 0.0714,
+        "croissant": 0.0714,
+        "challenger": 0.0714,
+        "oat_bar": 0.0714,
+        "greek_yogurt": 0.0714,
+        "apple": 0.0714,
+        "energy_gel": 0.0714,
+        "trail_mix": 0.0714,
+        "dark_chocolate": 0.0714,
+        "rice_cakes": 0.0714,
+        "cold_brew": 0.0714,
+        "hummus_pot": 0.0714,
+        "protein_shake": 0.0714
+      },
+      "real_shares": {
+        "banana": 0.0643,
+        "protein_bar": 0.0643,
+        "croissant": 0.0643,
+        "challenger": 0.0643,
+        "oat_bar": 0.0643,
+        "greek_yogurt": 0.0643,
+        "apple": 0.0643,
+        "energy_gel": 0.0643,
+        "trail_mix": 0.0643,
+        "dark_chocolate": 0.0643,
+        "rice_cakes": 0.0643,
+        "cold_brew": 0.0643,
+        "hummus_pot": 0.0643,
+        "protein_shake": 0.0643
+      },
+      "verdict_by_product": {
+        "banana": "lose",
+        "protein_bar": "lose",
+        "croissant": "lose",
+        "challenger": "lose",
+        "oat_bar": "lose",
+        "greek_yogurt": "lose",
+        "apple": "lose",
+        "energy_gel": "lose",
+        "trail_mix": "lose",
+        "dark_chocolate": "lose",
+        "rice_cakes": "lose",
+        "cold_brew": "lose",
+        "hummus_pot": "lose",
+        "protein_shake": "lose"
+      },
+      "driver_by_product": {
+        "banana": "visibility",
+        "protein_bar": "visibility",
+        "croissant": "visibility",
+        "challenger": "visibility",
+        "oat_bar": "visibility",
+        "greek_yogurt": "visibility",
+        "apple": "visibility",
+        "energy_gel": "visibility",
+        "trail_mix": "visibility",
+        "dark_chocolate": "visibility",
+        "rice_cakes": "visibility",
+        "cold_brew": "visibility",
+        "hummus_pot": "visibility",
+        "protein_shake": "visibility"
+      },
+      "explanation_by_product": {
+        "banana": "Bananas weaker in late_night.",
+        "protein_bar": "Grenade High Protein Bar weaker in late_night.",
+        "croissant": "Croissants weaker in late_night.",
+        "challenger": "Cocoa Hazelnut Protein Bar weaker in late_night.",
+        "oat_bar": "Nature Valley Oats & Honey weaker in late_night.",
+        "greek_yogurt": "Fage Total 0% weaker in late_night.",
+        "apple": "Royal Gala Apples weaker in late_night.",
+        "energy_gel": "SiS GO Isotonic Gel weaker in late_night.",
+        "trail_mix": "Mixed Nuts & Raisins weaker in late_night.",
+        "dark_chocolate": "Lindt Excellence 85% weaker in late_night.",
+        "rice_cakes": "Kallo Lightly Salted Rice Cakes weaker in late_night.",
+        "cold_brew": "Starbucks Cold Brew Can weaker in late_night.",
+        "hummus_pot": "Sabra Classic Hummus weaker in late_night.",
+        "protein_shake": "Puffy Protein Shake Vanilla weaker in late_night."
+      },
+      "nearly_chose": [],
+      "quotes": [
+        {
+          "response_id": "mock-budget_shopper-late_night",
+          "text": "Went for something quick in late night."
+        }
+      ],
+      "actions_by_product": {
+        "banana": {
+          "next_step": "Test banana in late night",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_bar": {
+          "next_step": "Test protein bar in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "croissant": {
+          "next_step": "Test croissant in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "challenger": {
+          "next_step": "Test challenger in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "oat_bar": {
+          "next_step": "Test oat bar in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "greek_yogurt": {
+          "next_step": "Test greek yogurt in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "apple": {
+          "next_step": "Test apple in late night",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "energy_gel": {
+          "next_step": "Test energy gel in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "trail_mix": {
+          "next_step": "Test trail mix in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "dark_chocolate": {
+          "next_step": "Test dark chocolate in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "rice_cakes": {
+          "next_step": "Test rice cakes in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "cold_brew": {
+          "next_step": "Test cold brew in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "hummus_pot": {
+          "next_step": "Test hummus pot in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_shake": {
+          "next_step": "Test protein shake in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        }
+      }
+    },
+    "rushed_commuter|morning_rush": {
+      "n_real": 6,
+      "evidence": "solid",
+      "predicted_shares": {
+        "banana": 0.28,
+        "croissant": 0.18,
+        "protein_bar": 0.045,
+        "challenger": 0.045,
+        "oat_bar": 0.045,
+        "greek_yogurt": 0.045,
+        "apple": 0.045,
+        "energy_gel": 0.045,
+        "trail_mix": 0.045,
+        "dark_chocolate": 0.045,
+        "rice_cakes": 0.045,
+        "cold_brew": 0.045,
+        "hummus_pot": 0.045,
+        "protein_shake": 0.045
+      },
+      "real_shares": {
+        "banana": 0.28,
+        "croissant": 0.18,
+        "protein_bar": 0.0405,
+        "challenger": 0.0405,
+        "oat_bar": 0.0405,
+        "greek_yogurt": 0.0405,
+        "apple": 0.0405,
+        "energy_gel": 0.0405,
+        "trail_mix": 0.0405,
+        "dark_chocolate": 0.0405,
+        "rice_cakes": 0.0405,
+        "cold_brew": 0.0405,
+        "hummus_pot": 0.0405,
+        "protein_shake": 0.0405
+      },
+      "verdict_by_product": {
+        "banana": "win",
+        "croissant": "win",
+        "protein_bar": "lose",
+        "challenger": "lose",
+        "oat_bar": "lose",
+        "greek_yogurt": "lose",
+        "apple": "lose",
+        "energy_gel": "lose",
+        "trail_mix": "lose",
+        "dark_chocolate": "lose",
+        "rice_cakes": "lose",
+        "cold_brew": "lose",
+        "hummus_pot": "lose",
+        "protein_shake": "lose"
+      },
+      "driver_by_product": {
+        "banana": "health",
+        "croissant": "health",
+        "protein_bar": "visibility",
+        "challenger": "visibility",
+        "oat_bar": "visibility",
+        "greek_yogurt": "visibility",
+        "apple": "visibility",
+        "energy_gel": "visibility",
+        "trail_mix": "visibility",
+        "dark_chocolate": "visibility",
+        "rice_cakes": "visibility",
+        "cold_brew": "visibility",
+        "hummus_pot": "visibility",
+        "protein_shake": "visibility"
+      },
+      "explanation_by_product": {
+        "banana": "Bananas wins morning_rush for rushed_commuter.",
+        "croissant": "Croissants wins morning_rush for rushed_commuter.",
+        "protein_bar": "Grenade High Protein Bar weaker in morning_rush.",
+        "challenger": "Cocoa Hazelnut Protein Bar weaker in morning_rush.",
+        "oat_bar": "Nature Valley Oats & Honey weaker in morning_rush.",
+        "greek_yogurt": "Fage Total 0% weaker in morning_rush.",
+        "apple": "Royal Gala Apples weaker in morning_rush.",
+        "energy_gel": "SiS GO Isotonic Gel weaker in morning_rush.",
+        "trail_mix": "Mixed Nuts & Raisins weaker in morning_rush.",
+        "dark_chocolate": "Lindt Excellence 85% weaker in morning_rush.",
+        "rice_cakes": "Kallo Lightly Salted Rice Cakes weaker in morning_rush.",
+        "cold_brew": "Starbucks Cold Brew Can weaker in morning_rush.",
+        "hummus_pot": "Sabra Classic Hummus weaker in morning_rush.",
+        "protein_shake": "Puffy Protein Shake Vanilla weaker in morning_rush."
+      },
+      "nearly_chose": [
+        {
+          "product_id": "banana",
+          "reason": "Closest alternative",
+          "count": 2
+        }
+      ],
+      "quotes": [
+        {
+          "response_id": "mock-rushed_commuter-morning_rush",
+          "text": "Went for something quick in morning rush."
+        }
+      ],
+      "actions_by_product": {
+        "banana": {
+          "next_step": "Test banana in morning rush",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "croissant": {
+          "next_step": "Test croissant in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_bar": {
+          "next_step": "Test protein bar in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "challenger": {
+          "next_step": "Test challenger in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "oat_bar": {
+          "next_step": "Test oat bar in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "greek_yogurt": {
+          "next_step": "Test greek yogurt in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "apple": {
+          "next_step": "Test apple in morning rush",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "energy_gel": {
+          "next_step": "Test energy gel in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "trail_mix": {
+          "next_step": "Test trail mix in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "dark_chocolate": {
+          "next_step": "Test dark chocolate in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "rice_cakes": {
+          "next_step": "Test rice cakes in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "cold_brew": {
+          "next_step": "Test cold brew in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "hummus_pot": {
+          "next_step": "Test hummus pot in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_shake": {
+          "next_step": "Test protein shake in morning rush",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        }
+      }
+    },
+    "rushed_commuter|mid_morning": {
+      "n_real": 6,
+      "evidence": "solid",
+      "predicted_shares": {
+        "oat_bar": 0.28,
+        "cold_brew": 0.18,
+        "banana": 0.045,
+        "protein_bar": 0.045,
+        "croissant": 0.045,
+        "challenger": 0.045,
+        "greek_yogurt": 0.045,
+        "apple": 0.045,
+        "energy_gel": 0.045,
+        "trail_mix": 0.045,
+        "dark_chocolate": 0.045,
+        "rice_cakes": 0.045,
+        "hummus_pot": 0.045,
+        "protein_shake": 0.045
+      },
+      "real_shares": {
+        "oat_bar": 0.28,
+        "cold_brew": 0.18,
+        "banana": 0.0405,
+        "protein_bar": 0.0405,
+        "croissant": 0.0405,
+        "challenger": 0.0405,
+        "greek_yogurt": 0.0405,
+        "apple": 0.0405,
+        "energy_gel": 0.0405,
+        "trail_mix": 0.0405,
+        "dark_chocolate": 0.0405,
+        "rice_cakes": 0.0405,
+        "hummus_pot": 0.0405,
+        "protein_shake": 0.0405
+      },
+      "verdict_by_product": {
+        "oat_bar": "win",
+        "cold_brew": "win",
+        "banana": "lose",
+        "protein_bar": "lose",
+        "croissant": "lose",
+        "challenger": "lose",
+        "greek_yogurt": "lose",
+        "apple": "lose",
+        "energy_gel": "lose",
+        "trail_mix": "lose",
+        "dark_chocolate": "lose",
+        "rice_cakes": "lose",
+        "hummus_pot": "lose",
+        "protein_shake": "lose"
+      },
+      "driver_by_product": {
+        "oat_bar": "health",
+        "cold_brew": "health",
+        "banana": "visibility",
+        "protein_bar": "visibility",
+        "croissant": "visibility",
+        "challenger": "visibility",
+        "greek_yogurt": "visibility",
+        "apple": "visibility",
+        "energy_gel": "visibility",
+        "trail_mix": "visibility",
+        "dark_chocolate": "visibility",
+        "rice_cakes": "visibility",
+        "hummus_pot": "visibility",
+        "protein_shake": "visibility"
+      },
+      "explanation_by_product": {
+        "oat_bar": "Nature Valley Oats & Honey wins mid_morning for rushed_commuter.",
+        "cold_brew": "Starbucks Cold Brew Can wins mid_morning for rushed_commuter.",
+        "banana": "Bananas weaker in mid_morning.",
+        "protein_bar": "Grenade High Protein Bar weaker in mid_morning.",
+        "croissant": "Croissants weaker in mid_morning.",
+        "challenger": "Cocoa Hazelnut Protein Bar weaker in mid_morning.",
+        "greek_yogurt": "Fage Total 0% weaker in mid_morning.",
+        "apple": "Royal Gala Apples weaker in mid_morning.",
+        "energy_gel": "SiS GO Isotonic Gel weaker in mid_morning.",
+        "trail_mix": "Mixed Nuts & Raisins weaker in mid_morning.",
+        "dark_chocolate": "Lindt Excellence 85% weaker in mid_morning.",
+        "rice_cakes": "Kallo Lightly Salted Rice Cakes weaker in mid_morning.",
+        "hummus_pot": "Sabra Classic Hummus weaker in mid_morning.",
+        "protein_shake": "Puffy Protein Shake Vanilla weaker in mid_morning."
+      },
+      "nearly_chose": [
+        {
+          "product_id": "oat_bar",
+          "reason": "Closest alternative",
+          "count": 2
+        }
+      ],
+      "quotes": [
+        {
+          "response_id": "mock-rushed_commuter-mid_morning",
+          "text": "Went for something quick in mid morning."
+        }
+      ],
+      "actions_by_product": {
+        "oat_bar": {
+          "next_step": "Test oat bar in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "cold_brew": {
+          "next_step": "Test cold brew in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "banana": {
+          "next_step": "Test banana in mid morning",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_bar": {
+          "next_step": "Test protein bar in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "croissant": {
+          "next_step": "Test croissant in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "challenger": {
+          "next_step": "Test challenger in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "greek_yogurt": {
+          "next_step": "Test greek yogurt in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "apple": {
+          "next_step": "Test apple in mid morning",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "energy_gel": {
+          "next_step": "Test energy gel in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "trail_mix": {
+          "next_step": "Test trail mix in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "dark_chocolate": {
+          "next_step": "Test dark chocolate in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "rice_cakes": {
+          "next_step": "Test rice cakes in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "hummus_pot": {
+          "next_step": "Test hummus pot in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_shake": {
+          "next_step": "Test protein shake in mid morning",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        }
+      }
+    },
+    "rushed_commuter|quick_lunch": {
+      "n_real": 6,
+      "evidence": "solid",
+      "predicted_shares": {
+        "greek_yogurt": 0.28,
+        "hummus_pot": 0.18,
+        "banana": 0.045,
+        "protein_bar": 0.045,
+        "croissant": 0.045,
+        "challenger": 0.045,
+        "oat_bar": 0.045,
+        "apple": 0.045,
+        "energy_gel": 0.045,
+        "trail_mix": 0.045,
+        "dark_chocolate": 0.045,
+        "rice_cakes": 0.045,
+        "cold_brew": 0.045,
+        "protein_shake": 0.045
+      },
+      "real_shares": {
+        "greek_yogurt": 0.28,
+        "hummus_pot": 0.18,
+        "banana": 0.0405,
+        "protein_bar": 0.0405,
+        "croissant": 0.0405,
+        "challenger": 0.0405,
+        "oat_bar": 0.0405,
+        "apple": 0.0405,
+        "energy_gel": 0.0405,
+        "trail_mix": 0.0405,
+        "dark_chocolate": 0.0405,
+        "rice_cakes": 0.0405,
+        "cold_brew": 0.0405,
+        "protein_shake": 0.0405
+      },
+      "verdict_by_product": {
+        "greek_yogurt": "win",
+        "hummus_pot": "win",
+        "banana": "lose",
+        "protein_bar": "lose",
+        "croissant": "lose",
+        "challenger": "lose",
+        "oat_bar": "lose",
+        "apple": "lose",
+        "energy_gel": "lose",
+        "trail_mix": "lose",
+        "dark_chocolate": "lose",
+        "rice_cakes": "lose",
+        "cold_brew": "lose",
+        "protein_shake": "lose"
+      },
+      "driver_by_product": {
+        "greek_yogurt": "health",
+        "hummus_pot": "health",
+        "banana": "visibility",
+        "protein_bar": "visibility",
+        "croissant": "visibility",
+        "challenger": "visibility",
+        "oat_bar": "visibility",
+        "apple": "visibility",
+        "energy_gel": "visibility",
+        "trail_mix": "visibility",
+        "dark_chocolate": "visibility",
+        "rice_cakes": "visibility",
+        "cold_brew": "visibility",
+        "protein_shake": "visibility"
+      },
+      "explanation_by_product": {
+        "greek_yogurt": "Fage Total 0% wins quick_lunch for rushed_commuter.",
+        "hummus_pot": "Sabra Classic Hummus wins quick_lunch for rushed_commuter.",
+        "banana": "Bananas weaker in quick_lunch.",
+        "protein_bar": "Grenade High Protein Bar weaker in quick_lunch.",
+        "croissant": "Croissants weaker in quick_lunch.",
+        "challenger": "Cocoa Hazelnut Protein Bar weaker in quick_lunch.",
+        "oat_bar": "Nature Valley Oats & Honey weaker in quick_lunch.",
+        "apple": "Royal Gala Apples weaker in quick_lunch.",
+        "energy_gel": "SiS GO Isotonic Gel weaker in quick_lunch.",
+        "trail_mix": "Mixed Nuts & Raisins weaker in quick_lunch.",
+        "dark_chocolate": "Lindt Excellence 85% weaker in quick_lunch.",
+        "rice_cakes": "Kallo Lightly Salted Rice Cakes weaker in quick_lunch.",
+        "cold_brew": "Starbucks Cold Brew Can weaker in quick_lunch.",
+        "protein_shake": "Puffy Protein Shake Vanilla weaker in quick_lunch."
+      },
+      "nearly_chose": [
+        {
+          "product_id": "greek_yogurt",
+          "reason": "Closest alternative",
+          "count": 2
+        }
+      ],
+      "quotes": [
+        {
+          "response_id": "mock-rushed_commuter-quick_lunch",
+          "text": "Went for something quick in quick lunch."
+        }
+      ],
+      "actions_by_product": {
+        "greek_yogurt": {
+          "next_step": "Test greek yogurt in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "hummus_pot": {
+          "next_step": "Test hummus pot in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "banana": {
+          "next_step": "Test banana in quick lunch",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_bar": {
+          "next_step": "Test protein bar in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "croissant": {
+          "next_step": "Test croissant in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "challenger": {
+          "next_step": "Test challenger in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "oat_bar": {
+          "next_step": "Test oat bar in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "apple": {
+          "next_step": "Test apple in quick lunch",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "energy_gel": {
+          "next_step": "Test energy gel in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "trail_mix": {
+          "next_step": "Test trail mix in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "dark_chocolate": {
+          "next_step": "Test dark chocolate in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "rice_cakes": {
+          "next_step": "Test rice cakes in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "cold_brew": {
+          "next_step": "Test cold brew in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_shake": {
+          "next_step": "Test protein shake in quick lunch",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        }
+      }
+    },
+    "rushed_commuter|afternoon_lull": {
+      "n_real": 6,
+      "evidence": "solid",
+      "predicted_shares": {
+        "apple": 0.28,
+        "rice_cakes": 0.18,
+        "banana": 0.045,
+        "protein_bar": 0.045,
+        "croissant": 0.045,
+        "challenger": 0.045,
+        "oat_bar": 0.045,
+        "greek_yogurt": 0.045,
+        "energy_gel": 0.045,
+        "trail_mix": 0.045,
+        "dark_chocolate": 0.045,
+        "cold_brew": 0.045,
+        "hummus_pot": 0.045,
+        "protein_shake": 0.045
+      },
+      "real_shares": {
+        "apple": 0.28,
+        "rice_cakes": 0.18,
+        "banana": 0.0405,
+        "protein_bar": 0.0405,
+        "croissant": 0.0405,
+        "challenger": 0.0405,
+        "oat_bar": 0.0405,
+        "greek_yogurt": 0.0405,
+        "energy_gel": 0.0405,
+        "trail_mix": 0.0405,
+        "dark_chocolate": 0.0405,
+        "cold_brew": 0.0405,
+        "hummus_pot": 0.0405,
+        "protein_shake": 0.0405
+      },
+      "verdict_by_product": {
+        "apple": "win",
+        "rice_cakes": "win",
+        "banana": "lose",
+        "protein_bar": "lose",
+        "croissant": "lose",
+        "challenger": "lose",
+        "oat_bar": "lose",
+        "greek_yogurt": "lose",
+        "energy_gel": "lose",
+        "trail_mix": "lose",
+        "dark_chocolate": "lose",
+        "cold_brew": "lose",
+        "hummus_pot": "lose",
+        "protein_shake": "lose"
+      },
+      "driver_by_product": {
+        "apple": "health",
+        "rice_cakes": "health",
+        "banana": "visibility",
+        "protein_bar": "visibility",
+        "croissant": "visibility",
+        "challenger": "visibility",
+        "oat_bar": "visibility",
+        "greek_yogurt": "visibility",
+        "energy_gel": "visibility",
+        "trail_mix": "visibility",
+        "dark_chocolate": "visibility",
+        "cold_brew": "visibility",
+        "hummus_pot": "visibility",
+        "protein_shake": "visibility"
+      },
+      "explanation_by_product": {
+        "apple": "Royal Gala Apples wins afternoon_lull for rushed_commuter.",
+        "rice_cakes": "Kallo Lightly Salted Rice Cakes wins afternoon_lull for rushed_commuter.",
+        "banana": "Bananas weaker in afternoon_lull.",
+        "protein_bar": "Grenade High Protein Bar weaker in afternoon_lull.",
+        "croissant": "Croissants weaker in afternoon_lull.",
+        "challenger": "Cocoa Hazelnut Protein Bar weaker in afternoon_lull.",
+        "oat_bar": "Nature Valley Oats & Honey weaker in afternoon_lull.",
+        "greek_yogurt": "Fage Total 0% weaker in afternoon_lull.",
+        "energy_gel": "SiS GO Isotonic Gel weaker in afternoon_lull.",
+        "trail_mix": "Mixed Nuts & Raisins weaker in afternoon_lull.",
+        "dark_chocolate": "Lindt Excellence 85% weaker in afternoon_lull.",
+        "cold_brew": "Starbucks Cold Brew Can weaker in afternoon_lull.",
+        "hummus_pot": "Sabra Classic Hummus weaker in afternoon_lull.",
+        "protein_shake": "Puffy Protein Shake Vanilla weaker in afternoon_lull."
+      },
+      "nearly_chose": [
+        {
+          "product_id": "apple",
+          "reason": "Closest alternative",
+          "count": 2
+        }
+      ],
+      "quotes": [
+        {
+          "response_id": "mock-rushed_commuter-afternoon_lull",
+          "text": "Went for something quick in afternoon lull."
+        }
+      ],
+      "actions_by_product": {
+        "apple": {
+          "next_step": "Test apple in afternoon lull",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "rice_cakes": {
+          "next_step": "Test rice cakes in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "banana": {
+          "next_step": "Test banana in afternoon lull",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_bar": {
+          "next_step": "Test protein bar in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "croissant": {
+          "next_step": "Test croissant in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "challenger": {
+          "next_step": "Test challenger in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "oat_bar": {
+          "next_step": "Test oat bar in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "greek_yogurt": {
+          "next_step": "Test greek yogurt in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "energy_gel": {
+          "next_step": "Test energy gel in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "trail_mix": {
+          "next_step": "Test trail mix in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "dark_chocolate": {
+          "next_step": "Test dark chocolate in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "cold_brew": {
+          "next_step": "Test cold brew in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "hummus_pot": {
+          "next_step": "Test hummus pot in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_shake": {
+          "next_step": "Test protein shake in afternoon lull",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        }
+      }
+    },
+    "rushed_commuter|commute_home": {
+      "n_real": 6,
+      "evidence": "solid",
+      "predicted_shares": {
+        "energy_gel": 0.28,
+        "trail_mix": 0.18,
+        "banana": 0.045,
+        "protein_bar": 0.045,
+        "croissant": 0.045,
+        "challenger": 0.045,
+        "oat_bar": 0.045,
+        "greek_yogurt": 0.045,
+        "apple": 0.045,
+        "dark_chocolate": 0.045,
+        "rice_cakes": 0.045,
+        "cold_brew": 0.045,
+        "hummus_pot": 0.045,
+        "protein_shake": 0.045
+      },
+      "real_shares": {
+        "energy_gel": 0.28,
+        "trail_mix": 0.18,
+        "banana": 0.0405,
+        "protein_bar": 0.0405,
+        "croissant": 0.0405,
+        "challenger": 0.0405,
+        "oat_bar": 0.0405,
+        "greek_yogurt": 0.0405,
+        "apple": 0.0405,
+        "dark_chocolate": 0.0405,
+        "rice_cakes": 0.0405,
+        "cold_brew": 0.0405,
+        "hummus_pot": 0.0405,
+        "protein_shake": 0.0405
+      },
+      "verdict_by_product": {
+        "energy_gel": "win",
+        "trail_mix": "win",
+        "banana": "lose",
+        "protein_bar": "lose",
+        "croissant": "lose",
+        "challenger": "lose",
+        "oat_bar": "lose",
+        "greek_yogurt": "lose",
+        "apple": "lose",
+        "dark_chocolate": "lose",
+        "rice_cakes": "lose",
+        "cold_brew": "lose",
+        "hummus_pot": "lose",
+        "protein_shake": "lose"
+      },
+      "driver_by_product": {
+        "energy_gel": "health",
+        "trail_mix": "health",
+        "banana": "visibility",
+        "protein_bar": "visibility",
+        "croissant": "visibility",
+        "challenger": "visibility",
+        "oat_bar": "visibility",
+        "greek_yogurt": "visibility",
+        "apple": "visibility",
+        "dark_chocolate": "visibility",
+        "rice_cakes": "visibility",
+        "cold_brew": "visibility",
+        "hummus_pot": "visibility",
+        "protein_shake": "visibility"
+      },
+      "explanation_by_product": {
+        "energy_gel": "SiS GO Isotonic Gel wins commute_home for rushed_commuter.",
+        "trail_mix": "Mixed Nuts & Raisins wins commute_home for rushed_commuter.",
+        "banana": "Bananas weaker in commute_home.",
+        "protein_bar": "Grenade High Protein Bar weaker in commute_home.",
+        "croissant": "Croissants weaker in commute_home.",
+        "challenger": "Cocoa Hazelnut Protein Bar weaker in commute_home.",
+        "oat_bar": "Nature Valley Oats & Honey weaker in commute_home.",
+        "greek_yogurt": "Fage Total 0% weaker in commute_home.",
+        "apple": "Royal Gala Apples weaker in commute_home.",
+        "dark_chocolate": "Lindt Excellence 85% weaker in commute_home.",
+        "rice_cakes": "Kallo Lightly Salted Rice Cakes weaker in commute_home.",
+        "cold_brew": "Starbucks Cold Brew Can weaker in commute_home.",
+        "hummus_pot": "Sabra Classic Hummus weaker in commute_home.",
+        "protein_shake": "Puffy Protein Shake Vanilla weaker in commute_home."
+      },
+      "nearly_chose": [
+        {
+          "product_id": "energy_gel",
+          "reason": "Closest alternative",
+          "count": 2
+        }
+      ],
+      "quotes": [
+        {
+          "response_id": "mock-rushed_commuter-commute_home",
+          "text": "Went for something quick in commute home."
+        }
+      ],
+      "actions_by_product": {
+        "energy_gel": {
+          "next_step": "Test energy gel in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "trail_mix": {
+          "next_step": "Test trail mix in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "banana": {
+          "next_step": "Test banana in commute home",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_bar": {
+          "next_step": "Test protein bar in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "croissant": {
+          "next_step": "Test croissant in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "challenger": {
+          "next_step": "Test challenger in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "oat_bar": {
+          "next_step": "Test oat bar in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "greek_yogurt": {
+          "next_step": "Test greek yogurt in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "apple": {
+          "next_step": "Test apple in commute home",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "dark_chocolate": {
+          "next_step": "Test dark chocolate in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "rice_cakes": {
+          "next_step": "Test rice cakes in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "cold_brew": {
+          "next_step": "Test cold brew in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "hummus_pot": {
+          "next_step": "Test hummus pot in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_shake": {
+          "next_step": "Test protein shake in commute home",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        }
+      }
+    },
+    "rushed_commuter|post_workout": {
+      "n_real": 6,
+      "evidence": "solid",
+      "predicted_shares": {
+        "protein_bar": 0.28,
+        "challenger": 0.18,
+        "protein_shake": 0.18,
+        "banana": 0.0327,
+        "croissant": 0.0327,
+        "oat_bar": 0.0327,
+        "greek_yogurt": 0.0327,
+        "apple": 0.0327,
+        "energy_gel": 0.0327,
+        "trail_mix": 0.0327,
+        "dark_chocolate": 0.0327,
+        "rice_cakes": 0.0327,
+        "cold_brew": 0.0327,
+        "hummus_pot": 0.0327
+      },
+      "real_shares": {
+        "protein_bar": 0.28,
+        "challenger": 0.18,
+        "protein_shake": 0.18,
+        "banana": 0.0295,
+        "croissant": 0.0295,
+        "oat_bar": 0.0295,
+        "greek_yogurt": 0.0295,
+        "apple": 0.0295,
+        "energy_gel": 0.0295,
+        "trail_mix": 0.0295,
+        "dark_chocolate": 0.0295,
+        "rice_cakes": 0.0295,
+        "cold_brew": 0.0295,
+        "hummus_pot": 0.0295
+      },
+      "verdict_by_product": {
+        "protein_bar": "win",
+        "challenger": "win",
+        "protein_shake": "win",
+        "banana": "lose",
+        "croissant": "lose",
+        "oat_bar": "lose",
+        "greek_yogurt": "lose",
+        "apple": "lose",
+        "energy_gel": "lose",
+        "trail_mix": "lose",
+        "dark_chocolate": "lose",
+        "rice_cakes": "lose",
+        "cold_brew": "lose",
+        "hummus_pot": "lose"
+      },
+      "driver_by_product": {
+        "protein_bar": "health",
+        "challenger": "health",
+        "protein_shake": "health",
+        "banana": "visibility",
+        "croissant": "visibility",
+        "oat_bar": "visibility",
+        "greek_yogurt": "visibility",
+        "apple": "visibility",
+        "energy_gel": "visibility",
+        "trail_mix": "visibility",
+        "dark_chocolate": "visibility",
+        "rice_cakes": "visibility",
+        "cold_brew": "visibility",
+        "hummus_pot": "visibility"
+      },
+      "explanation_by_product": {
+        "protein_bar": "Grenade High Protein Bar wins post_workout for rushed_commuter.",
+        "challenger": "Cocoa Hazelnut Protein Bar wins post_workout for rushed_commuter.",
+        "protein_shake": "Puffy Protein Shake Vanilla wins post_workout for rushed_commuter.",
+        "banana": "Bananas weaker in post_workout.",
+        "croissant": "Croissants weaker in post_workout.",
+        "oat_bar": "Nature Valley Oats & Honey weaker in post_workout.",
+        "greek_yogurt": "Fage Total 0% weaker in post_workout.",
+        "apple": "Royal Gala Apples weaker in post_workout.",
+        "energy_gel": "SiS GO Isotonic Gel weaker in post_workout.",
+        "trail_mix": "Mixed Nuts & Raisins weaker in post_workout.",
+        "dark_chocolate": "Lindt Excellence 85% weaker in post_workout.",
+        "rice_cakes": "Kallo Lightly Salted Rice Cakes weaker in post_workout.",
+        "cold_brew": "Starbucks Cold Brew Can weaker in post_workout.",
+        "hummus_pot": "Sabra Classic Hummus weaker in post_workout."
+      },
+      "nearly_chose": [
+        {
+          "product_id": "protein_bar",
+          "reason": "Closest alternative",
+          "count": 2
+        }
+      ],
+      "quotes": [
+        {
+          "response_id": "mock-rushed_commuter-post_workout",
+          "text": "Went for something quick in post workout."
+        }
+      ],
+      "actions_by_product": {
+        "protein_bar": {
+          "next_step": "Test protein bar in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "challenger": {
+          "next_step": "Test challenger in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_shake": {
+          "next_step": "Test protein shake in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "banana": {
+          "next_step": "Test banana in post workout",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "croissant": {
+          "next_step": "Test croissant in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "oat_bar": {
+          "next_step": "Test oat bar in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "greek_yogurt": {
+          "next_step": "Test greek yogurt in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "apple": {
+          "next_step": "Test apple in post workout",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "energy_gel": {
+          "next_step": "Test energy gel in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "trail_mix": {
+          "next_step": "Test trail mix in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "dark_chocolate": {
+          "next_step": "Test dark chocolate in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "rice_cakes": {
+          "next_step": "Test rice cakes in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "cold_brew": {
+          "next_step": "Test cold brew in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "hummus_pot": {
+          "next_step": "Test hummus pot in post workout",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        }
+      }
+    },
+    "rushed_commuter|evening_treat": {
+      "n_real": 6,
+      "evidence": "solid",
+      "predicted_shares": {
+        "dark_chocolate": 0.42,
+        "banana": 0.0446,
+        "protein_bar": 0.0446,
+        "croissant": 0.0446,
+        "challenger": 0.0446,
+        "oat_bar": 0.0446,
+        "greek_yogurt": 0.0446,
+        "apple": 0.0446,
+        "energy_gel": 0.0446,
+        "trail_mix": 0.0446,
+        "rice_cakes": 0.0446,
+        "cold_brew": 0.0446,
+        "hummus_pot": 0.0446,
+        "protein_shake": 0.0446
+      },
+      "real_shares": {
+        "dark_chocolate": 0.42,
+        "banana": 0.0402,
+        "protein_bar": 0.0402,
+        "croissant": 0.0402,
+        "challenger": 0.0402,
+        "oat_bar": 0.0402,
+        "greek_yogurt": 0.0402,
+        "apple": 0.0402,
+        "energy_gel": 0.0402,
+        "trail_mix": 0.0402,
+        "rice_cakes": 0.0402,
+        "cold_brew": 0.0402,
+        "hummus_pot": 0.0402,
+        "protein_shake": 0.0402
+      },
+      "verdict_by_product": {
+        "dark_chocolate": "win",
+        "banana": "lose",
+        "protein_bar": "lose",
+        "croissant": "lose",
+        "challenger": "lose",
+        "oat_bar": "lose",
+        "greek_yogurt": "lose",
+        "apple": "lose",
+        "energy_gel": "lose",
+        "trail_mix": "lose",
+        "rice_cakes": "lose",
+        "cold_brew": "lose",
+        "hummus_pot": "lose",
+        "protein_shake": "lose"
+      },
+      "driver_by_product": {
+        "dark_chocolate": "health",
+        "banana": "visibility",
+        "protein_bar": "visibility",
+        "croissant": "visibility",
+        "challenger": "visibility",
+        "oat_bar": "visibility",
+        "greek_yogurt": "visibility",
+        "apple": "visibility",
+        "energy_gel": "visibility",
+        "trail_mix": "visibility",
+        "rice_cakes": "visibility",
+        "cold_brew": "visibility",
+        "hummus_pot": "visibility",
+        "protein_shake": "visibility"
+      },
+      "explanation_by_product": {
+        "dark_chocolate": "Lindt Excellence 85% wins evening_treat for rushed_commuter.",
+        "banana": "Bananas weaker in evening_treat.",
+        "protein_bar": "Grenade High Protein Bar weaker in evening_treat.",
+        "croissant": "Croissants weaker in evening_treat.",
+        "challenger": "Cocoa Hazelnut Protein Bar weaker in evening_treat.",
+        "oat_bar": "Nature Valley Oats & Honey weaker in evening_treat.",
+        "greek_yogurt": "Fage Total 0% weaker in evening_treat.",
+        "apple": "Royal Gala Apples weaker in evening_treat.",
+        "energy_gel": "SiS GO Isotonic Gel weaker in evening_treat.",
+        "trail_mix": "Mixed Nuts & Raisins weaker in evening_treat.",
+        "rice_cakes": "Kallo Lightly Salted Rice Cakes weaker in evening_treat.",
+        "cold_brew": "Starbucks Cold Brew Can weaker in evening_treat.",
+        "hummus_pot": "Sabra Classic Hummus weaker in evening_treat.",
+        "protein_shake": "Puffy Protein Shake Vanilla weaker in evening_treat."
+      },
+      "nearly_chose": [
+        {
+          "product_id": "dark_chocolate",
+          "reason": "Closest alternative",
+          "count": 2
+        }
+      ],
+      "quotes": [
+        {
+          "response_id": "mock-rushed_commuter-evening_treat",
+          "text": "Went for something quick in evening treat."
+        }
+      ],
+      "actions_by_product": {
+        "dark_chocolate": {
+          "next_step": "Test dark chocolate in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "banana": {
+          "next_step": "Test banana in evening treat",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_bar": {
+          "next_step": "Test protein bar in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "croissant": {
+          "next_step": "Test croissant in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "challenger": {
+          "next_step": "Test challenger in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "oat_bar": {
+          "next_step": "Test oat bar in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "greek_yogurt": {
+          "next_step": "Test greek yogurt in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "apple": {
+          "next_step": "Test apple in evening treat",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "energy_gel": {
+          "next_step": "Test energy gel in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "trail_mix": {
+          "next_step": "Test trail mix in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "rice_cakes": {
+          "next_step": "Test rice cakes in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "cold_brew": {
+          "next_step": "Test cold brew in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "hummus_pot": {
+          "next_step": "Test hummus pot in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_shake": {
+          "next_step": "Test protein shake in evening treat",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        }
+      }
+    },
+    "rushed_commuter|late_night": {
+      "n_real": 0,
+      "evidence": "dashed",
+      "predicted_shares": {
+        "banana": 0.0714,
+        "protein_bar": 0.0714,
+        "croissant": 0.0714,
+        "challenger": 0.0714,
+        "oat_bar": 0.0714,
+        "greek_yogurt": 0.0714,
+        "apple": 0.0714,
+        "energy_gel": 0.0714,
+        "trail_mix": 0.0714,
+        "dark_chocolate": 0.0714,
+        "rice_cakes": 0.0714,
+        "cold_brew": 0.0714,
+        "hummus_pot": 0.0714,
+        "protein_shake": 0.0714
+      },
+      "real_shares": {
+        "banana": 0.0643,
+        "protein_bar": 0.0643,
+        "croissant": 0.0643,
+        "challenger": 0.0643,
+        "oat_bar": 0.0643,
+        "greek_yogurt": 0.0643,
+        "apple": 0.0643,
+        "energy_gel": 0.0643,
+        "trail_mix": 0.0643,
+        "dark_chocolate": 0.0643,
+        "rice_cakes": 0.0643,
+        "cold_brew": 0.0643,
+        "hummus_pot": 0.0643,
+        "protein_shake": 0.0643
+      },
+      "verdict_by_product": {
+        "banana": "lose",
+        "protein_bar": "lose",
+        "croissant": "lose",
+        "challenger": "lose",
+        "oat_bar": "lose",
+        "greek_yogurt": "lose",
+        "apple": "lose",
+        "energy_gel": "lose",
+        "trail_mix": "lose",
+        "dark_chocolate": "lose",
+        "rice_cakes": "lose",
+        "cold_brew": "lose",
+        "hummus_pot": "lose",
+        "protein_shake": "lose"
+      },
+      "driver_by_product": {
+        "banana": "visibility",
+        "protein_bar": "visibility",
+        "croissant": "visibility",
+        "challenger": "visibility",
+        "oat_bar": "visibility",
+        "greek_yogurt": "visibility",
+        "apple": "visibility",
+        "energy_gel": "visibility",
+        "trail_mix": "visibility",
+        "dark_chocolate": "visibility",
+        "rice_cakes": "visibility",
+        "cold_brew": "visibility",
+        "hummus_pot": "visibility",
+        "protein_shake": "visibility"
+      },
+      "explanation_by_product": {
+        "banana": "Bananas weaker in late_night.",
+        "protein_bar": "Grenade High Protein Bar weaker in late_night.",
+        "croissant": "Croissants weaker in late_night.",
+        "challenger": "Cocoa Hazelnut Protein Bar weaker in late_night.",
+        "oat_bar": "Nature Valley Oats & Honey weaker in late_night.",
+        "greek_yogurt": "Fage Total 0% weaker in late_night.",
+        "apple": "Royal Gala Apples weaker in late_night.",
+        "energy_gel": "SiS GO Isotonic Gel weaker in late_night.",
+        "trail_mix": "Mixed Nuts & Raisins weaker in late_night.",
+        "dark_chocolate": "Lindt Excellence 85% weaker in late_night.",
+        "rice_cakes": "Kallo Lightly Salted Rice Cakes weaker in late_night.",
+        "cold_brew": "Starbucks Cold Brew Can weaker in late_night.",
+        "hummus_pot": "Sabra Classic Hummus weaker in late_night.",
+        "protein_shake": "Puffy Protein Shake Vanilla weaker in late_night."
+      },
+      "nearly_chose": [],
+      "quotes": [
+        {
+          "response_id": "mock-rushed_commuter-late_night",
+          "text": "Went for something quick in late night."
+        }
+      ],
+      "actions_by_product": {
+        "banana": {
+          "next_step": "Test banana in late night",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_bar": {
+          "next_step": "Test protein bar in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "croissant": {
+          "next_step": "Test croissant in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "challenger": {
+          "next_step": "Test challenger in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "oat_bar": {
+          "next_step": "Test oat bar in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "greek_yogurt": {
+          "next_step": "Test greek yogurt in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "apple": {
+          "next_step": "Test apple in late night",
+          "cost_pence": 500,
+          "owner": "brand",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "energy_gel": {
+          "next_step": "Test energy gel in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "trail_mix": {
+          "next_step": "Test trail mix in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "dark_chocolate": {
+          "next_step": "Test dark chocolate in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "rice_cakes": {
+          "next_step": "Test rice cakes in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "cold_brew": {
+          "next_step": "Test cold brew in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "hummus_pot": {
+          "next_step": "Test hummus pot in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        },
+        "protein_shake": {
+          "next_step": "Test protein shake in late night",
+          "cost_pence": 500,
+          "owner": "retailer",
+          "expensive_action_avoided": "National TV burst before placement proof",
+          "effort": "S"
+        }
+      }
+    }
+  },
+  "gaps": {
+    "say_vs_do": [
+      {
+        "summary": "Said healthy, chose pastry at till",
+        "count": 4,
+        "response_ids": [
+          "mock-g1",
+          "mock-g2"
+        ]
+      }
+    ],
+    "familiarity_pick_share": {
+      "pct": 31,
+      "n": 96
+    }
+  },
+  "calibration": {
+    "status": "insufficient",
+    "message": "Not enough held-out data to calibrate yet"
+  }
+}
